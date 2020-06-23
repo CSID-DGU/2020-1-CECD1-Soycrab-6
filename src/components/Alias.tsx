@@ -1,7 +1,8 @@
-import React, { CSSProperties } from 'react';
-import styled, { css } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 
-type AliasProps = {
+export type AliasProps = {
+  id: number,
   name: string;
 };
 
@@ -13,6 +14,7 @@ const AliasBox = styled.button`
   background: #12b886;
   border: none;
   border-radius: 5px;
+  margin-top: 1rem;
   cursor: pointer;
 
   &:hover {

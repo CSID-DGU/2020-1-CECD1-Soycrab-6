@@ -1,9 +1,9 @@
 import React from 'react';
-import AliasContainer from './containers/AliasContainer';
+import NodeContainer from './containers/NodeContainer';
 
 function App() {
   return (
-    <AliasContainer />
+    <NodeContainer />
   );
 }
 
