@@ -15,6 +15,7 @@
 - @types/react-redux
 - redux-devtools-extension
 - typesafe-actions
+- styled-components
 
 ## TypeScript Check Usable
 - [타입스크립트 사용가능한지 체크](https://microsoft.github.io/TypeSearch/)
