@@ -1,10 +1,9 @@
 import React from 'react';
+import AliasContainer from './containers/AliasContainer';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <AliasContainer />
   );
 }
 
