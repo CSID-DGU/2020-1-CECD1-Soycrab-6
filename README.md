@@ -11,7 +11,9 @@
 
 ## React(Typescript) 사용 라이브러리
 - redux
+- react-redux
 - @types/react-redux
+- redux-devtools-extension
 - typesafe-actions
 
 ## TypeScript Check Usable
