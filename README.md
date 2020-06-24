@@ -17,7 +17,7 @@
 - typesafe-actions
 - styled-components
 - @types/styled-components
-- bootstrap-react
+- [bootstrap-react](https://react-bootstrap.github.io/)
 - @types/bootstrap-react
 - node-sass
 - @types/node-sass
