@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 
 function HeadNavbar() {
+  const navbarStyle: CSSProperties = {
+    marginBottom: '2rem'
+  };
+
   return (
     <>
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+      <Navbar bg="dark" variant="dark" style={navbarStyle}> 
+        <Navbar.Brand href="#home">소스코드 결함탐지</Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Nav.Link href="#home">노드생성</Nav.Link>
         </Nav>
         <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-info">Search</Button>
+          <FormControl type="text" placeholder="노드 이름으로 찾기..." className="mr-sm-2" />
+          <Button variant="outline-info">검색</Button>
         </Form>
       </Navbar>
     </>

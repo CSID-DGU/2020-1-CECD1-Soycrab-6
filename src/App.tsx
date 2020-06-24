@@ -1,13 +1,15 @@
 import React from 'react';
 import './App.scss';
-import NodeContainer from './containers/NodeContainer';
+import NodeApp from './containers/NodeApp';
 import HeadNavbar from './components/HeadNavbar';
 
 function App() {
   return (
     <>
       <HeadNavbar />
-      <NodeContainer />
+      <div className="container">
+        <NodeApp />
+      </div>
     </>
   );
 }
