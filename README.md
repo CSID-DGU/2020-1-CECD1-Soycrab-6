@@ -21,6 +21,7 @@
 - @types/bootstrap-react
 - node-sass
 - @types/node-sass
+- react-icons
 
 ## TypeScript Check Usable
 - [타입스크립트 사용가능한지 체크](https://microsoft.github.io/TypeSearch/)
