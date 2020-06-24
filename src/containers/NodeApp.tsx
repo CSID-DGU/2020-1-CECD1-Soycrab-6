@@ -8,7 +8,7 @@ import { AliasProps } from '../components/Alias';
 
 function NodeApp() {
   const nodes = useSelector((state: RootState) => state.nodes);
-  const aliases: AliasProps[] = [];
+  const aliases = useSelector((state: RootState) => state.aliases);
   const dispatch = useDispatch();
 
   const onInsert = (text: string) => {

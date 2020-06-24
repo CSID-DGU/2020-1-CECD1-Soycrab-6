@@ -11,7 +11,7 @@ function HeadNavbar() {
       <Navbar bg="dark" variant="dark" style={navbarStyle}> 
         <Navbar.Brand href="#home">소스코드 결함탐지</Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="#home">노드생성</Nav.Link>
+          
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="노드 이름으로 찾기..." className="mr-sm-2" />

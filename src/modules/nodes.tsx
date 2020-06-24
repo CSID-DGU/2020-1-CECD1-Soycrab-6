@@ -2,11 +2,11 @@ const CREATE_NODE = 'node/CREATE' as const;
 const REMOVE_NODE = 'node/REMOVE' as const;
 
 let nextId = 1;
-export const addNode = (text: string) => ({
+export const addNode = (name: string) => ({
   type: CREATE_NODE,
   payload: {
     id: nextId++,
-    name: text
+    name: name
   }
 });
 export const removeNode = (id: number) => ({

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import nodes from './nodes';
+import aliases from './aliases';
 
 const rootReducer = combineReducers({
-  nodes
+  nodes,
+  aliases
 });
 
 export default rootReducer;

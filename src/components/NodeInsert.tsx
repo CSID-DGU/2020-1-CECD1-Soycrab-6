@@ -25,7 +25,7 @@ function NodeInsert({ onInsert }: NodeInsertProps) {
         <Form onSubmit={onSubmit}>
           <Form.Group as={Row} controlId="formHorizontalEmail">
             <Form.Label column sm={2}>
-              Email
+              노드명
             </Form.Label>
             <Col sm={10}>
               <Form.Control type="text" placeholder="노드 이름을 입력해주세요..." onChange={onChange} value={value} />
@@ -38,11 +38,6 @@ function NodeInsert({ onInsert }: NodeInsertProps) {
           </Form.Group>
         </Form>
       </Modal.Body>
-
-      <Modal.Footer>
-        <Button variant="secondary">닫기</Button>
-        <Button variant="primary">생성</Button>
-      </Modal.Footer>
     </Modal.Dialog>
   )
 }
