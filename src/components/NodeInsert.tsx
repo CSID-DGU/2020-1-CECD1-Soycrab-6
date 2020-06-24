@@ -18,7 +18,7 @@ function NodeInsert({ onInsert }: NodeInsertProps) {
 
   return (
     <Modal.Dialog>
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title>노드 생성하기</Modal.Title>
       </Modal.Header>
       <Modal.Body>

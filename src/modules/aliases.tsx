@@ -2,10 +2,11 @@ const CREATE_ALIAS = 'alias/CREATE' as const;
 const REMOVE_ALIAS = 'alias/REMOVE' as const;
 
 let nextId = 2;
-export const addAlias = (name: string) => ({
+export const addAlias = (nodeId: number, name: string) => ({
   type: CREATE_ALIAS,
   payload: {
     id: nextId++,
+    nodeId: nodeId,
     name: name
   }
 });
@@ -16,13 +17,11 @@ export const removealias = (id: number) => ({
 
 export type AliasState = {
   id: number;
+  nodeId: number;
   name: string;
 };
 export type AliassState = AliasState[];
-const initialState: AliassState = [{
-  id: 1,
-  name: 'parseRequest'
-}];
+const initialState: AliassState = [];
 
 type AliasAction =
   | ReturnType<typeof addAlias>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export type AliasProps = {
   id: number,
+  nodeId: number,
   name: string;
 };
 
@@ -28,11 +29,6 @@ const AliasBox = styled.button`
     color: #c92a2a;
     font-weight: bold;  
   }
-`;
-
-const AliasVariable = styled.span`
-  color: #c92a2a;
-  font-weight: bold;
 `;
 
 function Alias({ name }: AliasProps) {
