@@ -1,5 +1,6 @@
 const CREATE_ALIAS = 'alias/CREATE' as const;
 const REMOVE_ALIAS = 'alias/REMOVE' as const;
+const TOGGLE_ALIAS = 'alias/TOGGLE' as const;
 
 let nextId = 2;
 export const addAlias = (nodeId: number, name: string) => ({
@@ -7,11 +8,16 @@ export const addAlias = (nodeId: number, name: string) => ({
   payload: {
     id: nextId++,
     nodeId: nodeId,
-    name: name
+    name: name,
+    active: true
   }
 });
-export const removealias = (id: number) => ({
+export const removeAlias = (id: number) => ({
   type: REMOVE_ALIAS,
+  payload: id
+});
+export const toggleAlias = (id: number) => ({
+  type: TOGGLE_ALIAS,
   payload: id
 });
 
@@ -19,13 +25,15 @@ export type AliasState = {
   id: number;
   nodeId: number;
   name: string;
+  active: boolean;
 };
 export type AliassState = AliasState[];
 const initialState: AliassState = [];
 
 type AliasAction =
   | ReturnType<typeof addAlias>
-  | ReturnType<typeof removealias>
+  | ReturnType<typeof removeAlias>
+  | ReturnType<typeof toggleAlias>
 
 function aliass(state: AliassState = initialState, action: AliasAction): AliassState {
   switch (action.type) {
@@ -33,7 +41,11 @@ function aliass(state: AliassState = initialState, action: AliasAction): AliassS
       return state.concat(action.payload);
     case REMOVE_ALIAS:
       return state.filter(
-        todo => todo.id !== action.payload
+        alias => alias.id !== action.payload
+      )
+    case TOGGLE_ALIAS:
+      return state.map(
+        alias => alias.id === action.payload ? {...alias, active: !alias.active} : alias
       )
     default:
       return state;

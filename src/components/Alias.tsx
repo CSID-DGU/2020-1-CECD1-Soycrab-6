@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import styled from 'styled-components';
+import { grey } from 'color-name';
 
 export type AliasProps = {
   id: number,
   nodeId: number,
   name: string;
+  active: boolean;
 };
 
 const AliasBox = styled.button`
@@ -31,7 +33,7 @@ const AliasBox = styled.button`
   }
 `;
 
-function Alias({ name }: AliasProps) {
+function Alias({ name, nodeId, active }: AliasProps) {
   return (
     <AliasBox>
       <span>tained</span> = _.{name}()

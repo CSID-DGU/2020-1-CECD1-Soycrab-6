@@ -75,7 +75,7 @@ function Node({ node, onRemove, aliases }: NodeProps) {
       <br />
       {aliases.map(alias => {
         if (alias.nodeId === node.id) {
-          return (<Alias id={alias.id} nodeId={node.id} name={alias.name} key={alias.id} />)
+          return (<Alias id={alias.id} nodeId={node.id} name={alias.name} active={alias.active} key={alias.id} />)
         }
       }
       )}
