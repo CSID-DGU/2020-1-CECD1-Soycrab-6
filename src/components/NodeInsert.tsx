@@ -42,4 +42,4 @@ function NodeInsert({ onInsert }: NodeInsertProps) {
   )
 }
 
-export default NodeInsert;
+export default React.memo(NodeInsert);

@@ -23,4 +23,4 @@ function NodeList({ nodes, onRemove, aliases }: NodeListProps) {
   );
 }
 
-export default NodeList;
+export default React.memo(NodeList);

@@ -83,4 +83,4 @@ function Node({ node, onRemove, aliases }: NodeProps) {
   )
 };
 
-export default Node;
+export default React.memo(Node);
