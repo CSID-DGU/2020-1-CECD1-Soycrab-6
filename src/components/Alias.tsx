@@ -1,6 +1,5 @@
 import React, { CSSProperties } from 'react';
 import styled from 'styled-components';
-import { grey } from 'color-name';
 
 export type AliasProps = {
   id: number,

@@ -7,8 +7,11 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './modules';
+import intialJson from './data/sample.json';
 
 const store = createStore(rootReducer, composeWithDevTools());
+
+console.log(intialJson);
 
 ReactDOM.render(
   <Provider store={store}>
