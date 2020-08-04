@@ -9,12 +9,12 @@ function NodeInsert({ onInsert }: NodeInsertProps) {
   const [value, setValue] = useState('');
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
-  }
+  };
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onInsert(value);
     setValue('');
-  }
+  };
 
   return (
     <Modal.Dialog>

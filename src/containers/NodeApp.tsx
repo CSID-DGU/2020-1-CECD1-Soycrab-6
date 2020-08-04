@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { RootState } from '../modules';
 import { addNode, removeNode } from '../modules/nodes';
 import NodeInsert from '../components/NodeInsert';
@@ -7,17 +7,23 @@ import NodeList from '../components/NodeList';
 import { AliasProps } from '../components/Alias';
 
 function NodeApp() {
-  const nodes = useSelector((state: RootState) => state.nodes);
-  const aliases = useSelector((state: RootState) => state.aliases);
+  const { nodes, aliases } = useSelector((state: RootState) => ({
+    nodes: state.nodes,
+    aliases: state.aliases
+  }), shallowEqual);
+  // const nodes = useSelector((state: RootState) => state.nodes);
+  // const aliases = useSelector((state: RootState) => state.aliases);
+
+
   const dispatch = useDispatch();
 
-  const onInsert = (text: string) => {
+  const onInsert = useCallback((text: string) => {
     dispatch(addNode(text));
-  }
+  }, [dispatch]);
 
-  const onRemove = (id: number) => {
+  const onRemove = useCallback((id: number) => {
     dispatch(removeNode(id));
-  }
+  }, [dispatch]);
 
   return (
     <>
@@ -31,6 +37,6 @@ function NodeApp() {
       />
     </>
   );
-}
+};
 
-export default NodeApp;
+export default React.memo(NodeApp);

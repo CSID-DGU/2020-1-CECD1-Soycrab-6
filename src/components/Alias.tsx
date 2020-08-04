@@ -41,4 +41,4 @@ function Alias({ name, nodeId, active }: AliasProps) {
   )
 }
 
-export default Alias;
+export default React.memo(Alias);

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Alias, { AliasProps } from './Alias';
 import { NodeState } from '../modules/nodes';
 import { MdDelete, MdLibraryAdd } from 'react-icons/md';
+import { Col } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { addAlias } from '../modules/aliases';
 
@@ -63,23 +64,25 @@ function Node({ node, onRemove, aliases }: NodeProps) {
   const handleInsert = () => onInsert('parseRequest');
 
   return (
-    <NodeBox>
-      <h4>{node.name}</h4>
-      <Remove onClick={handleRemove}>
-        <MdDelete />
-      </Remove>
-      <Add onClick={handleInsert}>
-        <MdLibraryAdd />
-      </Add>
-      추적 변수 : <span>tained</span>
-      <br />
-      {aliases.map(alias => {
-        if (alias.nodeId === node.id) {
-          return (<Alias id={alias.id} nodeId={node.id} name={alias.name} active={alias.active} key={alias.id} />)
+    <Col sm={4}  key={node.id}>
+      <NodeBox>
+        <h4>{node.name}</h4>
+        <Remove onClick={handleRemove}>
+          <MdDelete />
+        </Remove>
+        <Add onClick={handleInsert}>
+          <MdLibraryAdd />
+        </Add>
+        추적 변수 : <span>tained</span>
+        <br />
+        {aliases.map(alias => {
+          if (alias.nodeId === node.id) {
+            return (<Alias id={alias.id} nodeId={node.id} name={alias.name} active={alias.active} key={alias.id} />)
+          }
         }
-      }
-      )}
-    </NodeBox>
+        )}
+      </NodeBox>
+    </Col>
   )
 };
 

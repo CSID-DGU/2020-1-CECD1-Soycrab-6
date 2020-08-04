@@ -22,4 +22,4 @@ function HeadNavbar() {
   )
 }
 
-export default HeadNavbar;
+export default React.memo(HeadNavbar);

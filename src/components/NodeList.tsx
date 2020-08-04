@@ -1,7 +1,7 @@
 import React from 'react';
 import { NodesState } from '../modules/nodes';
 import Node from './Node'
-import { Row, Col } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { AliasProps } from './Alias';
 
 type NodeListProps = {
@@ -15,9 +15,7 @@ function NodeList({ nodes, onRemove, aliases }: NodeListProps) {
   return (
     <Row>
       {nodes.map(node => (
-        <Col sm={4}  key={node.id}>
-          <Node node={node} onRemove={onRemove} aliases={aliases} />
-        </Col>
+        <Node node={node} onRemove={onRemove} aliases={aliases} />
       ))}
     </Row>
   );

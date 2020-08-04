@@ -27,15 +27,15 @@ export type AliasState = {
   name: string;
   active: boolean;
 };
-export type AliassState = AliasState[];
-const initialState: AliassState = [];
+export type AliasesState = AliasState[];
+const initialState: AliasesState = [];
 
 type AliasAction =
   | ReturnType<typeof addAlias>
   | ReturnType<typeof removeAlias>
   | ReturnType<typeof toggleAlias>
 
-function aliass(state: AliassState = initialState, action: AliasAction): AliassState {
+function aliases(state: AliasesState = initialState, action: AliasAction): AliasesState {
   switch (action.type) {
     case CREATE_ALIAS:
       return state.concat(action.payload);
@@ -50,6 +50,6 @@ function aliass(state: AliassState = initialState, action: AliasAction): AliassS
     default:
       return state;
   }
-}
+};
 
-export default aliass;
+export default aliases;
