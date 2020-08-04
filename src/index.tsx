@@ -7,11 +7,13 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './modules';
-import intialJson from './data/sample.json';
+import { getNodes } from './parseInput';
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(rootReducer, {
+  nodes: getNodes()
+}, composeWithDevTools());
 
-console.log(intialJson);
+// window.json = intialJson;
 
 ReactDOM.render(
   <Provider store={store}>

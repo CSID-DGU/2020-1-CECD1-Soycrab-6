@@ -4,15 +4,9 @@ import { RootState } from '../modules';
 import { addNode, removeNode } from '../modules/nodes';
 import NodeInsert from '../components/NodeInsert';
 import NodeList from '../components/NodeList';
-import { AliasProps } from '../components/Alias';
 
 function NodeApp() {
-  const { nodes, aliases } = useSelector((state: RootState) => ({
-    nodes: state.nodes,
-    aliases: state.aliases
-  }), shallowEqual);
-  // const nodes = useSelector((state: RootState) => state.nodes);
-  // const aliases = useSelector((state: RootState) => state.aliases);
+  const nodes = useSelector((state: RootState) => state.nodes);
 
 
   const dispatch = useDispatch();
@@ -33,7 +27,6 @@ function NodeApp() {
       <NodeList
         nodes={nodes}
         onRemove={onRemove}
-        aliases={aliases}
       />
     </>
   );

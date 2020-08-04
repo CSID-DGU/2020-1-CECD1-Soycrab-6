@@ -16,7 +16,10 @@ export const removeNode = (id: number) => ({
 
 export type NodeState = {
   id: number;
-  name: string;
+  filterId: number;
+  traceVars: string[];
+  isEnd: boolean;
+  events: any[];
 };
 export type NodesState = NodeState[];
 const initialState: NodesState = [];
