@@ -9,14 +9,16 @@ const graphData = {
 };
 
 const graphConfig = {
+  directed: true,
+  highlightOpacity: 0,
   linkHighlightBehavior: true,
   width: 1700,
   height: 1000,
   d3: {
     alphaTarget: 0.05,
     gravity: 100,
-    linkLength: 250,
-    linkStrength: 1,
+    linkLength: 500,
+    linkStrength: 0.1,
     disableLinkForce: false
   },
   node: {

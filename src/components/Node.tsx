@@ -15,7 +15,7 @@ const NodeBox = styled.div`
   color: black;
   background: #228be6;
   width: 250px;
-  height: 130px;
+  height: 125px;
   text-align: center;
   border-radius: 5px;
   position: relative;
