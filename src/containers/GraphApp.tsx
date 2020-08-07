@@ -1,4 +1,5 @@
 import React from 'react';
+// import { NodeType } from '../modules/nodes';
 import { getNodes, getEdges } from '../parseInput';
 import { Graph } from 'react-d3-graph';
 import Node from '../components/Node';
@@ -22,7 +23,7 @@ const graphConfig = {
     disableLinkForce: false
   },
   node: {
-    size: 1300,
+    size: 1500,
     renderLabel: false,
     viewGenerator: (node: any) => {
       return (
@@ -33,7 +34,7 @@ const graphConfig = {
   link: {
     color: '#69db7c',
     highlightColor: '#045227',
-    markerWidth: 10,
+    markerWidth: 6,
     strokeWidth: 5,
     fontSize: 15,
     highlightFontSize: 17,
