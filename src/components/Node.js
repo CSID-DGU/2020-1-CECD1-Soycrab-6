@@ -8,7 +8,7 @@ const NodeBox = styled.div`
   font-size: 14px;
   font-weight: bold;
   color: black;
-  background: #059900;
+  background: #73ca25;
   width: 150px;
   height: 150px;
   text-align: center;

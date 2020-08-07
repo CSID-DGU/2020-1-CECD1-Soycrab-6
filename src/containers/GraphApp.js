@@ -32,7 +32,7 @@ const graphConfig = {
   },
   link: {
     color: '#69db7c',
-    highlightColor: '#045227',
+    highlightColor: '#b7dc95',
     markerWidth: 6,
     strokeWidth: 5,
     fontSize: 15,
