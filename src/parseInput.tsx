@@ -25,7 +25,9 @@ export const getNodes = () => {
   const inputJson = intialJson;
   return inputJson.nodes.map(node => ({
     id: `${node.id}`,
-    traceVars: node.traceVars
+    traceVars: node.traceVars,
+    events: node.events,
+    // ...node
   }));
 };
 
