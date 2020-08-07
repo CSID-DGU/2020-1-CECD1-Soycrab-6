@@ -9,11 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './modules';
 import { getNodes } from './parseInput';
 
-const store = createStore(rootReducer, {
-  nodes: getNodes()
-}, composeWithDevTools());
-
-console.log(store.getState());
+const store = createStore(rootReducer, composeWithDevTools());
 
 ReactDOM.render(
   <Provider store={store}>
