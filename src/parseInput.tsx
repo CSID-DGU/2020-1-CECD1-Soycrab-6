@@ -24,9 +24,13 @@ import intialJson from './data/sample.json';
 export const getNodes = () => {
   const inputJson = intialJson;
   return inputJson.nodes.map(node => ({
+    productPrefix: node.productPrefix,
     id: `${node.id}`,
+    realId: node.id,
+    filterId: null,
     traceVars: node.traceVars,
-    events: node.events,
+    isEnd: node.isEnd,
+    events: node.events
     // ...node
   }));
 };

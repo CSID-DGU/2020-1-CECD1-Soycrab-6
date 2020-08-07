@@ -1,6 +1,7 @@
 import React from 'react';
 import { getNodes, getEdges } from '../parseInput';
 import { Graph } from 'react-d3-graph';
+import Node from '../components/Node';
 
 const graphData = {
   nodes: getNodes(),
@@ -20,15 +21,12 @@ const graphConfig = {
   },
   node: {
     color: '#059900',
-    size: 3000,
-    highlightStrokeColor: '#69db7c',
-    symbolType: 'square',
-    fontSize: 16,
-    fontColor: 'black',
-    highlightFontSize: 17,
-    highlightFontWeight: 'bold',
-    labelProperty: (node: any) => {
-      return `[${node.id}번 노드] 추적 변수: [${node.traceVars.join(', ')}]`;
+    size: 2500,
+    renderLabel: false,
+    viewGenerator: (node: any) => {
+      return (
+        <Node node={node} />
+      );
     }
   },
   link: {

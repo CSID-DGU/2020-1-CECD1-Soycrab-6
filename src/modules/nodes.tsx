@@ -1,5 +1,5 @@
 import { EventType } from './events';
-// import { getNodes } from '../parseInput';
+import { getNodes } from '../parseInput';
 
 const CREATE_NODE = 'node/CREATE' as const;
 const REMOVE_NODE = 'node/REMOVE' as const;
@@ -19,7 +19,8 @@ export const removeNode = (id: number) => ({
 
 export type NodeType = {
   productPrefix: string;
-  id: number;
+  id: string;
+  realId: number;
   filterId: number;
   traceVars: string[];
   isEnd: boolean;
@@ -38,7 +39,7 @@ function nodes(state: NodesType = initialState, action: NodesAction): NodesType 
       return [];
     case REMOVE_NODE:
       return state.filter(
-        todo => todo.id !== action.payload
+        node => node.realId !== action.payload
       )
     default:
       return state;
