@@ -2,13 +2,9 @@ import React, { CSSProperties } from 'react';
 import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 
 function HeadNavbar() {
-  const navbarStyle: CSSProperties = {
-    marginBottom: '2rem'
-  };
-
   return (
     <>
-      <Navbar bg="dark" variant="dark" style={navbarStyle}> 
+      <Navbar bg="dark" variant="dark"> 
         <Navbar.Brand href="#home">소스코드 결함탐지</Navbar.Brand>
         <Nav className="mr-auto">
           

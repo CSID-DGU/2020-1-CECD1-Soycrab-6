@@ -12,6 +12,15 @@ const graphData = {
 
 const graphConfig = {
   nodeHighlightBehavior: true,
+  width: 2000,
+  height: 1000,
+  d3: {
+    alphaTarget: 0.05,
+    gravity: 100,
+    linkLength: 200,
+    linkStrength: 1,
+    disableLinkForce: false
+  },
   node: {
       color: '#059900',
       size: 3000,
