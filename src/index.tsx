@@ -13,7 +13,7 @@ const store = createStore(rootReducer, {
   nodes: getNodes()
 }, composeWithDevTools());
 
-// window.json = intialJson;
+console.log(store.getState());
 
 ReactDOM.render(
   <Provider store={store}>

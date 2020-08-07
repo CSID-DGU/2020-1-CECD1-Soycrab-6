@@ -5,6 +5,10 @@ export const getNodes = () => {
   const defaultNodes = intialJson.nodes;
   let filterNodes: any = [];
   inputJson.edges.map(edge => {
+    // const addedFilterNodes = {
+    //   ...edge.filter.node,
+    //   filterId: 
+    // }
     filterNodes = [...filterNodes, ...edge.filter.nodes];
     return filterNodes;
   });
@@ -12,5 +16,5 @@ export const getNodes = () => {
 };
 
 export const getEvents = () => {
-  
+  const inputJson = intialJson;
 };

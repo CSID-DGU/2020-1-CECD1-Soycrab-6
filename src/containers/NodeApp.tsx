@@ -10,7 +10,6 @@ function NodeApp() {
 
 
   const dispatch = useDispatch();
-
   const onInsert = useCallback((text: string) => {
     dispatch(addNode(text));
   }, [dispatch]);

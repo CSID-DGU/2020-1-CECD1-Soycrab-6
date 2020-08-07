@@ -1,3 +1,5 @@
+import { EventType } from './events';
+
 const CREATE_NODE = 'node/CREATE' as const;
 const REMOVE_NODE = 'node/REMOVE' as const;
 
@@ -14,24 +16,25 @@ export const removeNode = (id: number) => ({
   payload: id
 });
 
-export type NodeState = {
+export type NodeType = {
+  productPrefix: string;
   id: number;
   filterId: number;
   traceVars: string[];
   isEnd: boolean;
-  events: any[];
+  events: EventType[];
 };
-export type NodesState = NodeState[];
-const initialState: NodesState = [];
+export type NodesType = NodeType[];
+const initialState: NodesType = [];
 
 type NodesAction =
   | ReturnType<typeof addNode>
   | ReturnType<typeof removeNode>
 
-function nodes(state: NodesState = initialState, action: NodesAction): NodesState {
+function nodes(state: NodesType = initialState, action: NodesAction): NodesType {
   switch (action.type) {
     case CREATE_NODE:
-      return state.concat(action.payload);
+      return [];
     case REMOVE_NODE:
       return state.filter(
         todo => todo.id !== action.payload

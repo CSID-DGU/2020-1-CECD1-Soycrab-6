@@ -1,10 +1,10 @@
 import React from 'react';
-import { NodesState } from '../modules/nodes';
+import { NodesType } from '../modules/nodes';
 import Node from './Node'
 import { Row } from 'react-bootstrap';
 
 type NodeListProps = {
-  nodes: NodesState;
+  nodes: NodesType;
   onRemove: (id: number) => void;
 }
 

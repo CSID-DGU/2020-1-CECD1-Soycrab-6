@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NodeState } from '../modules/nodes';
+import { NodeType } from '../modules/nodes';
 import { MdDelete, MdLibraryAdd } from 'react-icons/md';
 import { Col } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
 type NodeProps = {
-  node: NodeState;
+  node: NodeType;
   onRemove: (id: number) => void;
 };
 
