@@ -1,5 +1,5 @@
 import { EventType } from './events';
-import { getNodes } from '../parseInput';
+// import { getNodes } from '../parseInput';
 
 const CREATE_NODE = 'node/CREATE' as const;
 const REMOVE_NODE = 'node/REMOVE' as const;
