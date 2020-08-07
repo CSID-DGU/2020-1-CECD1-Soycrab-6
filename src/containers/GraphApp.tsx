@@ -22,8 +22,7 @@ const graphConfig = {
     disableLinkForce: false
   },
   node: {
-    color: '#059900',
-    size: 2500,
+    size: 1300,
     renderLabel: false,
     viewGenerator: (node: any) => {
       return (
@@ -32,9 +31,13 @@ const graphConfig = {
     }
   },
   link: {
+    color: '#69db7c',
     highlightColor: '#045227',
+    markerWidth: 10,
+    strokeWidth: 5,
+    fontSize: 15,
     highlightFontSize: 17,
-    highlightFontWeight: 'bold'
+    highlightFontWeight: 'bold',
   }
 };
 
@@ -48,4 +51,4 @@ function GraphApp() {
   );
 };
 
-export default GraphApp;
+export default React.memo(GraphApp);
