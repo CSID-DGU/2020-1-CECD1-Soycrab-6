@@ -2,8 +2,8 @@ import { callData } from '../api/data';
 import { reducerUtils, createPromiseThunk, handleAsyncActions }  from '../lib/asyncUtils';
 
 const GET_DATAS = 'data/GET_DATAS'; // 요청시작
-const GET_DATAS_SUCCESS = 'data/GET_DATAS_SUCCESS'; // 요청성공
-const GET_DATAS_ERROR = 'data/GET_DATAS_ERROR'; // 요청실패
+const GET_DATAS_SUCCESS = `${GET_DATAS}_SUCCESS`; // 요청성공
+const GET_DATAS_ERROR = `${GET_DATAS}_ERROR`; // 요청실패
 
 const CREATE_DATA = 'data/CREATE';
 const REMOVE_DATA = 'data/REMOVE';
