@@ -37,7 +37,9 @@ export const getNodes = () => {
 export const getEdges = () => {
   const inputJson = intialJson;
   return inputJson.edges.map(edge => ({
+    productPrefix: edge.productPrefix,
     source: `${edge.fromId}`,
     target: `${edge.toId}`,
+    events: edge.events
   }));
 };

@@ -1,5 +1,3 @@
-import { getNodes } from '../parseInput';
-
 const CREATE_NODE = 'node/CREATE';
 const REMOVE_NODE = 'node/REMOVE';
 
@@ -16,7 +14,7 @@ export const removeNode = id => ({
   payload: id
 });
 
-function nodes(state = getNodes(), action) {
+function nodes(state = [], action) {
   switch (action.type) {
     case CREATE_NODE:
       return [];
@@ -27,6 +25,6 @@ function nodes(state = getNodes(), action) {
     default:
       return state;
   }
-}
+};
 
 export default nodes;

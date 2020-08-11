@@ -3,11 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './modules';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { getNodes, getEdges } from './parseInput';
+
+const store = createStore(rootReducer, {
+  nodes: {
+    nodes: getNodes(),
+    edges: getEdges()
+  }
+}, composeWithDevTools());
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

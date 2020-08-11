@@ -1,18 +1,13 @@
 import React from 'react';
-import { getNodes, getEdges } from '../parseInput';
 import { Graph } from 'react-d3-graph';
+import { useSelector } from 'react-redux';
 import Node from '../components/Node';
-
-const graphData = {
-  nodes: getNodes(),
-  links: getEdges()
-};
 
 const graphConfig = {
   directed: true,
   highlightOpacity: 0,
   linkHighlightBehavior: true,
-  width: 1700,
+  width: 1500,
   height: 1000,
   d3: {
     alphaTarget: 0.05,
@@ -42,10 +37,16 @@ const graphConfig = {
 };
 
 function GraphApp() {
+  const nodes = useSelector(state => state.nodes.nodes);
+  const edges = useSelector(state => state.nodes.edges);
+
   return (
     <Graph
       id="graph-id"
-      data={graphData}
+      data={{
+        nodes: nodes,
+        links: edges
+      }}
       config={graphConfig}
     />
   );
