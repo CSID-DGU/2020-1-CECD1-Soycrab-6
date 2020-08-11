@@ -1,6 +1,6 @@
 import React from 'react';
 import GraphApp from '../containers/GraphApp';
-import HeadNavbar from '../components/HeadNavbar';
+import HeadNavbar from '../components/shared/HeadNavbar';
 
 function GraphPage() {
   return (

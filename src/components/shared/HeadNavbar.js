@@ -17,7 +17,7 @@ function HeadNavbar() {
   return (
     <>
       <Navbar bg="light" variant="light">
-        <img src={ require('../images/sparrow_logo.png') } style={logoStyle} alt="sparrow logo" />
+        <img src={ require('../../images/sparrow_logo.png') } style={logoStyle} alt="sparrow logo" />
         <Navbar.Brand href="#home">소스코드 결함탐지</Navbar.Brand>
         <Nav className="mr-auto">
 

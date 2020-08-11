@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import NodeEdit from '../components/NodeEdit';
 import { getNode } from '../modules/nodes';
 import { goToHome } from '../modules/datas';
-import Spinner from '../components/Spinner';
+import Spinner from '../components/shared/Spinner';
 import { reducerUtils } from '../lib/asyncUtils';
 
 function NodeEditContainer({ nodeId }) {
