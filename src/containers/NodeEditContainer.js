@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import NodeEdit from '../components/NodeEdit';
-import { getNode } from '../modules/nodes';
+import { getNode, goToHome } from '../modules/nodes';
 import Spinner from '../components/Spinner';
 import { reducerUtils } from '../lib/asyncUtils';
 
@@ -19,7 +19,12 @@ function NodeEditContainer({ nodeId }) {
   if (error) return <div>에러 발생!</div>;
   if (!data) return null;
 
-  return <NodeEdit node={data} />;
+  return (
+    <>
+      <button onClick={() => dispatch(goToHome())}>홈으로 이동</button>
+      <NodeEdit node={data} />
+    </>
+  );
 };
 
 export default NodeEditContainer;
