@@ -28,7 +28,7 @@ const initialState = {
   datas: reducerUtils.initial()
 };
 
-const getDatasReducer = handleAsyncActions(GET_DATAS, 'datas');
+const getDatasReducer = handleAsyncActions(GET_DATAS, 'datas', true);
 
 function datas(state = initialState, action) {
   switch (action.type) {

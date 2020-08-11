@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { MdDelete } from 'react-icons/md';
 import { IoIosAddCircleOutline } from 'react-icons/io';
-import { Popover, OverlayTrigger } from 'react-bootstrap';
 import PopupExample from './NodePopup';
 import PopupTest from './PopupTest';
+import { Link } from 'react-router-dom';
 
 const NodeBox = styled.div`
   padding: 1.8rem;
@@ -65,8 +65,10 @@ const Remove = styled.div`
 `;
 
 function Node({ node }) {
+  const { realId, events, traceVars } = node;
+
   return (
-    <NodeBox key={node.id}>
+    <NodeBox key={realId}>
       <Add>
         <PopupTest />
         <PopupExample/>        
@@ -75,8 +77,10 @@ function Node({ node }) {
       <Remove>
         <MdDelete />
       </Remove>
-      <p className="node-name">노드ID: {node.id}</p>
-      <span onClick={() => console.log(node.events)} className="trace-vars">{node.traceVars.join(', ')}</span>
+      <Link to={`/nodes/edit/${realId}`}>
+        <p className="node-name">노드ID: {realId}</p>
+      </Link>
+      <span onClick={() => console.log(events)} className="trace-vars">{traceVars.join(', ')}</span>
     </NodeBox>
   )
 };
