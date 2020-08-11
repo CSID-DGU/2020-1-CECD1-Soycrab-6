@@ -22,6 +22,34 @@ export const createPromiseThunk = (type, promiseCreator) => {
   };
 };
 
+const defaultIdSelector = param => param;
+export const createPromiseThunkById = (type, promiseCreator, idSelector = defaultIdSelector) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+  // Thunk 생성함수
+  return param => async dispatch => {
+    const id = idSelector(param);
+    // 요청이 시작 됨
+    dispatch({ type, meta: id });
+    try {
+      // 요청이 성공했을 때
+      const payload = await promiseCreator(param);
+      dispatch({
+        type: SUCCESS,
+        payload,
+        meta: id
+      })
+    } catch(e) {
+      // 요청이 실패했을 때
+      dispatch({
+        type: ERROR,
+        payload: e,
+        error: true,
+        meta: id
+      })
+    };
+  };
+};
+
 export const handleAsyncActions = (type, key, keepData) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
   return (state, action) => {
@@ -40,6 +68,41 @@ export const handleAsyncActions = (type, key, keepData) => {
         return {
           ...state,
           [key]: reducerUtils.error(action.payload)
+        }
+      default:
+        return state;
+    }
+  };
+};
+
+export const handleAsyncActionsById = (type, key, keepData) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+  return (state, action) => {
+    const realId = action.meta;
+    switch (action.type) {
+      case type:
+        return {
+          ...state,
+          [key]: {
+            ...state[key],
+            [realId]: reducerUtils.loading(keepData ? (state[key][realId] && state[key][realId].data) : null)
+          }
+        };
+      case SUCCESS:
+        return {
+          ...state,
+          [key]: {
+            ...state[key],
+            [realId]: reducerUtils.success(action.payload)
+          }
+        };
+      case ERROR:
+        return {
+          ...state,
+          [key]: {
+            ...state[key],
+            [realId]: reducerUtils.error(action.payload)
+          }
         }
       default:
         return state;
