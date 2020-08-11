@@ -9,6 +9,9 @@ const CLEAR_NODE = 'node/CLEAR_NODE';
 
 // Thunk 생성 함수
 export const getNode = createPromiseThunkById(GET_NODE, callNodeById)
+export const goToHome = (dispatch, getState, { history }) => {
+  history.push('/');
+};
 
 const initialState = {
   node: {}
