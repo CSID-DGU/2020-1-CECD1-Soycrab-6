@@ -107,7 +107,7 @@ const PopupExample = () => (
 
 function Node({ node }) {
   return (
-    <NodeBox>
+    <NodeBox key={node.id}>
       <Add>
         <PopupExample/>        
       </Add>

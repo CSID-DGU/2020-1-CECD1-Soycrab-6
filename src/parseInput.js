@@ -20,7 +20,7 @@ import intialJson from './data/sample.json';
 //   return inputJson.edges;
 // };
 
-export const getNodes = () => {
+const getNodes = () => {
   const inputJson = intialJson;
   return inputJson.nodes.map(node => ({
     productPrefix: node.productPrefix,
@@ -34,10 +34,19 @@ export const getNodes = () => {
   }));
 };
 
-export const getEdges = () => {
+const getEdges = () => {
   const inputJson = intialJson;
   return inputJson.edges.map(edge => ({
+    productPrefix: edge.productPrefix,
     source: `${edge.fromId}`,
     target: `${edge.toId}`,
+    events: edge.events
   }));
+};
+
+export const getData = () => {
+  return {
+    nodes: getNodes(),
+    links: getEdges()
+  }
 };

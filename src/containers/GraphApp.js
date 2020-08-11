@@ -1,18 +1,14 @@
-import React from 'react';
-import { getNodes, getEdges } from '../parseInput';
+import React, { useEffect } from 'react';
 import { Graph } from 'react-d3-graph';
+import { useSelector, useDispatch } from 'react-redux';
 import Node from '../components/Node';
-
-const graphData = {
-  nodes: getNodes(),
-  links: getEdges()
-};
+import { getDatas } from '../modules/datas';
 
 const graphConfig = {
   directed: true,
   highlightOpacity: 0,
   linkHighlightBehavior: true,
-  width: 1700,
+  width: 1500,
   height: 1000,
   d3: {
     alphaTarget: 0.05,
@@ -42,10 +38,21 @@ const graphConfig = {
 };
 
 function GraphApp() {
+  const { data, loading, error } = useSelector(state => state.datas.datas);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDatas());
+  }, [dispatch]);
+
+  if (loading) return <div>로딩 중...</div>;
+  if (error) return <div>에러 발생!</div>;
+  if (!data) return null;
+
   return (
     <Graph
       id="graph-id"
-      data={graphData}
+      data={data}
       config={graphConfig}
     />
   );
