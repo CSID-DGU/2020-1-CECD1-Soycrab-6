@@ -1,10 +1,16 @@
 import React from 'react';
 import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
+import { IoIosInformationCircleOutline } from 'react-icons/io';
 
-const logoStyle: CSSProperties = {
+const logoStyle = {
   width: 100,
   marginRight: 10,
   paddingBottom: 5,
+}
+
+const helpIcon = {
+  width: '2em',
+  height: '2em',
 }
 
 function HeadNavbar() {
@@ -18,7 +24,8 @@ function HeadNavbar() {
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="노드 이름으로 찾기..." className="mr-sm-2" />
-          <Button variant="outline-info">검색</Button>
+          <Button variant="outline-info" className="mr-sm-2">검색</Button>
+          <IoIosInformationCircleOutline style={helpIcon} onClick={() => console.log('help')}></IoIosInformationCircleOutline>
         </Form>
       </Navbar>
     </>
