@@ -4,6 +4,7 @@ import Popup from "reactjs-popup";
 import Select from 'react-select';
 import { MdDelete } from 'react-icons/md';
 import { IoIosAddCircleOutline } from 'react-icons/io';
+import { Popover, OverlayTrigger } from 'react-bootstrap';
 
 const NodeBox = styled.div`
   padding: 1.8rem;
@@ -63,29 +64,44 @@ const Remove = styled.div`
   }
 `;
 
+const PopupBox = styled.div`
+margin-bottom: -30px;
+margin-left: 99px;
+`;
+
 const options = [
   { value: 'chocolate', label: '호출식' },
   { value: 'strawberry', label: '접근식' },
-  { value: 'vanilla', label: '연산식' },
-  { value: 'vanilla', label: '배열 참조' },
-  { value: 'vanilla', label: '배열 생성' },
-  { value: 'vanilla', label: '개별 이벤트 템플릿' },
+  { value: 'vanilla1', label: '연산식' },
+  { value: 'vanilla2', label: '배열 참조' },
+  { value: 'vanilla3', label: '배열 생성' },
+  { value: 'vanilla4', label: '개별 이벤트 템플릿' },
 ]
 
-const PopupExample = () => (
-    <Popup trigger={<div><IoIosAddCircleOutline /></div>} position="top left">
-      {close => (
+
+const popover = (
+
+    <Popover id="popover-basic">
+      <Popover.Content>
         <div>
-          <label>추적변수 추가</label>
-          <input type="text" placeholder="start typing ... " />
-          <label>이벤트 추가</label>
-          <Select options={options} />
-          <a className="close" onClick={close}>
-            &times;
-          </a>
+          <div className="pb-3">
+            <label>추적변수 추가</label><br />
+            <input type="text" placeholder="start typing ... " />
+          </div>
+          <div>
+            <label>이벤트 추가</label><br />
+            <Select options={options} />
+          </div>
         </div>
-      )}
-    </Popup>
+      </Popover.Content>
+    </Popover>
+
+);
+
+const PopupExample = () => (
+  <OverlayTrigger trigger="click" placement="top" overlay={popover}>
+    <IoIosAddCircleOutline/>
+  </OverlayTrigger>
 
 )
 
@@ -93,7 +109,7 @@ function Node({ node }) {
   return (
     <NodeBox>
       <Add>
-        <PopupExample />
+        <PopupExample/>        
       </Add>
       <Remove>
         <MdDelete />
