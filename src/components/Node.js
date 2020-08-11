@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { MdDelete } from 'react-icons/md';
 import { IoIosAddCircleOutline } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 
 const NodeBox = styled.div`
   padding: 1.8rem;
@@ -62,16 +63,20 @@ const Remove = styled.div`
 `;
 
 function Node({ node }) {
+  const { id, events, traceVars } = node;
+
   return (
-    <NodeBox key={node.id}>
+    <NodeBox key={id}>
       <Add>
         <IoIosAddCircleOutline />
       </Add>
       <Remove>
         <MdDelete />
       </Remove>
-      <p className="node-name">노드ID: {node.id}</p>
-      <span onClick={() => console.log(node.events)} className="trace-vars">{node.traceVars.join(', ')}</span>
+      <Link to={`/nodes/edit/${id}`}>
+        <p className="node-name">노드ID: {id}</p>
+      </Link>
+      <span onClick={() => console.log(events)} className="trace-vars">{traceVars.join(', ')}</span>
     </NodeBox>
   )
 };

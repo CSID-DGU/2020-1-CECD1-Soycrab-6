@@ -1,15 +1,16 @@
 import React from 'react';
 import './App.scss';
-import HeadNavbar from './components/HeadNavbar';
-import GraphApp from './containers/GraphApp';
+import { Route } from 'react-router-dom';
+import GraphPage from './pages/GraphPage';
+import NodeEditPage from './pages/NodeEditPage';
 
 function App() {
   return (
     <>
-      <HeadNavbar />
-      <GraphApp />;
+      <Route path="/" component={GraphPage} exact={true} />
+      <Route path="/nodes/edit/:id" component={NodeEditPage} />
     </>
   );
-}
+};
 
 export default App;
