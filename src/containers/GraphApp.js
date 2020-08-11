@@ -46,7 +46,7 @@ function GraphApp() {
     dispatch(getDatas());
   }, [dispatch]);
 
-  if (loading && !data) return <Spinner />;
+  if (loading) return <Spinner />;
   if (error) return <div>에러 발생!</div>;
   if (!data) return null;
 

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import NodeEdit from '../components/NodeEdit';
 import { getNode, clearNode } from '../modules/nodes';
+import Spinner from '../components/Spinner';
 
 function NodeEditContainer({ nodeId }) {
   const { data, loading, error } = useSelector(state => state.nodes.node);
@@ -14,7 +15,7 @@ function NodeEditContainer({ nodeId }) {
     };
   }, [nodeId, dispatch]);
 
-  if (loading && !data) return <div>로딩 중...</div>;
+  if (loading && !data) return <Spinner />;
   if (error) return <div>에러 발생!</div>;
   if (!data) return null;
 

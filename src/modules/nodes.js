@@ -16,7 +16,7 @@ const initialState = {
   node: reducerUtils.initial()
 };
 
-const getNodeReducer = handleAsyncActions(GET_NODE, 'node', true);
+const getNodeReducer = handleAsyncActions(GET_NODE, 'node');
 
 function nodes(state = initialState, action) {
   switch (action.type) {
