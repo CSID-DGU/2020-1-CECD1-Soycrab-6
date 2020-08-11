@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Graph } from 'react-d3-graph';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Node from '../components/Node';
+import { getDatas } from '../modules/datas';
 
 const graphConfig = {
   directed: true,
@@ -37,16 +38,21 @@ const graphConfig = {
 };
 
 function GraphApp() {
-  const nodes = useSelector(state => state.nodes.nodes);
-  const edges = useSelector(state => state.nodes.edges);
+  const { data, loading, error } = useSelector(state => state.datas.datas);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDatas());
+  }, [dispatch]);
+
+  if (loading) return <div>로딩 중...</div>;
+  if (error) return <div>에러 발생!</div>;
+  if (!data) return null;
 
   return (
     <Graph
       id="graph-id"
-      data={{
-        nodes: nodes,
-        links: edges
-      }}
+      data={data}
       config={graphConfig}
     />
   );

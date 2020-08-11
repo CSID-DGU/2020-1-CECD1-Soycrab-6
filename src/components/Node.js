@@ -63,7 +63,7 @@ const Remove = styled.div`
 
 function Node({ node }) {
   return (
-    <NodeBox>
+    <NodeBox key={node.id}>
       <Add>
         <IoIosAddCircleOutline />
       </Add>
