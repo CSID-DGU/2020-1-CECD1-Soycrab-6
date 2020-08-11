@@ -3,6 +3,7 @@ import { Graph } from 'react-d3-graph';
 import { useSelector, useDispatch } from 'react-redux';
 import Node from '../components/Node';
 import { getDatas } from '../modules/datas';
+import Spinner from '../components/Spinner';
 
 const graphConfig = {
   directed: true,
@@ -45,7 +46,7 @@ function GraphApp() {
     dispatch(getDatas());
   }, [dispatch]);
 
-  if (loading && !data) return <div>로딩 중...</div>;
+  if (loading && !data) return <Spinner />;
   if (error) return <div>에러 발생!</div>;
   if (!data) return null;
 
