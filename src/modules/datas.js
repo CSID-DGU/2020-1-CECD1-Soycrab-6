@@ -23,6 +23,9 @@ export const removeNode = id => ({
 
 // Thunk 생성 함수
 export const getDatas = createPromiseThunk(GET_DATAS, callData);
+export const goToHome = () => (dispatch, getState, { history }) => {
+  history.push('/');
+};
 
 const initialState = {
   datas: reducerUtils.initial()

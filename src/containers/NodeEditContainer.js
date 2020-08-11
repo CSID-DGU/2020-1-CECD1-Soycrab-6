@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import NodeEdit from '../components/NodeEdit';
-import { getNode, goToHome } from '../modules/nodes';
+import { getNode } from '../modules/nodes';
+import { goToHome } from '../modules/datas';
 import Spinner from '../components/Spinner';
 import { reducerUtils } from '../lib/asyncUtils';
 

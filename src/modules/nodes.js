@@ -7,9 +7,6 @@ const GET_NODE_ERROR = 'node/GET_NODE_ERROR'; // 요청실패
 
 // Thunk 생성 함수
 export const getNode = createPromiseThunkById(GET_NODE, callNodeById)
-export const goToHome = () => (dispatch, getState, { history }) => {
-  history.push('/');
-};
 
 const initialState = {
   node: {}
