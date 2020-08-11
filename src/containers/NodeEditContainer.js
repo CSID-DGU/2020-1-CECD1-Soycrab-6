@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import NodeEdit from '../components/NodeEdit';
-import { getNode } from '../modules/nodes';
+import { getNode, clearNode } from '../modules/nodes';
 
 function NodeEditContainer({ nodeId }) {
   const { data, loading, error } = useSelector(state => state.nodes.node);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getNode(nodeId))
+    dispatch(getNode(nodeId));
+    return () => {
+      dispatch(clearNode());
+    };
   }, [nodeId, dispatch]);
 
-  if (loading) return <div>로딩 중...</div>;
+  if (loading && !data) return <div>로딩 중...</div>;
   if (error) return <div>에러 발생!</div>;
   if (!data) return null;
 

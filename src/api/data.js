@@ -4,7 +4,7 @@ const sleep = n => new Promise(resolve => setTimeout(resolve, n));
 const data = getData();
 
 export const callNodeById = async id => {
-  const node = data.nodes.find(node => node.id === id);
+  const node = data.nodes.find(node => node.realId === id);
   await sleep(500);
   return node;
 };

@@ -63,18 +63,18 @@ const Remove = styled.div`
 `;
 
 function Node({ node }) {
-  const { id, events, traceVars } = node;
+  const { realId, events, traceVars } = node;
 
   return (
-    <NodeBox key={id}>
+    <NodeBox key={realId}>
       <Add>
         <IoIosAddCircleOutline />
       </Add>
       <Remove>
         <MdDelete />
       </Remove>
-      <Link to={`/nodes/edit/${id}`}>
-        <p className="node-name">노드ID: {id}</p>
+      <Link to={`/nodes/edit/${realId}`}>
+        <p className="node-name">노드ID: {realId}</p>
       </Link>
       <span onClick={() => console.log(events)} className="trace-vars">{traceVars.join(', ')}</span>
     </NodeBox>
