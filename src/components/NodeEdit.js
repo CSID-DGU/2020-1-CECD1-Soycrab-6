@@ -2,7 +2,7 @@ import React from 'react';
 import Event from './Event';
 import { HeaderMain } from '../components/airframe/HeaderMain';
 import { Card } from '../components/airframe/Card/Card';
-import { Row, Col, CardTitle, CardBody, ListGroup, ListGroupItem } from 'reactstrap';
+import { Row, Col, CardTitle, CardBody, ListGroup, ListGroupItem, Media } from 'reactstrap';
 import { TasksMedia } from './airframe/TasksMedia';
 
 function NodeEdit({ node }) {
@@ -11,32 +11,43 @@ function NodeEdit({ node }) {
 
   return (
     <>
+      <h6 className="d-flex">Breadcrumb 들어갈 자리</h6>
       <HeaderMain
-        title={name}
+        title={name + " (노드이름)"}
       />
+      <span className="mr-0">
+        <i className="fa fa-fw fa-pencil mr-2"></i>✏️
+      </span>
       <Row>
         <Col lg="6">
           <Card className="mb-3Card">
             <CardBody>
               <CardTitle className="mb-0 bb-0">
-                  Events List
+                {alias.name} (Alias 이름)
               </CardTitle>
             </CardBody>
-            <ListGroup flush>
-              <ListGroupItem action>
-                {alias.events.map(
-                  event => <Event 
-                            key={event.realId}
-                            realId={event.realId}
-                            parentType='node'
-                            parentId={realId} />
-                )}
-              </ListGroupItem>
-            </ListGroup>
+            <Card className="ml-3 mr-3 mb-3 mb-3Card">
+              <CardBody>
+                <CardTitle className="mb-0 bb-0">
+                    Events List
+                </CardTitle>
+              </CardBody>
+              <ListGroup flush>
+                <ListGroupItem action>
+                  {alias.events.map(
+                    event => <Event 
+                              key={event.realId}
+                              realId={event.realId}
+                              parentType='node'
+                              parentId={realId} />
+                  )}
+                </ListGroupItem>
+              </ListGroup>
+            </Card>
           </Card>
         </Col>
         <Col lg="6">
-        <Card className="mb-3Card">
+          <Card className="mb-3Card">
             <CardBody>
               <CardTitle className="mb-0 bb-0">
                   Event 추가

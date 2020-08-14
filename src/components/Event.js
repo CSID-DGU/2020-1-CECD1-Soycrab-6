@@ -6,7 +6,7 @@ function Event({ realId, parentType, parentId }) {
   return (
     <div>
       <Link to={`/events/edit/${parentType}/${parentId}/${realId}`}>
-        {realId}번 째 이벤트
+        이벤트 #{realId} (이벤트 이름)
       </Link>
     </div>
   )
