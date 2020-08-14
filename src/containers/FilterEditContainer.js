@@ -26,7 +26,6 @@ function FilterEditContainer({ realId, edgeId }) {
 
   return (
     <div>
-      <button onClick={() => dispatch(goToHome())}>홈으로 이동</button>
       <FilterEdit filter={data} />
     </div>
   )
