@@ -1,4 +1,5 @@
 import React from 'react';
+
 function NodeEdit({ node }) {
   const { realId, filterId, isEnd, events, traceVars } = node;
 
