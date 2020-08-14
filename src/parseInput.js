@@ -1,4 +1,4 @@
-import intialJson from './data/sample.json';
+import initialJson from './data/sample.json';
 
 const parseArrByInsertIds = (objArr, parentId = null, parentName = null) => {
   if (parentName && objArr && objArr.length > 0) {
@@ -34,12 +34,12 @@ const parseNodes = nodes => {
 };
 
 const getNodes = () => {
-  const inputJson = intialJson;
+  const inputJson = initialJson;
   return parseNodes(inputJson.nodes);
 };
 
 const getEdges = () => {
-  const inputJson = intialJson;
+  const inputJson = initialJson;
   return inputJson.edges.map((edge, index) => ({
     realId: index,
     filterId: null,
