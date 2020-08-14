@@ -10,7 +10,7 @@ const NodeBox = styled.div`
   font-weight: bold;
   color: black;
   background: #73ca25;
-  width: 150px;
+  width: 300px;
   height: 150px;
   text-align: center;
   border-radius: 5px;
