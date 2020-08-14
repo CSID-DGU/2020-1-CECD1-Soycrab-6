@@ -11,32 +11,40 @@ function NodeEdit({ node }) {
 
   return (
     <>
+      <h6 className="d-flex">Breadcrumb 들어갈 자리</h6>
       <HeaderMain
-        title={name}
+        title={name + " (노드이름)"}
       />
       <Row>
         <Col lg="6">
           <Card className="mb-3Card">
             <CardBody>
               <CardTitle className="mb-0 bb-0">
-                  Events List
+                {alias.name} (Alias 이름)
               </CardTitle>
             </CardBody>
-            <ListGroup flush>
-              <ListGroupItem action>
-                {alias.events.map(
-                  event => <Event 
-                            key={event.realId}
-                            realId={event.realId}
-                            parentType='node'
-                            parentId={realId} />
-                )}
-              </ListGroupItem>
-            </ListGroup>
+            <Card className="ml-3 mr-3 mb-3 mb-3Card">
+              <CardBody>
+                <CardTitle className="mb-0 bb-0">
+                    Events List
+                </CardTitle>
+              </CardBody>
+              <ListGroup flush>
+                <ListGroupItem action>
+                  {alias.events.map(
+                    event => <Event 
+                              key={event.realId}
+                              realId={event.realId}
+                              parentType='node'
+                              parentId={realId} />
+                  )}
+                </ListGroupItem>
+              </ListGroup>
+            </Card>
           </Card>
         </Col>
         <Col lg="6">
-        <Card className="mb-3Card">
+          <Card className="mb-3Card">
             <CardBody>
               <CardTitle className="mb-0 bb-0">
                   Event 추가
@@ -44,7 +52,7 @@ function NodeEdit({ node }) {
             </CardBody>
             <ListGroup flush>
               {eventArray.map(
-                event => <ListGroupItem><TasksMedia type={event} /></ListGroupItem>
+                event => <ListGroupItem action><TasksMedia type={event} /></ListGroupItem>
               )}
             </ListGroup>
           </Card>
