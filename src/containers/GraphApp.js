@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Node from '../components/Node';
 import { getDatas } from '../modules/datas';
 import Spinner from '../components/shared/Spinner';
+import { useHistory } from 'react-router-dom';
 
 const graphConfig = {
   directed: true,
@@ -45,6 +46,11 @@ const graphConfig = {
 function GraphApp() {
   const { data, loading, error } = useSelector(state => state.datas.datas);
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  const onClickLink = function(source, target) {
+    history.push(`/edges/edit/${source}/${target}`);
+  };
 
   useEffect(() => {
     dispatch(getDatas());
@@ -59,6 +65,7 @@ function GraphApp() {
       id="graph-id"
       data={data}
       config={graphConfig}
+      onClickLink={onClickLink}
     />
   );
 };

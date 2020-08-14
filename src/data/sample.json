@@ -211,8 +211,8 @@
               "toTraceVar":"to"
            }
         ],
-        "filter":{
-           "productPrefix":"Filter",
+        "filter": {
+           "productPrefix": "Filter",
            "nodes":[
               {
                  "productPrefix":"Node",
@@ -415,7 +415,7 @@
            ],
            "edges":[
               {
-                 "productPrefix":"Edge",
+                 "productPrefix": "Edge",
                  "fromId":2,
                  "toId":3,
                  "propagators":[

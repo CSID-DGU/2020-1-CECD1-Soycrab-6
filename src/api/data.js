@@ -41,3 +41,20 @@ export const callEventById = async ({ realId, parentType, parentId }) => {
   await sleep(sleepTime);
   return event;
 };
+
+export const callFilterById = async (realId) => {
+  let filters = [];
+  data.links.map(edge => filters.concat(edge.filter));
+
+  return filters.find(filter => filter.realId === realId); 
+};
+
+export const callEdgeById = async ({ fromId, toId }) => {
+  let edges = data.links;
+
+  await sleep(sleepTime);
+  return edges.find(edge => 
+    parseInt(edge.source, 10) === fromId && 
+    parseInt(edge.target, 10) === toId
+  ); 
+};
