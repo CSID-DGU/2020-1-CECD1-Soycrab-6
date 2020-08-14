@@ -14,12 +14,15 @@ const graphConfig = {
   d3: {
     alphaTarget: 0.05,
     gravity: 100,
-    linkLength: 500,
+    linkLength: 650,
     linkStrength: 0.1,
     disableLinkForce: false
   },
   node: {
-    size: 1500,
+    size: {
+      height: 1500,
+      width: 3000,
+    },
     renderLabel: false,
     viewGenerator: node => {
       return (
