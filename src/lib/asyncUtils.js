@@ -75,31 +75,6 @@ export const handleAsyncActions = (type, key, keepData) => {
   };
 };
 
-// export const handleAsyncActionsNoKeep = (type, key) => {
-//   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
-//   return (state, action) => {
-//     switch (action.type) {
-//       case type:
-//         return {
-//           ...state,
-//           [key]: reducerUtils.loading()
-//         }
-//       case SUCCESS:
-//         return {
-//           ...state,
-//           [key]: reducerUtils.success(action.payload)
-//         }
-//       case ERROR:
-//         return {
-//           ...state,
-//           [key]: reducerUtils.error(action.payload)
-//         }
-//       default:
-//         return state;
-//     }
-//   };
-// };
-
 export const handleAsyncActionsById = (type, key, keepData) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
   return (state, action) => {
