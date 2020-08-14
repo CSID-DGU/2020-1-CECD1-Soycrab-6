@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import NodeEdit from '../components/NodeEdit';
 import { getNode } from '../modules/nodes';
-import { goToHome } from '../modules/datas';
 import Spinner from '../components/shared/Spinner';
 import { reducerUtils } from '../lib/asyncUtils';
 
@@ -22,7 +21,6 @@ function NodeEditContainer({ nodeId }) {
 
   return (
     <>
-      <button onClick={() => dispatch(goToHome())}>홈으로 이동</button>
       <NodeEdit node={data} />
     </>
   );
