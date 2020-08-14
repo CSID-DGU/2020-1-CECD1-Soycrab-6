@@ -1,6 +1,5 @@
 import React from 'react';
 import Popup from "reactjs-popup";
-// import { Popover, OverlayTrigger } from 'react-bootstrap'
 import { Tooltip } from 'react-svg-tooltip';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 

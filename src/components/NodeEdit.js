@@ -16,7 +16,7 @@ function NodeEdit({ node }) {
         title={name + " (노드이름)"}
       />
       <span className="mr-0">
-        <i className="fa fa-fw fa-pencil mr-2"></i>✏️
+        <i className="fa fa-fw fa-pencil mr-2"></i>
       </span>
       <Row>
         <Col lg="6">
