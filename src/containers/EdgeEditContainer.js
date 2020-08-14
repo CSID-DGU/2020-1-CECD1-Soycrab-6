@@ -1,25 +1,24 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getEvent } from '../modules/events';
 import { goToHome } from '../modules/datas';
 import Spinner from '../components/shared/Spinner';
 import { reducerUtils } from '../lib/asyncUtils';
-import EventEdit from '../components/EventEdit';
+import EdgeEdit from '../components/EdgeEdit';
+import { getEdge } from '../modules/edges';
 
-function EventEditContainer({ realId, parentType, parentId }) {
+function EdgeEditContainer({ fromId, toId }) {
   const { data, loading, error } = useSelector(
-    state => state.events.event[realId] || reducerUtils.initial()
+    state =>  state.edges.edge || reducerUtils.initial()
   );
-
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getEvent({
-      realId: realId,
-      parentType: parentType, 
-      parentId: parentId
+    dispatch(getEdge({
+      fromId: fromId,
+      toId: toId
     }));
-  }, [dispatch, parentId, parentType, realId]);
+  }, [dispatch, fromId, toId]);
 
   if (loading && !data) return <Spinner />;
   if (error) return <div>에러 발생!</div>;
@@ -28,9 +27,9 @@ function EventEditContainer({ realId, parentType, parentId }) {
   return (
     <div>
       <button onClick={() => dispatch(goToHome())}>홈으로 이동</button>
-      <EventEdit event={data} />
+      <EdgeEdit edge={data} />
     </div>
   )
 };
 
-export default EventEditContainer;
+export default EdgeEditContainer;

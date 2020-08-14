@@ -49,12 +49,11 @@ export const callFilterById = async (realId) => {
   return filters.find(filter => filter.realId === realId); 
 };
 
-export const callEdgeById = async ({ realId, filterId }) => {
+export const callEdgeById = async ({ fromId, toId }) => {
   let edges = data.links;
 
-  if (filterId) {
-    
-  } else {
-    return edges.find(edge => edge.realId === realId); 
-  };
+  return edges.find(edge => 
+    parseInt(edge.source, 10) === fromId && 
+    parseInt(edge.target, 10) === toId
+  ); 
 };
