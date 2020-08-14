@@ -1,6 +1,8 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 import { IoIosInformationCircleOutline } from 'react-icons/io';
+import { goToHome } from '../../modules/datas';
 
 const logoStyle = {
   width: 100,
@@ -14,11 +16,13 @@ const helpIcon = {
 }
 
 function HeadNavbar() {
+  const dispatch = useDispatch();
+
   return (
     <>
       <Navbar bg="light" variant="light">
-        <img src={ require('../images/sparrow_logo.png') } style={logoStyle} alt="sparrow logo" />
-        <Navbar.Brand href="#home">소스코드 결함탐지</Navbar.Brand>
+        <img src={ require('../../images/sparrow_logo.png') } style={logoStyle} onClick={() => dispatch(goToHome())} alt="sparrow logo" />
+        <Navbar.Brand href="/">소스코드 결함탐지</Navbar.Brand>
         <Nav className="mr-auto">
 
         </Nav>

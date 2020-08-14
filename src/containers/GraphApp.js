@@ -3,7 +3,7 @@ import { Graph } from 'react-d3-graph';
 import { useSelector, useDispatch } from 'react-redux';
 import Node from '../components/Node';
 import { getDatas } from '../modules/datas';
-import Spinner from '../components/Spinner';
+import Spinner from '../components/shared/Spinner';
 
 const graphConfig = {
   directed: true,
