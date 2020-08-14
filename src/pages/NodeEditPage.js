@@ -11,14 +11,14 @@ function NodeEditPage({ match }) {
   const VariableBox = styled.div`
     padding: 1.8rem;
     text-align: center;
-    border: 1px solid #73ca25
   `;
 
   return (
     <>
       <HeadNavbar />
+      <VariableBox> 
         <NodeEditContainer nodeId={nodeId} />
-        <VariableBox />           
+      </VariableBox>
     </>
   )
 };
