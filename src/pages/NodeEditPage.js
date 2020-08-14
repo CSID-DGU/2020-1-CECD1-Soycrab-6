@@ -10,9 +10,8 @@ function NodeEditPage({ match }) {
   const nodeId = parseInt(id, 10);
 
   const Container  = styled.div`
-    padding: 1.8rem;
     text-align: center;
-    border: 1px solid #73ca25;
+    border: 3px solid #73ca25;
     width: 80%;
     margin-left:10%;
     margin-right: 10%;
@@ -33,8 +32,10 @@ function NodeEditPage({ match }) {
     padding: 1.8rem;
     text-align: center;
     border: 1px solid #73ca25;
-    height: 1em;
+    height: auto;
     width: 28vw;
+    margin-bottom: 30px;
+    margin-left: 30px;
   `
   return (
     <>
@@ -43,11 +44,11 @@ function NodeEditPage({ match }) {
         <Header>
           Alias
         </Header>
-        <NodeEditContainer nodeId={nodeId} />;
+        <NodeEditContainer nodeId={nodeId} />
         <Row>
           <Col>
             <VariableBox> 
-              x=aasdsa
+              
             </VariableBox>
           </Col>
         </Row>
