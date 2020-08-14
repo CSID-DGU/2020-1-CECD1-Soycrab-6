@@ -6,8 +6,6 @@ import { useHistory } from 'react-router-dom';
 function FilterEdit({ filter }) {
   const { realId, edgeId, nodes, edges } = filter;
 
-  console.log(nodes, edges)
-
   const history = useHistory();
 
   const onClickLink = function(source, target) {
@@ -17,7 +15,7 @@ function FilterEdit({ filter }) {
   return (
     <Graph
       id="filter-graph-id"
-      data={{nodes: nodes, links: edges}}
+      data={{ nodes: nodes, links: edges }}
       config={graphConfig}
       onClickLink={onClickLink}
     />

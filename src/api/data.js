@@ -18,7 +18,13 @@ export const callData = async () => {
 };
 
 export const callNodeById = async realId => {
-  const node = data.nodes.find(node => node.realId === realId);
+  let nodeList = [];
+  nodeList = nodeList.concat(data.nodes);
+  data.links.map(edge => {
+    nodeList = nodeList.concat(edge.filter.nodes)
+  });
+
+  const node = nodeList.find(node => node.realId === realId);
   await sleep(sleepTime);
   return node;
 };
@@ -39,6 +45,7 @@ export const callAliasById = async ({ name }) => {
   data.nodes.map(node => allAliases.concat(node.alias));
   data.links.map(node => allAliases.concat(node.alias));
 
+  await sleep(sleepTime);
   return allAliases.find(alias => alias.name === name);
 };
 
@@ -65,6 +72,7 @@ export const callFilterById = async ({ realId, edgeId }) => {
   let filters = [];
   data.links.map(edge => filters.push(edge.filter));
 
+  await sleep(sleepTime);
   return filters.find(
     filter => 
       filter.realId === realId && 
