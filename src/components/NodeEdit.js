@@ -2,7 +2,7 @@ import React from 'react';
 import Event from './Event';
 import { HeaderMain } from '../components/airframe/HeaderMain';
 import { Card } from '../components/airframe/Card/Card';
-import { Row, Col, CardTitle, CardBody, ListGroup, ListGroupItem } from 'reactstrap';
+import { Row, Col, CardTitle, CardBody, ListGroup, ListGroupItem, Media } from 'reactstrap';
 import { TasksMedia } from './airframe/TasksMedia';
 
 function NodeEdit({ node }) {
@@ -15,6 +15,9 @@ function NodeEdit({ node }) {
       <HeaderMain
         title={name + " (노드이름)"}
       />
+      <span className="mr-0">
+        <i className="fa fa-fw fa-pencil mr-2"></i>✏️
+      </span>
       <Row>
         <Col lg="6">
           <Card className="mb-3Card">
