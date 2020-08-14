@@ -6,7 +6,7 @@ import { getDatas } from '../modules/datas';
 import Spinner from '../components/shared/Spinner';
 import { useHistory } from 'react-router-dom';
 
-const graphConfig = {
+export const graphConfig = {
   directed: true,
   highlightOpacity: 0,
   linkHighlightBehavior: true,

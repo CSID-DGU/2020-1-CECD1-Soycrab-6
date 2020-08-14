@@ -61,9 +61,13 @@ export const callEventById = async ({ realId, parentType, parentId }) => {
   return event;
 };
 
-export const callFilterById = async (realId) => {
+export const callFilterById = async ({ realId, edgeId }) => {
   let filters = [];
-  data.links.map(edge => filters.concat(edge.filter));
+  data.links.map(edge => filters.push(edge.filter));
 
-  return filters.find(filter => filter.realId === realId); 
+  return filters.find(
+    filter => 
+      filter.realId === realId && 
+      filter.edgeId === edgeId
+  ); 
 };

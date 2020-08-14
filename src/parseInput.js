@@ -16,9 +16,8 @@ const parseArrByInsertIds = (objArr, parentId = null, parentName = null) => {
   };
 };
 
-const getNodes = () => {
-  const inputJson = intialJson;
-  return inputJson.nodes.map(node => ({
+const parseNodes = nodes => {
+  return nodes.map(node => ({
     id: `${node.id}`,
     name: `${node.id}번 노드`,
     productPrefix: node.productPrefix,
@@ -32,6 +31,11 @@ const getNodes = () => {
       events: parseArrByInsertIds(node.events, node.id, 'node')
     }
   }));
+};
+
+const getNodes = () => {
+  const inputJson = intialJson;
+  return parseNodes(inputJson.nodes);
 };
 
 const getEdges = () => {
@@ -53,7 +57,12 @@ const getEdges = () => {
     filter: {
       realId: index,
       edgeId: index,
-      ...edge.filter
+      nodes: parseNodes(edge.filter.nodes),
+      edges: edge.filter.edges.map(edge => ({
+        ...edge,
+        source: `${edge.fromId}`,
+        target: `${edge.toId}`
+      }))
     }
   }));
 };
