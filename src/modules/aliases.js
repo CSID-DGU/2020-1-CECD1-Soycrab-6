@@ -18,7 +18,6 @@ function aliases(state = initialState, action) {
     case GET_ALIAS:
     case GET_ALIAS_SUCCESS:
     case GET_ALIAS_ERROR:
-      console.log(state)
       return getAliasReducer(state, action);
     default:
       return state;
