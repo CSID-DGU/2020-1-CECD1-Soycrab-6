@@ -52,6 +52,7 @@ export const callFilterById = async (realId) => {
 export const callEdgeById = async ({ fromId, toId }) => {
   let edges = data.links;
 
+  await sleep(sleepTime);
   return edges.find(edge => 
     parseInt(edge.source, 10) === fromId && 
     parseInt(edge.target, 10) === toId
