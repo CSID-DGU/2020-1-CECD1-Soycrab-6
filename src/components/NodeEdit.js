@@ -55,7 +55,7 @@ function NodeEdit({ node }) {
             </CardBody>
             <ListGroup flush>
               {eventArray.map(
-                (event, index) => <ListGroupItem key={index}><TasksMedia type={event} /></ListGroupItem>
+                (event, index) => <ListGroupItem key={index} action><TasksMedia type={event} /></ListGroupItem>
               )}
             </ListGroup>
           </Card>
