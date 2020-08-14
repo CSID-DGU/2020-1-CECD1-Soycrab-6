@@ -63,7 +63,7 @@ const Remove = styled.div`
 `;
 
 function Node({ node }) {
-  const { realId, events, traceVars } = node;
+  const { realId, alias, traceVars } = node;
 
   return (
     <NodeBox key={realId}>
@@ -76,7 +76,7 @@ function Node({ node }) {
       <Link to={`/nodes/edit/${realId}`}>
         <p className="node-name">노드ID: {realId}</p>
       </Link>
-      <span onClick={() => console.log(events)} className="trace-vars">{traceVars.join(', ')}</span>
+      <span onClick={() => console.log(alias)} className="trace-vars">{traceVars.join(', ')}</span>
     </NodeBox>
   )
 };
