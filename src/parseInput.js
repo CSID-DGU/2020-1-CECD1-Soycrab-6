@@ -26,7 +26,11 @@ const getNodes = () => {
     filterId: null,
     traceVars: node.traceVars,
     isEnd: node.isEnd,
-    events: parseArrByInsertIds(node.events, node.id, 'node')
+    alias: {
+      realId: node.id,
+      name: `node의 ${node.id}번째 Alias`,
+      events: parseArrByInsertIds(node.events, node.id, 'node')
+    }
   }));
 };
 
@@ -40,7 +44,11 @@ const getEdges = () => {
     target: `${edge.toId}`,
     propagators: parseArrByInsertIds(edge.propagators, index, 'edge').map(paragator => ({
       ...paragator,
-      events: parseArrByInsertIds(paragator.events, index, 'paragator')
+      alias: {
+        realId: index,
+        name: `paragator의 ${index}번째 Alias`,
+        events: parseArrByInsertIds(paragator.events, index, 'paragator')
+      }
     })),
     filter: {
       realId: index,

@@ -1,10 +1,10 @@
 import { getData } from '../parseInput';
 
 const sleep = n => new Promise(resolve => setTimeout(resolve, n));
-const pushInner = (objArr, objName, boxArr) => new Promise(resolve => {
+const pushInnerFromAlias = (objArr, objName, boxArr) => new Promise(resolve => {
   objArr.map(obj => {
-    if (obj[objName]) {
-      obj[objName].map(innerObj => boxArr.push(innerObj));
+    if (obj.alias && obj.alias[objName]) {
+      obj.alias[objName].map(innerObj => boxArr.push(innerObj));
     };
   });
   return resolve();
@@ -23,13 +23,32 @@ export const callNodeById = async realId => {
   return node;
 };
 
+export const callEdgeById = async ({ fromId, toId }) => {
+  const edges = data.links;
+
+  await sleep(sleepTime);
+  return edges.find(edge => 
+    parseInt(edge.source, 10) === fromId && 
+    parseInt(edge.target, 10) === toId
+  ); 
+};
+
+export const callAliasById = async ({ name }) => {
+  let allAliases = [];
+
+  data.nodes.map(node => allAliases.concat(node.alias));
+  data.links.map(node => allAliases.concat(node.alias));
+
+  return allAliases.find(alias => alias.name === name);
+};
+
 export const callEventById = async ({ realId, parentType, parentId }) => {
   let allEvents = [];
   let propagators = [];
 
-  await pushInner(data.nodes, 'events', allEvents);
-  await pushInner(data.links, 'propagators', propagators);
-  await pushInner(propagators, 'events', allEvents);
+  await pushInnerFromAlias(data.nodes, 'events', allEvents);
+  await pushInnerFromAlias(data.links, 'propagators', propagators);
+  await pushInnerFromAlias(propagators, 'events', allEvents);
 
   const event = allEvents.find(
     event => 
@@ -47,14 +66,4 @@ export const callFilterById = async (realId) => {
   data.links.map(edge => filters.concat(edge.filter));
 
   return filters.find(filter => filter.realId === realId); 
-};
-
-export const callEdgeById = async ({ fromId, toId }) => {
-  let edges = data.links;
-
-  await sleep(sleepTime);
-  return edges.find(edge => 
-    parseInt(edge.source, 10) === fromId && 
-    parseInt(edge.target, 10) === toId
-  ); 
 };
