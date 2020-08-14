@@ -35,6 +35,7 @@ const graphConfig = {
     highlightColor: '#b7dc95',
     markerWidth: 6,
     strokeWidth: 5,
+    markerId: 'marker-large',
     fontSize: 15,
     highlightFontSize: 17,
     highlightFontWeight: 'bold',
