@@ -14,6 +14,9 @@ function NodePopup() {
           <label>추적변수 추가</label><br />
           <input type="text" placeholder="추적변수 입력" />
         </div>
+        <div>
+          <a className="mb-2 btn btn-danger">추적변수 삭제</a>
+        </div>
       </div>
     </Popup>
   );
@@ -26,6 +29,9 @@ function NodePopup() {
               <label>추적변수 추가</label><br />
               <input type="text" placeholder="추적변수 입력" />
             </div>
+            <div>
+              <a className="mb-2 btn btn-danger">추적변수 삭제</a>
+            </div>
           </div>
         </Popover.Content>
       </Popover>
@@ -33,10 +39,9 @@ function NodePopup() {
   
   return(
     <>
-      {/* <OverlayTrigger trigger="click" placement="top" overlay={popOver}>
+      <OverlayTrigger trigger="click" placement="top" overlay={popOver}>
         <IoIosAddCircleOutline/>
-      </OverlayTrigger> */}
-      <addPopup />
+      </OverlayTrigger>
 
       {/* <Popup trigger={() => (
         <div><IoIosAddCircleOutline/></div>
@@ -45,6 +50,9 @@ function NodePopup() {
           <div className="pb-3">
             <label>추적변수 추가</label><br />
             <input type="text" placeholder="추적변수 입력" />
+          </div>
+          <div>
+            <a className="mb-2 btn btn-danger">추적변수 삭제</a>
           </div>
         </div>
       </Popup> */}
