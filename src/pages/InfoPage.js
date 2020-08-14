@@ -1,6 +1,6 @@
 import React from 'react';
 import HeadNavbar from '../components/shared/HeadNavbar';
-import { HeaderMain } from "../components/airframe/HeaderMain";
+import { HeaderMain } from '../components/airframe/HeaderMain';
 
 function InfoPage() {
   return (
