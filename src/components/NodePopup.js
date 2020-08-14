@@ -4,47 +4,51 @@ import { Popover, OverlayTrigger } from 'react-bootstrap';
 import { Tooltip } from 'react-svg-tooltip';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 
-const addPopup = () => (
-  <Popup trigger={() => (<div><IoIosAddCircleOutline/></div>)} position="bottom right" closeOnDocumentClick>
-    <div>
-      <div className="pb-3">
-        <label>추적변수 추가</label><br />
-        <input type="text" placeholder="start typing ... " />
-      </div>
-    </div>
-  </Popup>
-);
 
-const popOver = (
-  <Popover id="popover-basic">
-      <Popover.Content>
-        <div>
-          <div className="pb-3">
-            <label>추적변수 추가</label><br />
-            <input type="text" placeholder="start typing ... " />
-          </div>
-        </div>
-      </Popover.Content>
-    </Popover>
-)
 
 function NodePopup() {
+  const addPopup = () => (
+    <Popup trigger={() => (<div><IoIosAddCircleOutline/></div>)} position="bottom right" closeOnDocumentClick>
+      <div>
+        <div className="pb-3">
+          <label>추적변수 추가</label><br />
+          <input type="text" placeholder="추적변수 입력" />
+        </div>
+      </div>
+    </Popup>
+  );
+
+  const popOver = (
+    <Popover id="popover-basic">
+        <Popover.Content>
+          <div>
+            <div className="pb-3">
+              <label>추적변수 추가</label><br />
+              <input type="text" placeholder="추적변수 입력" />
+            </div>
+          </div>
+        </Popover.Content>
+      </Popover>
+  )
+  
   return(
     <>
       {/* <OverlayTrigger trigger="click" placement="top" overlay={popOver}>
         <IoIosAddCircleOutline/>
       </OverlayTrigger> */}
-      <Popup trigger={() => (
+      <addPopup />
+
+      {/* <Popup trigger={() => (
         <div><IoIosAddCircleOutline/></div>
       )} position="bottom right" closeOnDocumentClick>
         <div>
           <div className="pb-3">
             <label>추적변수 추가</label><br />
-            <input type="text" placeholder="start typing ... " />
+            <input type="text" placeholder="추적변수 입력" />
           </div>
         </div>
-      </Popup>
-
+      </Popup> */}
+        
     </>
   )
 }
