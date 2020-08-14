@@ -37,7 +37,7 @@ export const createPromiseThunkById = (type, promiseCreator, idSelector = defaul
         type: SUCCESS,
         payload,
         meta: id
-      })
+      });
     } catch(e) {
       // 요청이 실패했을 때
       dispatch({
@@ -45,7 +45,7 @@ export const createPromiseThunkById = (type, promiseCreator, idSelector = defaul
         payload: e,
         error: true,
         meta: id
-      })
+      });
     };
   };
 };

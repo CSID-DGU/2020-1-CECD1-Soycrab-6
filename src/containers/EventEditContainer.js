@@ -11,10 +11,16 @@ function EventEditContainer({ realId, parentType, parentId }) {
     state => state.events.event[realId] || reducerUtils.initial()
   );
 
+
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getEvent(realId, parentType, parentId));
+    dispatch(getEvent({
+      realId: realId,
+      parentType: parentType, 
+      parentId: parentId
+    }));
   }, [dispatch, parentId, parentType, realId]);
 
   if (loading && !data) return <Spinner />;

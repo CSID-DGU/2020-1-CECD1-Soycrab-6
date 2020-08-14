@@ -1,6 +1,14 @@
 import { getData } from '../parseInput';
 
 const sleep = n => new Promise(resolve => setTimeout(resolve, n));
+const pushInner = (objArr, objName, boxArr) => new Promise(resolve => {
+  objArr.map(obj => {
+    if (obj[objName]) {
+      obj[objName].map(innerObj => boxArr.push(innerObj));
+    };
+  });
+  return resolve();
+});
 const data = getData();
 const sleepTime = 250;
 
@@ -15,18 +23,21 @@ export const callNodeById = async realId => {
   return node;
 };
 
-export const callEventById = async (realId, parentType, parentId) => {
+export const callEventById = async ({ realId, parentType, parentId }) => {
   let allEvents = [];
-  let paragators = [];
-  data.nodes.map(node => allEvents.concat(node.events));
-  data.links.map(edge => paragators.concat(edge.paragators));
-  paragators.map(paragator => allEvents.concat(paragator.events));
+  let propagators = [];
+
+  await pushInner(data.nodes, 'events', allEvents);
+  await pushInner(data.links, 'propagators', propagators);
+  await pushInner(propagators, 'events', allEvents);
+
   const event = allEvents.find(
     event => 
     event.realId === realId &&
     event.parentType === parentType &&
     event.parentId === parentId
   );
+
   await sleep(sleepTime);
   return event;
 };

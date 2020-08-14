@@ -39,8 +39,8 @@ const parseArrByInsertIds = (objArr, parentId = null, parentName = null) => {
 const getNodes = () => {
   const inputJson = intialJson;
   return inputJson.nodes.map(node => ({
-    productPrefix: node.productPrefix,
     id: `${node.id}`,
+    productPrefix: node.productPrefix,
     realId: node.id,
     filterId: null,
     traceVars: node.traceVars,
