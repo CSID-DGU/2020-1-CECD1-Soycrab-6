@@ -20,6 +20,22 @@ import intialJson from './data/sample.json';
 //   return inputJson.edges;
 // };
 
+const parseArrByInsertIds = (objArr, parentId = null, parentName = null) => {
+  if (parentName && objArr && objArr.length > 0) {
+    return objArr.map((obj, index) => ({
+      realId: index,
+      parentType: parentName,
+      parentId: parentId,
+      ...obj
+    }));
+  } else if (objArr) {
+    return objArr.map((obj, index) => ({
+      ...obj,
+      realId: index
+    }));
+  };
+};
+
 const getNodes = () => {
   const inputJson = intialJson;
   return inputJson.nodes.map(node => ({
@@ -29,18 +45,22 @@ const getNodes = () => {
     filterId: null,
     traceVars: node.traceVars,
     isEnd: node.isEnd,
-    events: node.events
-    // ...node
+    events: parseArrByInsertIds(node.events, node.id, 'node')
   }));
 };
 
 const getEdges = () => {
   const inputJson = intialJson;
-  return inputJson.edges.map(edge => ({
+  return inputJson.edges.map((edge, index) => ({
+    realId: index,
     productPrefix: edge.productPrefix,
     source: `${edge.fromId}`,
     target: `${edge.toId}`,
-    events: edge.events
+    propagators: parseArrByInsertIds(edge.propagators, index, 'edge').map(paragator => ({
+      ...paragator,
+      events: parseArrByInsertIds(paragator.events, index, 'paragator')
+    })),
+    filter: edge.filter
   }));
 };
 
