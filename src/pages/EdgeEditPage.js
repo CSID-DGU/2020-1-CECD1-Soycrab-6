@@ -1,5 +1,6 @@
 import React from 'react';
 import EdgeEditContainer from '../containers/EdgeEditContainer';
+import HeadNavbar from '../components/shared/HeadNavbar';
 
 function EdgeEditPage({ match }) {
   const { fromId, toId } = match.params;
@@ -7,12 +8,15 @@ function EdgeEditPage({ match }) {
   const tId = parseInt(toId, 10);
 
   return (
-    <div>
-      <EdgeEditContainer
-        fromId={fId}
-        toId={tId}
-       />
-    </div>
+    <>
+      <HeadNavbar />
+      <div>
+        <EdgeEditContainer
+          fromId={fId}
+          toId={tId}
+        />
+      </div>
+    </>
   )
 };
 

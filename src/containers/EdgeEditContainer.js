@@ -26,7 +26,6 @@ function EdgeEditContainer({ fromId, toId }) {
 
   return (
     <div>
-      <button onClick={() => dispatch(goToHome())}>홈으로 이동</button>
       <EdgeEdit edge={data} />
     </div>
   )

@@ -27,7 +27,6 @@ function EventEditContainer({ realId, parentType, parentId }) {
 
   return (
     <div>
-      <button onClick={() => dispatch(goToHome())}>홈으로 이동</button>
       <EventEdit event={data} />
     </div>
   )
