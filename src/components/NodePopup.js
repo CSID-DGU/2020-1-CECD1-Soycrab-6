@@ -15,7 +15,7 @@ function NodePopup() {
           <input type="text" placeholder="추적변수 입력" />
         </div>
         <div>
-          <a className="mb-2 btn btn-danger">추적변수 삭제</a>
+          <a className="mb-2 w-100 btn btn-danger">추적변수 삭제</a>
         </div>
       </div>
     </Popup>
@@ -30,7 +30,7 @@ function NodePopup() {
               <input type="text" placeholder="추적변수 입력" />
             </div>
             <div>
-              <a className="mb-2 btn btn-danger">추적변수 삭제</a>
+              <a className="mb-2 w-100 btn btn-danger">추적변수 삭제</a>
             </div>
           </div>
         </Popover.Content>
@@ -52,7 +52,7 @@ function NodePopup() {
             <input type="text" placeholder="추적변수 입력" />
           </div>
           <div>
-            <a className="mb-2 btn btn-danger">추적변수 삭제</a>
+            <a className="mb-2 w-100 btn btn-danger">추적변수 삭제</a>
           </div>
         </div>
       </Popup> */}
