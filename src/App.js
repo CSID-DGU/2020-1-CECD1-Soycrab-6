@@ -6,6 +6,7 @@ import NodeEditPage from './pages/NodeEditPage';
 import InfoPage from './pages/InfoPage';
 import EventEditPage from './pages/EventEditPage';
 import EdgeEditPage from './pages/EdgeEditPage';
+import FilterEditPage from './pages/FilterEditPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/edges/edit/:fromId/:toId" component={EdgeEditPage} />
       <Route path="/info" component={InfoPage} />
       <Route path="/events/edit/:parType/:parId/:id" component={EventEditPage} />
+      <Route path="/filters/:edgeId/:id" component={FilterEditPage} />
     </>
   );
 };

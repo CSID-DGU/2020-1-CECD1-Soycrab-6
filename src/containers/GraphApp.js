@@ -6,7 +6,7 @@ import { getDatas } from '../modules/datas';
 import Spinner from '../components/shared/Spinner';
 import { useHistory } from 'react-router-dom';
 
-const graphConfig = {
+export const graphConfig = {
   directed: true,
   highlightOpacity: 0,
   linkHighlightBehavior: true,
@@ -15,12 +15,15 @@ const graphConfig = {
   d3: {
     alphaTarget: 0.05,
     gravity: 100,
-    linkLength: 500,
+    linkLength: 650,
     linkStrength: 0.1,
     disableLinkForce: false
   },
   node: {
-    size: 1500,
+    size: {
+      height: 1500,
+      width: 3000,
+    },
     renderLabel: false,
     viewGenerator: node => {
       return (
@@ -33,6 +36,7 @@ const graphConfig = {
     highlightColor: '#b7dc95',
     markerWidth: 6,
     strokeWidth: 5,
+    markerId: 'marker-large',
     fontSize: 15,
     highlightFontSize: 17,
     highlightFontWeight: 'bold',

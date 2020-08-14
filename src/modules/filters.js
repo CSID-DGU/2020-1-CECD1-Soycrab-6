@@ -1,18 +1,18 @@
 import { callFilterById } from '../api/data';
-import { createPromiseThunkById, handleAsyncActionsById }  from '../lib/asyncUtils';
+import { createPromiseThunk, handleAsyncActions }  from '../lib/asyncUtils';
 
 const GET_FILTER = 'filter/GET_FILTER'; // 요청시작
 const GET_FILTER_SUCCESS = 'filter/GET_FILTER_SUCCESS'; // 요청성공
 const GET_FILTER_ERROR = 'filter/GET_FILTER_ERROR'; // 요청실패
 
 // Thunk 생성 함수
-export const getFilter = createPromiseThunkById(GET_FILTER, callFilterById)
+export const getFilter = createPromiseThunk(GET_FILTER, callFilterById)
 
 const initialState = {
   filter: {}
 };
 
-const getFilterReducer = handleAsyncActionsById(GET_FILTER, 'filter', true);
+const getFilterReducer = handleAsyncActions(GET_FILTER, 'filter');
 
 function filters(state = initialState, action) {
   switch (action.type) {

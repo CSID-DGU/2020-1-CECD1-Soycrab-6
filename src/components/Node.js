@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MdDelete } from 'react-icons/md';
-import { IoIosAddCircleOutline } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import NodePopup from './NodePopup';
+
 
 const NodeBox = styled.div`
   padding: 1.8rem;
@@ -10,7 +11,7 @@ const NodeBox = styled.div`
   font-weight: bold;
   color: black;
   background: #73ca25;
-  width: 150px;
+  width: 300px;
   height: 150px;
   text-align: center;
   border-radius: 5px;
@@ -62,13 +63,15 @@ const Remove = styled.div`
   }
 `;
 
+
 function Node({ node }) {
   const { realId, alias, traceVars } = node;
 
   return (
+    <>
     <NodeBox key={realId}>
       <Add>
-        <IoIosAddCircleOutline />
+        <NodePopup/>
       </Add>
       <Remove>
         <MdDelete />
@@ -78,6 +81,7 @@ function Node({ node }) {
       </Link>
       <span onClick={() => console.log(alias)} className="trace-vars">{traceVars.join(', ')}</span>
     </NodeBox>
+    </>
   )
 };
 

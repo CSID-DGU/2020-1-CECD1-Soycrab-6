@@ -18,7 +18,6 @@ function events(state = initialState, action) {
     case GET_EVENT:
     case GET_EVENT_SUCCESS:
     case GET_EVENT_ERROR:
-      console.log(state)
       return getEventReducer(state, action);
     default:
       return state;
