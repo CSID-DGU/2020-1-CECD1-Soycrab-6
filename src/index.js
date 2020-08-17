@@ -1,5 +1,4 @@
-import 'react-app-polyfill/ie11';
-import 'react-app-polyfill/stable';
+import '@babel/polyfill';
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import 'core-js/features/string/repeat';

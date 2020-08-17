@@ -17,7 +17,7 @@ export const callData = async () => {
   return data;
 };
 
-export const callNodeById = async realId => {
+export const callNodeById = async function(realId) {
   let nodeList = [];
   nodeList = nodeList.concat(data.nodes);
   data.links.map(edge => {
@@ -29,7 +29,7 @@ export const callNodeById = async realId => {
   return node;
 };
 
-export const callEdgeById = async ({ fromId, toId }) => {
+export const callEdgeById = async function({ fromId, toId }) {
   const edges = data.links;
 
   await sleep(sleepTime);
@@ -39,7 +39,7 @@ export const callEdgeById = async ({ fromId, toId }) => {
   ); 
 };
 
-export const callAliasById = async ({ name }) => {
+export const callAliasById = async function({ name }) {
   let allAliases = [];
 
   data.nodes.map(node => allAliases.concat(node.alias));
@@ -49,7 +49,7 @@ export const callAliasById = async ({ name }) => {
   return allAliases.find(alias => alias.name === name);
 };
 
-export const callEventById = async ({ realId, parentType, parentId }) => {
+export const callEventById = async function({ realId, parentType, parentId }) {
   let allEvents = [];
   let propagators = [];
 
@@ -68,7 +68,7 @@ export const callEventById = async ({ realId, parentType, parentId }) => {
   return event;
 };
 
-export const callFilterById = async ({ realId, edgeId }) => {
+export const callFilterById = async function({ realId, edgeId }) {
   let filters = [];
   data.links.map(edge => filters.push(edge.filter));
 
