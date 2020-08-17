@@ -39,11 +39,11 @@ function NodePopup() {
   
   return(
     <>
-      <OverlayTrigger trigger="click" placement="top" overlay={popOver}>
+      {/* <OverlayTrigger trigger="click" placement="top" overlay={popOver}>
         <IoIosAddCircleOutline/>
-      </OverlayTrigger>
+      </OverlayTrigger> */}
 
-      {/* <Popup trigger={() => (
+      <Popup trigger={() => (
         <div><IoIosAddCircleOutline/></div>
       )} position="bottom right" closeOnDocumentClick>
         <div>
@@ -55,7 +55,7 @@ function NodePopup() {
             <a className="mb-2 w-100 btn btn-danger">추적변수 삭제</a>
           </div>
         </div>
-      </Popup> */}
+      </Popup>
         
     </>
   )
