@@ -66,6 +66,10 @@ const getEdges = () => {
   }));
 };
 
+export const getRawData = () => {
+  return initialJson;
+};
+
 export const getData = () => {
   return {
     nodes: getNodes(),

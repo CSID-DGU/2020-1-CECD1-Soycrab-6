@@ -1,4 +1,4 @@
-import { getData } from '../parseInput';
+import { getData, getRawData } from '../parseInput';
 
 const sleep = n => new Promise(resolve => setTimeout(resolve, n));
 const pushInnerFromAlias = (objArr, objName, boxArr) => new Promise(resolve => {
@@ -98,4 +98,8 @@ export const callFilterById = async ({ realId, edgeId }) => {
       filter.realId === realId && 
       filter.edgeId === edgeId
   ); 
+};
+
+export const exportData = () => {
+  return getRawData();
 };

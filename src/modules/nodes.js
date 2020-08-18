@@ -6,7 +6,7 @@ const GET_NODE_SUCCESS = 'node/GET_NODE_SUCCESS'; // 요청성공
 const GET_NODE_ERROR = 'node/GET_NODE_ERROR'; // 요청실패
 
 // Thunk 생성 함수
-export const getNode = createPromiseThunkById(GET_NODE, callNodeById)
+export const getNode = createPromiseThunkById(GET_NODE, callNodeById);
 
 const initialState = {
   node: {}

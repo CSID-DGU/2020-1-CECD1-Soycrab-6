@@ -7,6 +7,7 @@ const logoStyle = {
   width: 100,
   marginRight: 10,
   paddingBottom: 5,
+  cursor: 'pointer'
 }
 
 function HeadNavbar() {

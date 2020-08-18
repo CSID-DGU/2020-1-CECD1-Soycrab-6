@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilter, cleartFilter } from '../modules/filters';
+import { getFilter, clearFilter } from '../modules/filters';
 import { goToHome } from '../modules/datas';
 import { reducerUtils } from '../lib/asyncUtils';
 import FilterEdit from '../components/FilterEdit';
@@ -19,7 +19,7 @@ function FilterEditContainer({ realId, edgeId }) {
       edgeId: edgeId
     }));
     return () => {
-      dispatch(cleartFilter());
+      dispatch(clearFilter());
     };
   }, [dispatch, edgeId, realId]);
 

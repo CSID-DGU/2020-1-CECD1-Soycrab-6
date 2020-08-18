@@ -8,7 +8,7 @@ const CLEAR_FILTER = 'filter/CLEAR_FILTER';
 
 // Thunk 생성 함수
 export const getFilter = createPromiseThunk(GET_FILTER, callFilterById)
-export const cleartFilter = () => ({ type: CLEAR_FILTER });
+export const clearFilter = () => ({ type: CLEAR_FILTER });
 
 const initialState = {
   filter: reducerUtils.initial()
