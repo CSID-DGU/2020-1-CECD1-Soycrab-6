@@ -11,12 +11,10 @@ const data = JSON.parse(window.sessionStorage.data);
 const sleepTime = 250;
 
 const getAllNodes = () => {
-  let nodeList = [];
-  nodeList = nodeList.concat(data.nodes);
-  data.links.map(edge => {
-    nodeList = nodeList.concat(edge.filter.nodes)
-  });
-  return nodeList;
+  let nodes = [];
+  nodes = nodes.concat(data.nodes);
+  data.links.map(edge => nodes = nodes.concat(edge.filter.nodes));
+  return nodes;
 };
 
 const getAllEdges = () => {

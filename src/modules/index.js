@@ -5,6 +5,7 @@ import edges from './edges';
 import aliaes from './aliases';
 import events from './events';
 import filters from './filters';
+import propagators from './propagators';
 import exports from './exports';
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   aliaes,
   events,
   filters,
+  propagators,
   exports
 });
 
