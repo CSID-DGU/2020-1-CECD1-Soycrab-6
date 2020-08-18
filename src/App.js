@@ -9,6 +9,8 @@ import EdgeEditPage from './pages/EdgeEditPage';
 import FilterEditPage from './pages/FilterEditPage';
 import PropagatorEditPage from './pages/PropagatorEditPage';
 import HeadNavbar from './components/shared/HeadNavbar';
+import { Link } from "react-router-dom"
+import InfoButton from './components/shared/InfoButton';
 
 function App() {
   const containerStyle = {
@@ -27,6 +29,9 @@ function App() {
         <Route path="/filters/:edgeId/:id" component={FilterEditPage} />
         <Route path="/propagators/edit/:edgeId/:id" component={PropagatorEditPage} />
       </div>
+      <Link to="/info">
+        <InfoButton />
+      </Link>
     </>
   );
 };
