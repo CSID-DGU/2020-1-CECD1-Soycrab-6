@@ -13,8 +13,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import ReduxThunk from 'redux-thunk';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import { getData, getRawData } from './parseInput';
 
 const customHistory = createBrowserHistory();
+
+window.sessionStorage.setItem('data', JSON.stringify(getData()));
+window.sessionStorage.setItem('rawData', JSON.stringify(getRawData()));
 
 const store = createStore(
   rootReducer, 

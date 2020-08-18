@@ -1,5 +1,3 @@
-import { getData, getRawData } from '../parseInput';
-
 const sleep = n => new Promise(resolve => setTimeout(resolve, n));
 const pushInnerFromAlias = (objArr, objName, boxArr) => new Promise(resolve => {
   objArr.map(obj => {
@@ -9,7 +7,7 @@ const pushInnerFromAlias = (objArr, objName, boxArr) => new Promise(resolve => {
   });
   return resolve();
 });
-const data = getData();
+const data = JSON.parse(window.sessionStorage.data);
 const sleepTime = 250;
 
 export const callData = async () => {
@@ -101,5 +99,5 @@ export const callFilterById = async ({ realId, edgeId }) => {
 };
 
 export const exportData = () => {
-  return getRawData();
+  return JSON.parse(window.sessionStorage.rawData);
 };
