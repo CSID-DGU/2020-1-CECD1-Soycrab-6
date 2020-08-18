@@ -4,7 +4,9 @@ import { IoIosInformationCircleOutline } from 'react-icons/io';
 const buttonStyle= {
   position: 'fixed',
   bottom: 0,
-  right: 0, 
+  right: 0,
+  marginRight: 5,
+  marginBottom: 5,
 }
 
 const helpIconStyle = {
@@ -15,7 +17,7 @@ const helpIconStyle = {
 function InfoButton() {
   return(
     <>
-      <button color="success" className="mb-2 mr-sm-2 mb-sm-2" style={buttonStyle}>
+      <button type="button" className="btn btn-success" style={buttonStyle}>
         <IoIosInformationCircleOutline style={helpIconStyle} />
       </button>
     </>
