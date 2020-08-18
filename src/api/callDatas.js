@@ -13,7 +13,7 @@ const parseData = () => {
 };
 const parseRawData = () => {
   return JSON.parse(window.sessionStorage.rawData);
-}
+};
 
 const getAllNodes = () => {
   const data = parseData();
@@ -128,6 +128,8 @@ export const getPropagatorById = async ({ realId, edgeId }) => {
       ppgt.realId === realId && 
       ppgt.edgeId === edgeId 
   );
+  
+  await sleep(sleepTime);
   return propagator;
 };
 

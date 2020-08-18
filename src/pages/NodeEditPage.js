@@ -7,19 +7,7 @@ function NodeEditPage({ match }) {
   const { id } = match.params;
   const nodeId = parseInt(id, 10);
 
-  const VariableBox = styled.div`
-    padding: 1.8rem;
-    text-align: center;
-  `;
-
-  return (
-    <>
-      <HeadNavbar />
-      <VariableBox> 
-        <NodeEditContainer nodeId={nodeId} />
-      </VariableBox>
-    </>
-  )
+  return <NodeEditContainer nodeId={nodeId} />;
 };
 
 export default NodeEditPage;
