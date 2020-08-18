@@ -1,4 +1,4 @@
-import { callData } from '../api/data';
+import { callData } from '../api/callDatas';
 import { reducerUtils, createPromiseThunk, handleAsyncActions }  from '../lib/asyncUtils';
 
 const GET_DATAS = 'data/GET_DATAS'; // 요청시작

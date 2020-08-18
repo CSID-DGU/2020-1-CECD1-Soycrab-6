@@ -1,4 +1,4 @@
-import { callEventById } from '../api/data';
+import { callEventById } from '../api/callDatas';
 import { createPromiseThunk, handleAsyncActions, reducerUtils }  from '../lib/asyncUtils';
 
 const GET_EVENT = 'event/GET_EVENT'; // 요청시작

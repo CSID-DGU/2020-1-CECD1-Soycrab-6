@@ -1,4 +1,4 @@
-import { callFilterById } from '../api/data';
+import { callFilterById } from '../api/callDatas';
 import { createPromiseThunk, handleAsyncActions, reducerUtils }  from '../lib/asyncUtils';
 
 const GET_FILTER = 'filter/GET_FILTER'; // 요청시작

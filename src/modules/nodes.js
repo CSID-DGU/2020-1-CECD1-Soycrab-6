@@ -1,4 +1,4 @@
-import { callNodeById } from '../api/data';
+import { callNodeById } from '../api/callDatas';
 import { createPromiseThunkById, handleAsyncActionsById }  from '../lib/asyncUtils';
 
 const GET_NODE = 'node/GET_NODE'; // 요청시작

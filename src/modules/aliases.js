@@ -1,4 +1,4 @@
-import { callAliasById } from '../api/data';
+import { callAliasById } from '../api/callDatas';
 import { createPromiseThunkById, handleAsyncActionsById }  from '../lib/asyncUtils';
 
 const GET_ALIAS = 'alias/GET_ALIAS'; // 요청시작

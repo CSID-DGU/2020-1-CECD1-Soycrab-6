@@ -1,4 +1,4 @@
-import { callEdgeById } from '../api/data';
+import { callEdgeById } from '../api/callDatas';
 import { createPromiseThunk, handleAsyncActions, reducerUtils }  from '../lib/asyncUtils';
 
 const GET_EDGE = 'edge/GET_EDGE'; // 요청시작
