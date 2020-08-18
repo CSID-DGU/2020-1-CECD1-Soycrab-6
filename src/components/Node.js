@@ -64,18 +64,33 @@ const Remove = styled.div`
   }
 `;
 
+const AliasBox = styled.div`
+  padding: 15px 10px;
+  background: #1c7ed6;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    background: #1971c2;
+  }
+`;
+
 
 function Node({ node }) {
-  const { realId, alias, traceVars } = node;
+  const { realId, alias } = node;
   const history = useHistory();
 
-  const goToNodeEdit = realId => {
-    history.push(`/nodes/edit/${realId}`);
+  const goToNodeEdit = (e) => {
+    if (!e.target.classList.contains('alias-box')) {
+      history.push(`/nodes/edit/${realId}`);
+    }
+  };
+  const goToAliasEdit = (e) => {
+    e.preventDefault();
   };
 
   return (
     <>
-    <NodeBox onClick={() => goToNodeEdit(realId)} key={realId}>
+    <NodeBox onClick={goToNodeEdit} key={realId} id="node-box">
       <Add>
         <NodePopup/>
       </Add>
@@ -83,7 +98,9 @@ function Node({ node }) {
         <MdDelete />
       </Remove>
       <p className="node-name">노드ID: {realId}</p>
-      <span onClick={() => console.log(alias)} className="trace-vars">{traceVars.join(', ')}</span>
+      <AliasBox onClick={goToAliasEdit} className="alias-box">
+        {alias.name}
+      </AliasBox>
     </NodeBox>
     </>
   )
