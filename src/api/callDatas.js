@@ -10,24 +10,16 @@ const pushInnerFromAlias = (objArr, objName, boxArr) => new Promise(resolve => {
 const data = JSON.parse(window.sessionStorage.data);
 const sleepTime = 250;
 
-export const callData = async () => {
-  await sleep(sleepTime);
-  return data;
-};
-
-export const callNodeById = async realId => {
+const getAllNodes = () => {
   let nodeList = [];
   nodeList = nodeList.concat(data.nodes);
   data.links.map(edge => {
     nodeList = nodeList.concat(edge.filter.nodes)
   });
-
-  const node = nodeList.find(node => node.realId === realId);
-  await sleep(sleepTime);
-  return node;
+  return nodeList;
 };
 
-export const callEdgeById = async ({ fromId, toId }) => {
+const getAllEdges = () => {
   let edges = data.links;
   data.nodes.map(node => {
     if (node.filter && node.filter.edges.length > 0) {
@@ -38,7 +30,25 @@ export const callEdgeById = async ({ fromId, toId }) => {
     if (edge.filter && edge.filter.edges.length > 0) {
       edges = edges.concat(edge.filter.edges)
     };
-  })
+  });
+  return edges;
+};
+
+export const callData = async () => {
+  await sleep(sleepTime);
+  return data;
+};
+
+export const callNodeById = async realId => {
+  const nodes = getAllNodes();
+
+  const node = nodes.find(node => node.realId === realId);
+  await sleep(sleepTime);
+  return node;
+};
+
+export const callEdgeById = async ({ fromId, toId }) => {
+  const edges = getAllEdges();
 
   const edge = edges.find(edge => 
     parseInt(edge.source, 10) === fromId && 
@@ -51,9 +61,11 @@ export const callEdgeById = async ({ fromId, toId }) => {
 
 export const callAliasById = async ({ name }) => {
   let allAliases = [];
+  const nodes = getAllNodes();
+  const edges = getAllEdges();
 
-  data.nodes.map(node => allAliases.concat(node.alias));
-  data.links.map(node => allAliases.concat(node.alias));
+  nodes.map(node => allAliases.concat(node.alias));
+  edges.map(node => allAliases.concat(node.alias));
 
   await sleep(sleepTime);
   return allAliases.find(alias => alias.name === name);
@@ -87,8 +99,9 @@ export const callEventById = async ({ realId, parentType, parentId }) => {
 };
 
 export const callFilterById = async ({ realId, edgeId }) => {
+  const edges = getAllEdges();
   let filters = [];
-  data.links.map(edge => filters.push(edge.filter));
+  edges.map(edge => filters.push(edge.filter));
 
   await sleep(sleepTime);
   return filters.find(
@@ -96,6 +109,19 @@ export const callFilterById = async ({ realId, edgeId }) => {
       filter.realId === realId && 
       filter.edgeId === edgeId
   ); 
+};
+
+export const getPropagatorById = async ({ realId, edgeId }) => {
+  const edges = getAllEdges();
+  let propagators = [];
+
+  edges.map(edge => propagators = propagators.concat(edge.propagators));
+  const propagator = propagators.find(
+    ppgt => 
+      ppgt.realId === realId && 
+      ppgt.edgeId === edgeId 
+  );
+  return propagator;
 };
 
 export const exportData = () => {

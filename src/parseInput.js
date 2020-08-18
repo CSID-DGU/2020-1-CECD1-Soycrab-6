@@ -45,8 +45,10 @@ const getEdges = () => {
     productPrefix: edge.productPrefix,
     source: `${edge.fromId}`,
     target: `${edge.toId}`,
-    propagators: parseArrByInsertIds(edge.propagators, index, 'edge').map(paragator => ({
+    propagators: edge.propagators.map((paragator, _index) => ({
       ...paragator,
+      realId: _index,
+      edgeId: index,
       alias: {
         realId: index,
         name: `paragator의 ${index}번째 Alias`,
