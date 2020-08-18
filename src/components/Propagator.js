@@ -8,7 +8,7 @@ function Propagator({ realId, edgeId }) {
         전파자 #{realId}-#{edgeId}
       </Link>
     </div>
-  )
-}
+  );
+};
 
 export default Propagator;

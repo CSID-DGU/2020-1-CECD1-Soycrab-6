@@ -76,5 +76,5 @@ export const getData = () => {
   return {
     nodes: getNodes(),
     links: getEdges()
-  }
+  };
 };

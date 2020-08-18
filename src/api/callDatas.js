@@ -7,10 +7,16 @@ const pushInnerFromAlias = (objArr, objName, boxArr) => new Promise(resolve => {
   });
   return resolve();
 });
-const data = JSON.parse(window.sessionStorage.data);
 const sleepTime = 250;
+const parseData = () => {
+  return JSON.parse(window.sessionStorage.data);
+};
+const parseRawData = () => {
+  return JSON.parse(window.sessionStorage.rawData);
+}
 
 const getAllNodes = () => {
+  const data = parseData();
   let nodes = [];
   nodes = nodes.concat(data.nodes);
   data.links.map(edge => nodes = nodes.concat(edge.filter.nodes));
@@ -18,6 +24,7 @@ const getAllNodes = () => {
 };
 
 const getAllEdges = () => {
+  const data = parseData();
   let edges = data.links;
   data.nodes.map(node => {
     if (node.filter && node.filter.edges.length > 0) {
@@ -33,6 +40,7 @@ const getAllEdges = () => {
 };
 
 export const callData = async () => {
+  const data = parseData();
   await sleep(sleepTime);
   return data;
 };
@@ -70,6 +78,7 @@ export const callAliasById = async ({ name }) => {
 };
 
 export const callEventById = async ({ realId, parentType, parentId }) => {
+  const data = parseData();
   let allEvents = [];
   let propagators = [];
 
@@ -123,5 +132,5 @@ export const getPropagatorById = async ({ realId, edgeId }) => {
 };
 
 export const exportData = () => {
-  return JSON.parse(window.sessionStorage.rawData);
+  return parseRawData();
 };

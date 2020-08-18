@@ -8,7 +8,7 @@ function Filter({ filter }) {
     <Link to={`/filters/${edgeId}/${realId}`}>
       나는 필터입니다.
     </Link>
-  )
+  );
 };
 
 export default Filter;
