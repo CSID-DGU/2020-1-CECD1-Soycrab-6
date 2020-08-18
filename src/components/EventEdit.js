@@ -1,7 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import Event from './Event';
-
+import Card from './shared/Card'
 
 function EventEdit({ event }) {
   const { realId, args, base, callTargetRepr, parentId, parentType } = event;
@@ -115,6 +113,9 @@ function EventEdit({ event }) {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="row mt-5">
+
           </div>
         </div>
       </div>
