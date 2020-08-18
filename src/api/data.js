@@ -42,8 +42,6 @@ export const callEdgeById = async ({ fromId, toId }) => {
     };
   })
 
-  console.log(edges)
-
   const edge = edges.find(edge => 
     parseInt(edge.source, 10) === fromId && 
     parseInt(edge.target, 10) === toId

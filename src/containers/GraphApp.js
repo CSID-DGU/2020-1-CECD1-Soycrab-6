@@ -57,7 +57,10 @@ function GraphApp() {
   }, [dispatch]);
 
   if (loading || !data || error) {
-    return <StateRender loading={loading} data={data} error={error} />
+    return <StateRender 
+              loading={loading} 
+              data={data} 
+              error={error} />;
   } else {
     return (
       <Graph

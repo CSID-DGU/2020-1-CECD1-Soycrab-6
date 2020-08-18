@@ -2,7 +2,6 @@ export const createPromiseThunk = (type, promiseCreator) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
   // Thunk 생성함수
   return param => async dispatch => {
-    console.log(param)
     // 요청이 시작 됨
     dispatch({ type });
     try {
