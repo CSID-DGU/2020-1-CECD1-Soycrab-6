@@ -30,13 +30,27 @@ export const callNodeById = async realId => {
 };
 
 export const callEdgeById = async ({ fromId, toId }) => {
-  const edges = data.links;
+  let edges = data.links;
+  data.nodes.map(node => {
+    if (node.filter && node.filter.edges.length > 0) {
+      edges = edges.concat(node.filter.edges)
+    };
+  });
+  data.links.map(edge => {
+    if (edge.filter && edge.filter.edges.length > 0) {
+      edges = edges.concat(edge.filter.edges)
+    };
+  })
 
-  await sleep(sleepTime);
-  return edges.find(edge => 
+  console.log(edges)
+
+  const edge = edges.find(edge => 
     parseInt(edge.source, 10) === fromId && 
     parseInt(edge.target, 10) === toId
   ); 
+
+  await sleep(sleepTime);
+  return edge;
 };
 
 export const callAliasById = async ({ name }) => {

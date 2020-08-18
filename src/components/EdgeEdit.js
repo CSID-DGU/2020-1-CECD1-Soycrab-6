@@ -2,12 +2,12 @@ import React from 'react';
 import Filter from './Filter';
 
 function EdgeEdit({ edge }) {
-  const { realId, filter, filterId, propagators, source, target } = edge;
+  const { filter, filterId, propagators, source, target } = edge;
 
   return (
     <div>
-      {realId}번째 Edge 수정 페이지입니다.
-      <Filter filter={filter} />
+      {source}번노드에서 {target}노드로 가는 Edge 수정 페이지입니다.
+      { filter && <Filter filter={filter} /> }
     </div>
   )
 };

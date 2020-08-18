@@ -41,7 +41,6 @@ const getNodes = () => {
 const getEdges = () => {
   const inputJson = initialJson;
   return inputJson.edges.map((edge, index) => ({
-    realId: index,
     filterId: null,
     productPrefix: edge.productPrefix,
     source: `${edge.fromId}`,
