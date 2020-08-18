@@ -80,9 +80,9 @@ function Node({ node }) {
   const history = useHistory();
 
   const goToNodeEdit = (e) => {
-    if (!e.target.classList.contains('alias-box')) {
+    // if (!e.target.classList.contains('alias-box')) {
       history.push(`/nodes/edit/${realId}`);
-    }
+    // }
   };
   const goToAliasEdit = (e) => {
     e.preventDefault();
