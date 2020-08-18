@@ -53,7 +53,8 @@ const getEdges = () => {
         realId: index,
         name: `paragator의 ${index}번째 Alias`,
         events: parseArrByInsertIds(paragator.events, index, 'paragator')
-      }
+      },
+      events: null
     })),
     filter: {
       realId: index,
