@@ -4,7 +4,7 @@ import { goToHome } from '../modules/datas';
 import Spinner from '../components/shared/Spinner';
 import { reducerUtils } from '../lib/asyncUtils';
 import EdgeEdit from '../components/EdgeEdit';
-import { getEdge } from '../modules/edges';
+import { getEdge, clearEdge } from '../modules/edges';
 
 function EdgeEditContainer({ fromId, toId }) {
   const { data, loading, error } = useSelector(
@@ -18,6 +18,9 @@ function EdgeEditContainer({ fromId, toId }) {
       fromId: fromId,
       toId: toId
     }));
+    return () => {
+      dispatch(clearEdge());
+    };
   }, [dispatch, fromId, toId]);
 
   if (loading && !data) return <Spinner />;

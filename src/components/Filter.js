@@ -9,6 +9,6 @@ function Filter({ filter }) {
       나는 필터입니다.
     </Link>
   )
-}
+};
 
 export default Filter;

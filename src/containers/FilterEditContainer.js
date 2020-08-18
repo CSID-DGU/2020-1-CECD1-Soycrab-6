@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilter } from '../modules/filters';
+import { getFilter, cleartFilter } from '../modules/filters';
 import { goToHome } from '../modules/datas';
 import Spinner from '../components/shared/Spinner';
 import { reducerUtils } from '../lib/asyncUtils';
@@ -18,6 +18,9 @@ function FilterEditContainer({ realId, edgeId }) {
       realId: realId,
       edgeId: edgeId
     }));
+    return () => {
+      dispatch(cleartFilter());
+    };
   }, [dispatch, edgeId, realId]);
 
   if (loading && !data) return <Spinner />;

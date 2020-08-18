@@ -8,8 +8,6 @@ function NodeEditPage({ match }) {
   const { id } = match.params;
   const nodeId = parseInt(id, 10);
 
-  console.log(nodeId)
-
   const VariableBox = styled.div`
     padding: 1.8rem;
     text-align: center;
