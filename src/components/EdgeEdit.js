@@ -2,6 +2,7 @@ import React from 'react';
 import Filter from './Filter';
 import Propagator from '../components/Propagator';
 import { useHistory } from 'react-router-dom';
+import Nothing from './shared/Nothing';
 
 function EdgeEdit({ edge }) {
   const { filter, propagators, source, target } = edge;
@@ -53,8 +54,10 @@ function EdgeEdit({ edge }) {
               </h5>
             </div>
             <div className="list-group list-group-flush">
-              {propagators.map(
-                propagator => <Propagator key={propagator.realId} propagator={propagator} />)}
+              {propagators.length > 0
+                ? propagators.map(
+                    propagator => <Propagator key={propagator.realId} propagator={propagator} />)
+                : <Nothing />}
             </div>
           </div>
         </div>
@@ -68,7 +71,7 @@ function EdgeEdit({ edge }) {
             <div className="list-group list-group-flush">
               {filter 
                 ? <Filter filter={filter} /> 
-                : <button className="list-group-item list-group-item-action">없음</button>
+                : <Nothing />
               }
             </div>
           </div>
