@@ -18,12 +18,10 @@ function EdgeEdit({ edge }) {
                 Propagator List
               </h5>
             </div>
-            <ul className="list-group list-group-flush">
+            <div className="list-group list-group-flush">
               {propagators.map(
-                propagator => <li className="list-group-item" key={propagator.realId}>
-                                <Propagator propagator={propagator} />
-                              </li>)}
-            </ul>
+                propagator => <Propagator key={propagator.realId} propagator={propagator} />)}
+            </div>
           </div>
         </div>
         <div className="col">

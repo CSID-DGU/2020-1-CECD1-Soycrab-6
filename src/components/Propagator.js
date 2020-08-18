@@ -1,15 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 function Propagator({ propagator }) {
   const { edgeId, realId } = propagator;
 
   return (
-    <div>
-      <Link to={`/propagators/edit/${edgeId}/${realId}`}>
-        전파자 #{realId}-#{edgeId}
-      </Link>
-    </div>
+    <a href={`/propagators/edit/${edgeId}/${realId}`} className="list-group-item list-group-item-action" key={propagator.realId}>
+      전파자 #{realId}-#{edgeId}
+    </a>
   );
 };
 

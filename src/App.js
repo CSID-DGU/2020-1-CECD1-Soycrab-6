@@ -14,7 +14,8 @@ import InfoButton from './components/shared/InfoButton';
 
 function App() {
   const containerStyle = {
-    marginTop: '30px'
+    marginTop: '30px',
+    textAlign: 'center'
   };
 
   return (
