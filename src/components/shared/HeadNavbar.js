@@ -20,7 +20,7 @@ function HeadNavbar() {
           style={logoStyle} onClick={() => dispatch(goToHome())}
           alt="sparrow logo"
         />
-        <a className="navbar-brand" href="/">소스코드 결함탐지</a>
+        <span className="navbar-brand" onClick={() => dispatch(goToHome())}>소스코드 결함탐지</span>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
