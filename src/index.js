@@ -1,5 +1,5 @@
-import '@babel/polyfill';
 import "core-js/stable";
+import "core-js";
 import "regenerator-runtime/runtime";
 import 'core-js/features/string/repeat';
 import React from 'react';
