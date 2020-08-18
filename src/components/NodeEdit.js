@@ -34,13 +34,12 @@ function NodeEdit({ node }) {
               </CardBody>
               <ListGroup flush>
                 {alias.events.map(
-                  event => <ListGroupItem action>
+                  event => <ListGroupItem key={event.realId} action>
                               <Event 
-                                key={event.realId}
                                 realId={event.realId}
                                 parentType='node'
                                 parentId={realId} />
-                              </ListGroupItem>
+                            </ListGroupItem>
                 )}
               </ListGroup>
             </Card>
