@@ -11,11 +11,15 @@ import PropagatorEditPage from './pages/PropagatorEditPage';
 import HeadNavbar from './components/shared/HeadNavbar';
 
 function App() {
+  const containerStyle = {
+    marginTop: '30px'
+  };
+
   return (
     <>
       <HeadNavbar />
-      <div className="container">
-        <Route path="/" component={GraphPage} exact={true} />
+      <Route path="/" component={GraphPage} exact={true} />
+      <div className="container" style={containerStyle}>
         <Route path="/nodes/edit/:id" component={NodeEditPage} />
         <Route path="/edges/edit/:fromId/:toId" component={EdgeEditPage} />
         <Route path="/info" component={InfoPage} />

@@ -26,11 +26,7 @@ function EventEditContainer({ realId, parentType, parentId }) {
   if (loading || !data || error) {
     return <StateRender loading={loading} data={data} error={error} />
   } else {
-    return (
-      <div>
-        <EventEdit event={data} />
-      </div>
-    )
+    return <EventEdit event={data} />;
   };
 };
 

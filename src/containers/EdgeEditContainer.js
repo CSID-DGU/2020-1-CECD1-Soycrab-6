@@ -25,11 +25,7 @@ function EdgeEditContainer({ fromId, toId }) {
   if (loading || !data || error) {
     return <StateRender loading={loading} data={data} error={error} />;
   } else {
-    return (
-      <div>
-        <EdgeEdit edge={data} />
-      </div>
-    )
+    return <EdgeEdit edge={data} />;
   };
 };
 
