@@ -7,7 +7,7 @@ const logoStyle = {
   marginRight: 10,
   paddingBottom: 5,
   cursor: 'pointer'
-}
+};
 
 function HeadNavbar() {
   const dispatch = useDispatch();

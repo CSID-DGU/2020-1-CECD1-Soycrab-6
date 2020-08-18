@@ -4,8 +4,7 @@ import { IoIosInformationCircleOutline } from 'react-icons/io';
 const buttonStyle= {
   position: 'fixed',
   bottom: 0,
-  right: 0,
-  
+  right: 0, 
 }
 
 const helpIconStyle = {

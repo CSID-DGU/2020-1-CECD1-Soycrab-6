@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 import NodePopup from './NodePopup';
 import { useHistory } from 'react-router-dom';
 
+const sparrowColor = '#73ca25';
 
 const NodeBox = styled.div`
   padding: 1.8rem;
   font-size: 14px;
   font-weight: bold;
   color: black;
-  background: #73ca25;
+  background: ${sparrowColor};
   width: 300px;
   height: 150px;
   text-align: center;
