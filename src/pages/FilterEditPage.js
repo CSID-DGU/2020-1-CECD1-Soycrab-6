@@ -1,6 +1,5 @@
 import React from 'react';
 import FilterEditContainer from '../containers/FilterEditContainer';
-import HeadNavbar from '../components/shared/HeadNavbar';
 
 function FilterEditPage({ match }) {
   const { id, edgeId } = match.params;
@@ -8,14 +7,11 @@ function FilterEditPage({ match }) {
   const eId = parseInt(edgeId, 10);
 
   return (
-    <>
-      <HeadNavbar />
-      <FilterEditContainer
-        realId={filterId}
-        edgeId={eId}
-      />
-    </>
-  )
+    <FilterEditContainer
+      realId={filterId}
+      edgeId={eId}
+    />
+  );
 };
 
 export default FilterEditPage;
