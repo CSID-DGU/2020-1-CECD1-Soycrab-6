@@ -25,11 +25,7 @@ function FilterEditContainer({ realId, edgeId }) {
   if (loading || !data || error) {
     return <StateRender loading={loading} data={data} error={error} />
   } else {
-    return (
-      <div>
-        <FilterEdit filter={data} />
-      </div>
-    )
+    return <FilterEdit filter={data} />;
   };
 }
 

@@ -21,11 +21,7 @@ function NodeEditContainer({ nodeId }) {
               data={data} 
               error={error} />
   } else {
-    return (
-      <>
-        <NodeEdit node={data} />
-      </>
-    )
+    return <NodeEdit node={data} />;
   };
 };
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import EdgeEditContainer from '../containers/EdgeEditContainer';
-import HeadNavbar from '../components/shared/HeadNavbar';
 
 function EdgeEditPage({ match }) {
   const { fromId, toId } = match.params;
@@ -9,7 +8,6 @@ function EdgeEditPage({ match }) {
 
   return (
     <>
-      <HeadNavbar />
       <div>
         <EdgeEditContainer
           fromId={fId}

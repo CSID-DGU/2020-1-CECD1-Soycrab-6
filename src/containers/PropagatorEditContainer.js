@@ -25,11 +25,7 @@ function PropagatorEditContainer({ realId, edgeId }) {
   if (loading || !data || error) {
     return <StateRender loading={loading} data={data} error={error} />
   } else {
-    return (
-      <div>
-        <PropagatorEdit propagator={data} />
-      </div>
-    )
+    return <PropagatorEdit propagator={data} />;
   };
 };
 

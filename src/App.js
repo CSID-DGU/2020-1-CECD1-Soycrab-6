@@ -9,13 +9,19 @@ import EdgeEditPage from './pages/EdgeEditPage';
 import FilterEditPage from './pages/FilterEditPage';
 import PropagatorEditPage from './pages/PropagatorEditPage';
 import HeadNavbar from './components/shared/HeadNavbar';
+import { Link } from "react-router-dom"
+import InfoButton from './components/shared/InfoButton';
 
 function App() {
+  const containerStyle = {
+    marginTop: '30px'
+  };
+
   return (
     <>
       <HeadNavbar />
-      <div className="container">
-        <Route path="/" component={GraphPage} exact={true} />
+      <Route path="/" component={GraphPage} exact={true} />
+      <div className="container" style={containerStyle}>
         <Route path="/nodes/edit/:id" component={NodeEditPage} />
         <Route path="/edges/edit/:fromId/:toId" component={EdgeEditPage} />
         <Route path="/info" component={InfoPage} />
@@ -23,6 +29,9 @@ function App() {
         <Route path="/filters/:edgeId/:id" component={FilterEditPage} />
         <Route path="/propagators/edit/:edgeId/:id" component={PropagatorEditPage} />
       </div>
+      <Link to="/info">
+        <InfoButton />
+      </Link>
     </>
   );
 };
