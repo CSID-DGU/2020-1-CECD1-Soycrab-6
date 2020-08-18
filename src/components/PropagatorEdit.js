@@ -1,8 +1,9 @@
 import React from 'react';
 import Event from './Event';
+import Nothing from './shared/Nothing';
 
 function PropagatorEdit({ propagator }) {
-  const { realId, edgeId, alias, events, fromTraceVar, toTraceVar } = propagator;
+  const { realId, edgeId, alias, args, fromTraceVar, toTraceVar } = propagator;
 
   return (
     <>
@@ -17,15 +18,16 @@ function PropagatorEdit({ propagator }) {
               </h5>
             </div>
             <ul className="list-group list-group-flush">
-              {alias.events.map(
-                event => <li className="list-group-item" key={event.realId}>
-                            <Event
-                              realId={event.realid}
-                              parentType='edge'
-                              parentId={realId}
-                            />
-                          </li>
-              )}
+              {alias.events.length > 0 
+                ? alias.events.map(
+                  event => <li className="list-group-item" key={event.realId}>
+                              <Event
+                                realId={event.realId}
+                                parentType='paragator'
+                                parentId={realId}
+                              />
+                            </li>)
+                : <Nothing />}
             </ul>
           </div>
         </div>
