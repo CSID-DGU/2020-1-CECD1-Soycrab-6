@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilter, clearFilter } from '../modules/filters';
-import { goToHome } from '../modules/datas';
 import { reducerUtils } from '../lib/asyncUtils';
 import FilterEdit from '../components/FilterEdit';
 import StateRender from '../components/shared/StateRender';

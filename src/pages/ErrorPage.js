@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'reactstrap';
-import { HeaderAuth } from '../components/airframe/HeaderAuth';
 
 const alignStyle = {
   marginTop: '20%',
@@ -31,18 +29,14 @@ function ErrorPage({ code }) {
               alt="sparrow logo"
             />
           </Link>
-          <HeaderAuth 
-            title={"Error " + code}
-            text={text}
-            />
-          <Button
+          <h1>{"Error " + code }</h1>
+          <h3>{text}</h3>
+          <a
+            className="btn btn-outline-success text-center"
             href="/"
-            outline
-            color="success"
-            className="text-center"
             >
             홈으로 돌아가기
-          </Button>
+          </a>
         </div>
       </div>
     </>

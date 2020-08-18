@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getEvent, clearEvent } from '../modules/events';
-import { goToHome } from '../modules/datas';
 import { reducerUtils } from '../lib/asyncUtils';
 import EventEdit from '../components/EventEdit';
 import StateRender from '../components/shared/StateRender';

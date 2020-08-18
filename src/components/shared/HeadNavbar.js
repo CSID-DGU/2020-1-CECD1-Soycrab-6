@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Collapse, Navbar, Nav, NavbarToggler, NavbarBrand, NavItem, Form, Input, Button } from 'reactstrap';
 import { useDispatch } from 'react-redux';
 import { goToHome } from '../../modules/datas';
 
@@ -12,30 +11,24 @@ const logoStyle = {
 
 function HeadNavbar() {
   const dispatch = useDispatch();
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
 
   return (
     <>
-      <Navbar color="light" light expand="md">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <img
           src={ require('../../images/sparrow_logo.png') }
           style={logoStyle} onClick={() => dispatch(goToHome())}
           alt="sparrow logo"
         />
-        <NavbarBrand href="/">소스코드 결함탐지</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <Form inline>
-                <Input type="text" placeholder="검색..." className="mb-2 mr-sm-2 mb-sm-0" />
-                <Button outline color="info">검색</Button>
-              </Form>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
+        <a className="navbar-brand" href="/">소스코드 결함탐지</a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <form className="form-inline">
+          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </nav>
     </>
   )
 }

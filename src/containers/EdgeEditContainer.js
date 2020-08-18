@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { goToHome } from '../modules/datas';
 import { reducerUtils } from '../lib/asyncUtils';
 import EdgeEdit from '../components/EdgeEdit';
 import { getEdge, clearEdge } from '../modules/edges';

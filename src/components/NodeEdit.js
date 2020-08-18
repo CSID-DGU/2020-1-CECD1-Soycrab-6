@@ -1,9 +1,5 @@
 import React from 'react';
 import Event from './Event';
-import { HeaderMain } from '../components/airframe/HeaderMain';
-import { Card } from '../components/airframe/Card/Card';
-import { Row, Col, CardTitle, CardBody, ListGroup, ListGroupItem, Media } from 'reactstrap';
-import { TasksMedia } from './airframe/TasksMedia';
 
 function NodeEdit({ node }) {
   const eventArray = ['호출식', '접근식', '연산식', '배열 참조', '배열 생성', '개별 이벤트 템플릿'];
@@ -12,54 +8,49 @@ function NodeEdit({ node }) {
   return (
     <>
       <h6 className="d-flex">Breadcrumb 들어갈 자리</h6>
-      <HeaderMain
+      <div className="row row-cols-2">
         title={name + " (노드이름)"}
-      />
-      <span className="mr-0">
-        <i className="fa fa-fw fa-pencil mr-2"></i>
-      </span>
-      <Row>
-        <Col lg="6">
-          <Card className="mb-3Card">
-            <CardBody>
-              <CardTitle className="mb-0 bb-0">
+        <div className="col">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">
                 {alias.name} (Alias 이름)
-              </CardTitle>
-            </CardBody>
-            <Card className="ml-3 mr-3 mb-3 mb-3Card">
-              <CardBody>
-                <CardTitle className="mb-0 bb-0">
+              </h5>
+            </div>
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">
                     Events List
-                </CardTitle>
-              </CardBody>
-              <ListGroup flush>
+                </h5>
+              </div>
+              <ul className="list-group list-group-flush">
                 {alias.events.map(
-                  event => <ListGroupItem key={event.realId} action>
+                  event => <li className="list-group-item" key={event.realId}>
                               <Event 
                                 realId={event.realId}
                                 parentType='node'
                                 parentId={realId} />
-                            </ListGroupItem>
+                            </li>
                 )}
-              </ListGroup>
-            </Card>
-          </Card>
-        </Col>
-        <Col lg="6">
-          <Card className="mb-3Card">
-            <CardBody>
-              <CardTitle className="mb-0 bb-0">
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="col">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">
                   Event 추가
-              </CardTitle>
-            </CardBody>
-            <ListGroup flush>
+              </h5>
+            </div>
+            <ul className="list-group list-group-flush">
               {eventArray.map(
-                (event, index) => <ListGroupItem key={index} action><TasksMedia type={event} /></ListGroupItem>
+                (event, index) => <li className="list-group-item" key={index}><a href="#">{event}</a></li>
               )}
-            </ListGroup>
-          </Card>
-        </Col>
-      </Row>
+            </ul>
+          </div>
+        </div>
+      </div>
     </>
   )
 };
