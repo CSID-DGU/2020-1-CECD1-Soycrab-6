@@ -9,6 +9,7 @@ const pushInnerFromAlias = (objArr, objName, boxArr) => new Promise(resolve => {
   });
   return resolve();
 });
+
 const data = getData();
 const sleepTime = 250;
 
