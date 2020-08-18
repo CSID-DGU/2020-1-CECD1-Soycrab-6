@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { MdDelete } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import NodePopup from './NodePopup';
+import { useHistory } from 'react-router-dom';
 
 
 const NodeBox = styled.div`
@@ -66,19 +67,22 @@ const Remove = styled.div`
 
 function Node({ node }) {
   const { realId, alias, traceVars } = node;
+  const history = useHistory();
+
+  const goToNodeEdit = realId => {
+    history.push(`/nodes/edit/${realId}`);
+  };
 
   return (
     <>
-    <NodeBox key={realId}>
+    <NodeBox onClick={() => goToNodeEdit(realId)} key={realId}>
       <Add>
         <NodePopup/>
       </Add>
       <Remove>
         <MdDelete />
       </Remove>
-      <Link to={`/nodes/edit/${realId}`}>
-        <p className="node-name">노드ID: {realId}</p>
-      </Link>
+      <p className="node-name">노드ID: {realId}</p>
       <span onClick={() => console.log(alias)} className="trace-vars">{traceVars.join(', ')}</span>
     </NodeBox>
     </>
