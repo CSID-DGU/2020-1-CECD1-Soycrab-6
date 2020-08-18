@@ -5,6 +5,7 @@ import Spinner from '../components/shared/Spinner';
 import { reducerUtils } from '../lib/asyncUtils';
 import EdgeEdit from '../components/EdgeEdit';
 import { getEdge, clearEdge } from '../modules/edges';
+import StateRender from '../components/shared/StateRender';
 
 function EdgeEditContainer({ fromId, toId }) {
   const { data, loading, error } = useSelector(
@@ -23,15 +24,16 @@ function EdgeEditContainer({ fromId, toId }) {
     };
   }, [dispatch, fromId, toId]);
 
-  if (loading && !data) return <Spinner />;
-  if (error) return <div>에러 발생!</div>;
-  if (!data) return null;
+  if (loading || !data || error) {
+    return <StateRender loading={loading} data={data} error={error} />
+  } else {
+    return (
+      <div>
+        <EdgeEdit edge={data} />
+      </div>
+    )
+  }
 
-  return (
-    <div>
-      <EdgeEdit edge={data} />
-    </div>
-  )
 };
 
 export default EdgeEditContainer;
