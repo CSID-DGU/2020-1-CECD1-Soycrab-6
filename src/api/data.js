@@ -54,7 +54,15 @@ export const callEventById = async ({ realId, parentType, parentId }) => {
   let propagators = [];
 
   await pushInnerFromAlias(data.nodes, 'events', allEvents);
-  await pushInnerFromAlias(data.links, 'propagators', propagators);
+  data.links.map(edge => {
+    propagators = propagators.concat(edge.propagators);
+    if (edge.filter) {
+      if (edge.filter.edges) {
+        edge.filter.edges.map(ed => propagators = propagators.concat(ed.propagators));
+      };
+      pushInnerFromAlias(edge.filter.nodes, 'events', allEvents);
+    };
+  });
   await pushInnerFromAlias(propagators, 'events', allEvents);
 
   const event = allEvents.find(
