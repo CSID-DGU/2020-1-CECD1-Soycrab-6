@@ -90,7 +90,7 @@ function Node({ node }) {
 
   return (
     <>
-    <NodeBox onClick={goToNodeEdit} key={realId} id="node-box">
+    <NodeBox onClick={goToNodeEdit} key={realId}>
       <Add>
         <NodePopup/>
       </Add>
