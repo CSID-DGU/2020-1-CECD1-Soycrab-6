@@ -7,6 +7,7 @@ import InfoPage from './pages/InfoPage';
 import EventEditPage from './pages/EventEditPage';
 import EdgeEditPage from './pages/EdgeEditPage';
 import FilterEditPage from './pages/FilterEditPage';
+import PropagatorEditPage from './pages/PropagatorEditPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/info" component={InfoPage} />
       <Route path="/events/edit/:parType/:parId/:id" component={EventEditPage} />
       <Route path="/filters/:edgeId/:id" component={FilterEditPage} />
+      <Route path="/propagators/edit/:edgeId/:id" component={PropagatorEditPage} />
     </>
   );
 };

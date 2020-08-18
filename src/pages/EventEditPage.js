@@ -11,7 +11,6 @@ function EventEditPage({ match }) {
     <>
       <HeadNavbar />
       <div>
-        이벤트 수정하기
         <EventEditContainer
           realId={eventId}
           parentId={parentId}
@@ -19,7 +18,7 @@ function EventEditPage({ match }) {
         />
       </div>
     </>
-  )
-}
+  );
+};
 
 export default EventEditPage;
