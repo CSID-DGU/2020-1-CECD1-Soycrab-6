@@ -3,7 +3,7 @@ import { Graph } from 'react-d3-graph';
 import { useSelector, useDispatch } from 'react-redux';
 import Node from '../components/Node';
 import { getDatas } from '../modules/datas';
-import Spinner from '../components/shared/Spinner';
+import StateRender from '../components/shared/StateRender';
 import { useHistory } from 'react-router-dom';
 
 export const graphConfig = {
@@ -56,18 +56,18 @@ function GraphApp() {
     dispatch(getDatas());
   }, [dispatch]);
 
-  if (loading) return <Spinner />;
-  if (error) return <div>에러 발생!</div>;
-  if (!data) return null;
-
-  return (
-    <Graph
-      id="graph-id"
-      data={data}
-      config={graphConfig}
-      onClickLink={onClickLink}
-    />
-  );
+  if (loading || !data || error) {
+    return <StateRender loading={loading} data={data} error={error} />
+  } else {
+    return (
+      <Graph
+        id="graph-id"
+        data={data}
+        config={graphConfig}
+        onClickLink={onClickLink}
+      />
+    )
+  };
 };
 
 export default React.memo(GraphApp);

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { goToHome } from '../modules/datas';
-import Spinner from '../components/shared/Spinner';
 import { reducerUtils } from '../lib/asyncUtils';
 import EdgeEdit from '../components/EdgeEdit';
 import { getEdge, clearEdge } from '../modules/edges';
@@ -32,8 +31,7 @@ function EdgeEditContainer({ fromId, toId }) {
         <EdgeEdit edge={data} />
       </div>
     )
-  }
-
+  };
 };
 
 export default EdgeEditContainer;

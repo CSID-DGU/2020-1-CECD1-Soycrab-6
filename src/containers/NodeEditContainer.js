@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import NodeEdit from '../components/NodeEdit';
 import { getNode } from '../modules/nodes';
-import Spinner from '../components/shared/Spinner';
+import StateRender from '../components/shared/StateRender';
 import { reducerUtils } from '../lib/asyncUtils';
 
 function NodeEditContainer({ nodeId }) {
@@ -15,15 +15,15 @@ function NodeEditContainer({ nodeId }) {
     dispatch(getNode(nodeId));
   }, [nodeId, dispatch]);
 
-  if (loading && !data) return <Spinner />;
-  if (error) return <div>에러 발생!</div>;
-  if (!data) return null;
-
-  return (
-    <>
-      <NodeEdit node={data} />
-    </>
-  );
+  if (loading || !data || error) {
+    return <StateRender loading={loading} data={data} error={error} />
+  } else {
+    return (
+      <>
+        <NodeEdit node={data} />
+      </>
+    )
+  };
 };
 
 export default NodeEditContainer;
