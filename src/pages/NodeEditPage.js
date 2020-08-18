@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import NodeEditContainer from '../containers/NodeEditContainer';
 
 function NodeEditPage({ match }) {
