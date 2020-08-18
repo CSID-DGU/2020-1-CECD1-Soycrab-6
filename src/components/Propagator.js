@@ -4,7 +4,7 @@ function Propagator({ propagator }) {
   const { edgeId, realId } = propagator;
 
   return (
-    <a href={`/propagators/edit/${edgeId}/${realId}`} className="list-group-item list-group-item-action" key={propagator.realId}>
+    <a href={`/propagators/edit/${edgeId}/${realId}`} className="list-group-item list-group-item-action">
       전파자 #{realId}-#{edgeId}
     </a>
   );

@@ -44,7 +44,7 @@ function datas(state = initialState, action) {
     case REMOVE_DATA:
       return state.filter(
         node => node.realId !== action.payload
-      )
+      );
     default:
       return state;
   }

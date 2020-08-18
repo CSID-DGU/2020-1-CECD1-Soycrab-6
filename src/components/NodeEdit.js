@@ -1,5 +1,6 @@
 import React from 'react';
 import Event from './Event';
+import Nothing from './shared/Nothing';
 
 function NodeEdit({ node }) {
   const eventArray = ['호출식', '접근식', '연산식', '배열 참조', '배열 생성', '개별 이벤트 템플릿'];
@@ -23,16 +24,17 @@ function NodeEdit({ node }) {
                     Events List
                 </h5>
               </div>
-              <ul className="list-group list-group-flush">
-                {alias.events.map(
-                  event => <li className="list-group-item" key={event.realId}>
-                              <Event 
-                                realId={event.realId}
-                                parentType='node'
-                                parentId={realId} />
-                            </li>
-                )}
-              </ul>
+              <div className="list-group list-group-flush">
+                {alias.events.length > 0 
+                ? alias.events.map(
+                    event => <button className="list-group-item list-group-item-action" key={event.realId}>
+                                <Event 
+                                  realId={event.realId}
+                                  parentType='node'
+                                  parentId={realId} />
+                              </button>)
+                : <Nothing />}
+              </div>
             </div>
           </div>
         </div>
@@ -52,7 +54,7 @@ function NodeEdit({ node }) {
         </div>
       </div>
     </>
-  )
+  );
 };
 
 export default NodeEdit;
