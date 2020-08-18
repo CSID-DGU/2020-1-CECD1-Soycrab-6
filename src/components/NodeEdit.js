@@ -8,8 +8,8 @@ function NodeEdit({ node }) {
   return (
     <>
       <h6 className="d-flex">Breadcrumb 들어갈 자리</h6>
+      <h2>{name + " (노드이름)"}</h2>
       <div className="row row-cols-2">
-        title={name + " (노드이름)"}
         <div className="col">
           <div className="card">
             <div className="card-body">
