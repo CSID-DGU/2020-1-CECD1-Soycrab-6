@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Propagator({ realId, edgeId }) {
+function Propagator({ propagator }) {
+  const { edgeId, realId } = propagator;
+
   return (
     <div>
       <Link to={`/propagators/edit/${edgeId}/${realId}`}>
