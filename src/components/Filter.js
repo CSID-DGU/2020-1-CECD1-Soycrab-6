@@ -5,9 +5,10 @@ function Filter({ filter }) {
   const { realId, edgeId } = filter;
 
   return (
-    <Link to={`/filters/${edgeId}/${realId}`}>
-      나는 필터입니다.
-    </Link>
+    <a href={`/filters/${edgeId}/${realId}`} 
+       className="list-group-item list-group-item-action">
+         활성필터
+    </a>
   );
 };
 
