@@ -1,30 +1,37 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { MdDelete } from 'react-icons/md';
 import NodePopup from './NodePopup';
 import { useHistory } from 'react-router-dom';
 import { darken, lighten } from 'polished';
 
-const sparrowColor = '#73ca25';
+const nodeStyles = css`
+  ${({ isEnd }) => {
+    const selected = isEnd ? '#e64980' : '#73ca25';
+    return css`
+      background: ${selected};
+      &:hover {
+        background: ${lighten(0.1, selected)};
+      }
+      &:active {
+        background: ${darken(0.1, selected)};
+      }
+    `
+  }};
+`;
 
 const NodeBox = styled.div`
   padding: 0.5rem;
   font-size: 14px;
   font-weight: bold;
   color: black;
-  background: ${sparrowColor};
   width: 250px;
   height: 100px;
   text-align: center;
   border-radius: 5px;
   position: relative;
 
-  &:hover {
-    background: ${lighten(0.1, sparrowColor)};
-  }
-  &:active {
-    background: ${darken(0.1, sparrowColor)};
-  }
+  ${nodeStyles}
 
   p {
     margin-bottom: 2px;
@@ -33,7 +40,9 @@ const NodeBox = styled.div`
       font-size: 12px;
 
       span {
-        color: red;
+        font-size: 13px;
+        color: white;
+        font-weight: bold;
       }
     }
 
@@ -103,7 +112,7 @@ function Node({ node }) {
 
   return (
     <>
-    <NodeBox onClick={goToNodeEdit} key={realId}>
+    <NodeBox onClick={goToNodeEdit} key={realId} isEnd={isEnd}>
       <Add>
         <NodePopup/>
       </Add>
