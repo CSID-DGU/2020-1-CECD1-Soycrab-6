@@ -23,7 +23,7 @@ function PropagatorEdit({ propagator }) {
                   event => <li className="list-group-item" key={event.realId}>
                               <Event
                                 realId={event.realId}
-                                parentType='paragator'
+                                parentType='propagator'
                                 parentId={realId}
                               />
                             </li>)

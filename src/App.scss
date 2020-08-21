@@ -8,3 +8,9 @@ $sparrowColorStrong: #4f8a1a;
     }
   }
 }
+
+.btn {
+  & + & {
+    margin-left: 1rem;
+  }
+}
