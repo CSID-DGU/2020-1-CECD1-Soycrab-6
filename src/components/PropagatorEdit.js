@@ -1,6 +1,7 @@
 import React from 'react';
 import Event from './Event';
 import Nothing from './shared/Nothing';
+import LinkButton from './shared/LinkButton';
 
 function PropagatorEdit({ propagator }) {
   const { realId, edgeId, alias, args, fromTraceVar, toTraceVar } = propagator;
@@ -20,13 +21,13 @@ function PropagatorEdit({ propagator }) {
             <ul className="list-group list-group-flush">
               {alias.events.length > 0 
                 ? alias.events.map(
-                  event => <li className="list-group-item" key={event.realId}>
+                  event => <LinkButton className="list-group-item" key={event.realId}>
                               <Event
                                 realId={event.realId}
                                 parentType='paragator'
                                 parentId={realId}
                               />
-                            </li>)
+                            </LinkButton>)
                 : <Nothing />}
             </ul>
           </div>
