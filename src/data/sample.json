@@ -9,7 +9,7 @@
         ],
         "events":[
            {
-              "productPrefix":"assignment",
+              "productPrefix":"CallEvent",
               "ret":{
                  "productPrefix":"TraceVar",
                  "name":"tainted"

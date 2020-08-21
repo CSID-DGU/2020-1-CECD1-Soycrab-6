@@ -30,9 +30,9 @@ const ToggleBtn = styled.div`
 function ToggleButton({switchId}) {
   return(
     <ToggleBtn>
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id={switchId} />
-        <label class="custom-control-label" for={switchId}></label>
+      <div className="custom-control custom-switch">
+        <input type="checkbox" className="custom-control-input" id={switchId} />
+        <label className="custom-control-label" htmlFor={switchId}></label>
       </div>
     </ToggleBtn>
   )

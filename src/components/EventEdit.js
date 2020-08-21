@@ -1,16 +1,24 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import ToggleButton from './shared/ToggleButton';
+import SelectForm from './shared/SelectForm';
 
 function EventEdit({ event }) {
   const { realId, args, productPrefix, base, callTargetRepr, ret, parentId, parentType } = event;
+
+  const leftTypeOption = ["a", "b", "c", "d", "e"];
+  const rightTypeOption = ["a", "b", "c", "d", "e"];
+  const accessorTypeOption = ["a", "b", "c", "d", "e"];
+  const rightKindOption = ["a", "b", "c", "d", "e"];
+  const accessorKindOption = ["a", "b", "c", "d", "e"];
+  const baseKindOption = ["a", "b", "c", "d", "e"];
 
   return (
     <>
       {
         (function() {
           if (productPrefix === "CallEvent") return (
-            <div>
+            <>
               {realId} 번째 이벤트 수정 페이지
               <h1>parentId: {parentId}</h1>
               <h1>parentType: {parentType}</h1>
@@ -31,7 +39,7 @@ function EventEdit({ event }) {
                     </div>
                   </div>
                 </div>
-                <div className="col border border-dart">
+                <div className="col border border-dart mb-5">
                   <h5 className="mt-4 mb-2">type</h5>
                   <div className="card">
                     <div className="card-body">
@@ -57,11 +65,7 @@ function EventEdit({ event }) {
                     <div className="col">
                       <h5 className="mb-2">kind</h5>
                       <div className="card">
-                        <select name="" id="" className="pt-2 pb-2">
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                        </select>
+                        <SelectForm namespace={productPrefix} optionArray={baseKindOption} />
                       </div>
                     </div>
                   </div>
@@ -101,10 +105,10 @@ function EventEdit({ event }) {
                   </div>  
                 </div>
               </div>
-            </div>
+            </>
           );
           else if (productPrefix === "assignment") return (
-            <div>
+            <>
               {realId} 번째 이벤트 수정 페이지
               <h1>parentId: {parentId}</h1>
               <h1>parentType: {parentType}</h1>
@@ -144,11 +148,7 @@ function EventEdit({ event }) {
                         <div className="col-12">
                           <h5 className="mb-2">type</h5>
                           <div className="card">
-                            <div className="card-body">
-                              <h5 className="card-title">
-                                {ret.productPrefix}
-                              </h5>
-                            </div>
+                              <SelectForm namespace={productPrefix} optionArray={leftTypeOption} />
                           </div>
                         </div>
                         <div className="col-12">
@@ -169,21 +169,13 @@ function EventEdit({ event }) {
                         <div className="col-12">
                           <h5 className="mb-2">type</h5>
                           <div className="card">
-                            <div className="card-body">
-                              <h5 className="card-title">
-                                  {args.productPrefix}
-                              </h5>
-                            </div>
+                            <SelectForm namespace={productPrefix} optionArray={rightTypeOption} />
                           </div>
                         </div>
                         <div className="col-12">
                           <h5 className="mb-2">kind</h5>
                           <div className="card">
-                            <select name="" id="" className="pt-2 pb-2">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                            </select>
+                            <SelectForm namespace={productPrefix} optionArray={rightKindOption} />
                           </div>
                         </div>
                       </div>
@@ -194,21 +186,13 @@ function EventEdit({ event }) {
                         <div className="col-12">
                           <h5 className="mb-2">type</h5>
                           <div className="card">
-                            <select name="" id="" className="pt-2 pb-2">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                            </select>
+                            <SelectForm namespace={productPrefix} optionArray={accessorTypeOption} />
                           </div>
                         </div>
                         <div className="col-12">
                           <h5 className="mb-2">kind</h5>
                           <div className="card">
-                            <select name="" id="" className="pt-2 pb-2">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                            </select>
+                            <SelectForm namespace={productPrefix} optionArray={accessorKindOption} />
                           </div>
                         </div>
                       </div>
@@ -231,11 +215,7 @@ function EventEdit({ event }) {
                     <div className="col">
                       <h5 className="mb-2">kind</h5>
                       <div className="card">
-                        <select name="" id="" className="pt-2 pb-2">
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                        </select>
+                        <SelectForm namespace={productPrefix} optionArray={baseKindOption} />
                       </div>
                     </div>
                   </div>
@@ -275,7 +255,8 @@ function EventEdit({ event }) {
                   </div>  
                 </div>
               </div>
-            </div>
+              
+            </>
           );
         })()
       }
