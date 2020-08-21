@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import LinkButton from './shared/LinkButton';
 
 function Propagator({ propagator }) {
   const { edgeId, realId } = propagator;
@@ -10,9 +11,9 @@ function Propagator({ propagator }) {
   };
 
   return (
-    <button onClick={() => goToPropagatorEdit(edgeId, realId)} className="list-group-item list-group-item-action" key={propagator.realId}>
+    <LinkButton onClick={() => goToPropagatorEdit(edgeId, realId)} className="list-group-item list-group-item-action" key={propagator.realId}>
       전파자 #{realId}-#{edgeId}
-    </button>
+    </LinkButton>
   );
 };
 

@@ -1,30 +1,51 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { MdDelete } from 'react-icons/md';
-import { Link } from 'react-router-dom';
 import NodePopup from './NodePopup';
 import { useHistory } from 'react-router-dom';
+import { darken, lighten } from 'polished';
 
-const sparrowColor = '#73ca25';
+const nodeStyles = css`
+  ${({ isEnd }) => {
+    const selected = isEnd ? '#e64980' : '#73ca25';
+    return css`
+      background: ${selected};
+      &:hover {
+        background: ${lighten(0.1, selected)};
+      }
+      &:active {
+        background: ${darken(0.1, selected)};
+      }
+    `
+  }};
+`;
 
 const NodeBox = styled.div`
-  padding: 1.8rem;
+  padding: 0.5rem;
   font-size: 14px;
   font-weight: bold;
   color: black;
-  background: ${sparrowColor};
-  width: 300px;
-  height: 150px;
+  width: 250px;
+  height: 100px;
   text-align: center;
   border-radius: 5px;
   position: relative;
-  opacity: 0.7;
 
-  &:hover {
-    opacity: 1;
-  }
+  ${nodeStyles}
 
   p {
+    margin-bottom: 2px;
+
+    &.trace-vars {
+      font-size: 12px;
+
+      span {
+        font-size: 13px;
+        color: white;
+        font-weight: bold;
+      }
+    }
+
     &.node-name {
       color: black;
     }
@@ -66,7 +87,7 @@ const Remove = styled.div`
 `;
 
 const AliasBox = styled.div`
-  padding: 15px 10px;
+  padding: 5px 0px;
   background: #1c7ed6;
   border-radius: 10px;
   cursor: pointer;
@@ -77,21 +98,21 @@ const AliasBox = styled.div`
 
 
 function Node({ node }) {
-  const { realId, alias } = node;
+  const { realId, alias, traceVars, isEnd } = node;
   const history = useHistory();
 
-  const goToNodeEdit = (e) => {
+  const goToNodeEdit = e => {
     // if (!e.target.classList.contains('alias-box')) {
       history.push(`/nodes/edit/${realId}`);
     // }
   };
-  const goToAliasEdit = (e) => {
+  const goToAliasEdit = e => {
     e.preventDefault();
   };
 
   return (
     <>
-    <NodeBox onClick={goToNodeEdit} key={realId}>
+    <NodeBox onClick={goToNodeEdit} key={realId} isEnd={isEnd}>
       <Add>
         <NodePopup/>
       </Add>
@@ -99,6 +120,7 @@ function Node({ node }) {
         <MdDelete />
       </Remove>
       <p className="node-name">노드ID: {realId}</p>
+      <p className="trace-vars">추적 변수: <span>{traceVars.join(', ')}</span></p>
       <AliasBox onClick={goToAliasEdit} className="alias-box">
         {alias.name}
       </AliasBox>

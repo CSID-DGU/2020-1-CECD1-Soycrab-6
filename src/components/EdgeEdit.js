@@ -1,8 +1,9 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Filter from './Filter';
 import Propagator from '../components/Propagator';
-import { useHistory } from 'react-router-dom';
 import Nothing from './shared/Nothing';
+import LinkButton from './shared/LinkButton';
 
 function EdgeEdit({ edge }) {
   const { filter, propagators, source, target } = edge;
@@ -28,7 +29,7 @@ function EdgeEdit({ edge }) {
               </h5>
             </div>
             <div className="list-group list-group-flush">
-              <button onClick={() => goToNodeEdit(source)} className="list-group-item list-group-item-action">바로가기</button>
+              <LinkButton onClick={() => goToNodeEdit(source)} className="list-group-item list-group-item-action">바로가기</LinkButton>
             </div>
           </div>
         </div>
@@ -41,7 +42,7 @@ function EdgeEdit({ edge }) {
               </h5>
             </div>
             <div className="list-group list-group-flush">
-              <button onClick={() => goToNodeEdit(target)} className="list-group-item list-group-item-action">바로가기</button>
+              <LinkButton onClick={() => goToNodeEdit(target)} className="list-group-item list-group-item-action">바로가기</LinkButton>
             </div>
           </div>
         </div>

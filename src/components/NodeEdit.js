@@ -1,6 +1,7 @@
 import React from 'react';
 import Event from './Event';
 import Nothing from './shared/Nothing';
+import LinkButton from './shared/LinkButton';
 
 function NodeEdit({ node }) {
   const eventArray = ['호출식', '접근식', '연산식', '배열 참조', '배열 생성', '개별 이벤트 템플릿'];
@@ -18,7 +19,7 @@ function NodeEdit({ node }) {
                 {alias.name} (Alias 이름)
               </h5>
             </div>
-            <div className="card">
+            <div className="card ml-3 mr-3 mb-3">
               <div className="card-body">
                 <h5 className="card-title">
                     Events List
@@ -27,12 +28,12 @@ function NodeEdit({ node }) {
               <div className="list-group list-group-flush">
                 {alias.events.length > 0 
                 ? alias.events.map(
-                    event => <button className="list-group-item list-group-item-action" key={event.realId}>
+                    event => <LinkButton className="list-group-item list-group-item-action" key={event.realId}>
                                 <Event 
                                   realId={event.realId}
                                   parentType='node'
                                   parentId={realId} />
-                              </button>)
+                              </LinkButton>)
                 : <Nothing />}
               </div>
             </div>
@@ -47,7 +48,7 @@ function NodeEdit({ node }) {
             </div>
             <ul className="list-group list-group-flush">
               {eventArray.map(
-                (event, index) => <li className="list-group-item" key={index}><a href="#">{event}</a></li>
+                (event, index) => <LinkButton className="list-group-item" key={index} onClick={() => console.log('click')}>{event}</LinkButton>
               )}
             </ul>
           </div>

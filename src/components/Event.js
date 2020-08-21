@@ -1,14 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
+const EventBody = styled.div`
+  color: black;
+`;
 
 function Event({ realId, parentType, parentId }) {
+  const history = useHistory();
+  const goToEventEdit = (e) => {
+    history.push(`/events/edit/${parentType}/${parentId}/${realId}`);
+  };
+
   return (
-    <div>
-      <Link to={`/events/edit/${parentType}/${parentId}/${realId}`}>
-        이벤트 #{realId} (이벤트 이름)
-      </Link>
-    </div>
+    <EventBody onClick={() => goToEventEdit(parentType, parentId, realId)}>
+      이벤트 #{realId} (이벤트 이름)
+    </EventBody>
   )
 };
 

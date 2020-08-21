@@ -21,8 +21,8 @@ export const graphConfig = {
   },
   node: {
     size: {
-      height: 1500,
-      width: 3000,
+      height: 1000,
+      width: 2500,
     },
     renderLabel: false,
     viewGenerator: node => {
@@ -34,12 +34,16 @@ export const graphConfig = {
   link: {
     color: '#69db7c',
     highlightColor: '#b7dc95',
-    markerWidth: 6,
-    strokeWidth: 5,
+    markerWidth: 4,
+    strokeWidth: 10,
     markerId: 'marker-large',
     fontSize: 15,
     highlightFontSize: 17,
     highlightFontWeight: 'bold',
+    renderLabel: true,
+    labelProperty: edge => {
+      return edge.filter ? 'FILTER' : '';
+    }
   }
 };
 

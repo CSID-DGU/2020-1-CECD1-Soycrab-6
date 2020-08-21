@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import LinkButton from './shared/LinkButton';
 
 function Filter({ filter }) {
   const { realId, edgeId } = filter;
@@ -10,10 +11,10 @@ function Filter({ filter }) {
   };
 
   return (
-    <button onClick={() => goToFilterEdit(edgeId, realId)} 
+    <LinkButton onClick={() => goToFilterEdit(edgeId, realId)} 
        className="list-group-item list-group-item-action">
          활성필터
-    </button>
+    </LinkButton>
   );
 };
 
