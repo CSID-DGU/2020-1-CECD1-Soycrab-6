@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MdDelete } from 'react-icons/md';
-import { Link } from 'react-router-dom';
 import NodePopup from './NodePopup';
 import { useHistory } from 'react-router-dom';
 
@@ -25,6 +24,16 @@ const NodeBox = styled.div`
   }
 
   p {
+    margin-bottom: 5px;
+
+    &.trace-vars {
+      font-size: 12px;
+
+      span {
+        color: red;
+      }
+    }
+
     &.node-name {
       color: black;
     }
@@ -77,15 +86,15 @@ const AliasBox = styled.div`
 
 
 function Node({ node }) {
-  const { realId, alias } = node;
+  const { realId, alias, traceVars, isEnd } = node;
   const history = useHistory();
 
-  const goToNodeEdit = (e) => {
+  const goToNodeEdit = e => {
     // if (!e.target.classList.contains('alias-box')) {
       history.push(`/nodes/edit/${realId}`);
     // }
   };
-  const goToAliasEdit = (e) => {
+  const goToAliasEdit = e => {
     e.preventDefault();
   };
 
@@ -99,6 +108,7 @@ function Node({ node }) {
         <MdDelete />
       </Remove>
       <p className="node-name">노드ID: {realId}</p>
+      <p className="trace-vars">추적 변수: <span>{traceVars.join(', ')}</span></p>
       <AliasBox onClick={goToAliasEdit} className="alias-box">
         {alias.name}
       </AliasBox>

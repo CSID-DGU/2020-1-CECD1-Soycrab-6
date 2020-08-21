@@ -40,6 +40,10 @@ export const graphConfig = {
     fontSize: 15,
     highlightFontSize: 17,
     highlightFontWeight: 'bold',
+    renderLabel: true,
+    labelProperty: edge => {
+      return edge.productPrefix;
+    }
   }
 };
 
