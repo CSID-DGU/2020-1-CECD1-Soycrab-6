@@ -1,15 +1,28 @@
 import React from 'react';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import Event from './Event';
 import Nothing from './shared/Nothing';
 import LinkButton from './shared/LinkButton';
+
+const BreadCrumbItem = styled.div`
+  background-color: #f8f9fa;
+`;
 
 function NodeEdit({ node }) {
   const eventArray = ['호출식', '접근식', '연산식', '배열 참조', '배열 생성', '개별 이벤트 템플릿'];
   const { realId, name, filterId, isEnd, alias, traceVars } = node;
 
+  const history = useHistory();
+  console.log(history);
+
   return (
     <>
-      <h6 className="d-flex">Breadcrumb 들어갈 자리</h6>
+      <BreadCrumbItem className="breadcrumb">
+        <li className="breadcrumb-item"><a href="#">Home</a></li>
+        <li className="breadcrumb-item"><a href="#">Library</a></li>
+        <li className="breadcrumb-item active" aria-current="page">Data</li>
+      </BreadCrumbItem>
       <h2>{name + " (노드이름)"}</h2>
       <div className="row row-cols-2">
         <div className="col">
