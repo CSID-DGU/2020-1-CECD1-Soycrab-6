@@ -1,5 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+
+const PropagatorBody = styled.div`
+  color: black;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(115, 202, 37, 0.2);
+  }
+`;
 
 function Propagator({ propagator }) {
   const { edgeId, realId } = propagator;
@@ -10,9 +20,9 @@ function Propagator({ propagator }) {
   };
 
   return (
-    <button onClick={() => goToPropagatorEdit(edgeId, realId)} className="list-group-item list-group-item-action" key={propagator.realId}>
+    <PropagatorBody onClick={() => goToPropagatorEdit(edgeId, realId)} className="list-group-item list-group-item-action" key={propagator.realId}>
       전파자 #{realId}-#{edgeId}
-    </button>
+    </PropagatorBody>
   );
 };
 
