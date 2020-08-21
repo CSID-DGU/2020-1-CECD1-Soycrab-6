@@ -42,7 +42,7 @@
         ],
         "events":[
            {
-              "productPrefix":"CallEvent",
+              "productPrefix":"assignment",
               "callTargetRepr":{
                  "productPrefix":"MethodFqnIndicator",
                  "repr":{
