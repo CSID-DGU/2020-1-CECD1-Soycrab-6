@@ -18,7 +18,7 @@ function NodeEdit({ node }) {
                 {alias.name} (Alias 이름)
               </h5>
             </div>
-            <div className="card">
+            <div className="card ml-3 mr-3 mb-3">
               <div className="card-body">
                 <h5 className="card-title">
                     Events List
