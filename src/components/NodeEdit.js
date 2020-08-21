@@ -3,18 +3,18 @@ import styled from 'styled-components';
 import Event from './Event';
 import Nothing from './shared/Nothing';
 
+const EventBody = styled.div`
+  color: black;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(115, 202, 37, 0.2);
+  }
+`;
+
 function NodeEdit({ node }) {
   const eventArray = ['호출식', '접근식', '연산식', '배열 참조', '배열 생성', '개별 이벤트 템플릿'];
   const { realId, name, filterId, isEnd, alias, traceVars } = node;
-
-  const EventBody = styled.div`
-    color: black;
-    cursor: pointer;
-
-    &:hover {
-      background-color: rgba(115, 202, 37, 0.2);
-    }
-  `;
 
   return (
     <>

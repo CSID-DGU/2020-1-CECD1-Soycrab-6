@@ -1,8 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import Filter from './Filter';
 import Propagator from '../components/Propagator';
-import { useHistory } from 'react-router-dom';
 import Nothing from './shared/Nothing';
+
+const CardContent = styled.div`
+  color: black;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(115, 202, 37, 0.2);
+  }
+`;
 
 function EdgeEdit({ edge }) {
   const { filter, propagators, source, target } = edge;
@@ -28,7 +38,7 @@ function EdgeEdit({ edge }) {
               </h5>
             </div>
             <div className="list-group list-group-flush">
-              <button onClick={() => goToNodeEdit(source)} className="list-group-item list-group-item-action">바로가기</button>
+              <CardContent onClick={() => goToNodeEdit(source)} className="list-group-item list-group-item-action">바로가기</CardContent>
             </div>
           </div>
         </div>
@@ -41,7 +51,7 @@ function EdgeEdit({ edge }) {
               </h5>
             </div>
             <div className="list-group list-group-flush">
-              <button onClick={() => goToNodeEdit(target)} className="list-group-item list-group-item-action">바로가기</button>
+              <CardContent onClick={() => goToNodeEdit(target)} className="list-group-item list-group-item-action">바로가기</CardContent>
             </div>
           </div>
         </div>
