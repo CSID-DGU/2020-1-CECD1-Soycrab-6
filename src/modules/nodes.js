@@ -1,5 +1,5 @@
 import { callNodeById } from '../api/callDatas';
-import { createPromiseThunkById, handleAsyncActionsById, reducerUtils }  from '../lib/asyncUtils';
+import { createPromiseThunkById, handleAsyncActionsById, handleUpdateAsyncActionsById }  from '../lib/asyncUtils';
 
 const GET_NODE = 'node/GET_NODE'; // 요청시작
 const GET_NODE_SUCCESS = 'node/GET_NODE_SUCCESS'; // 요청성공
@@ -23,6 +23,7 @@ const initialState = {
 };
 
 const getNodeReducer = handleAsyncActionsById(GET_NODE, 'node', true);
+const getUpdateNodeNameReducer = handleUpdateAsyncActionsById('node', 'name');
 
 function nodes(state = initialState, action) {
   switch (action.type) {
@@ -31,16 +32,7 @@ function nodes(state = initialState, action) {
     case GET_NODE_ERROR:
       return getNodeReducer(state, action);
     case UPDATE_NODE_NAME:
-      return {
-        ...state,
-        node: {
-          ...state.node,
-          [action.payload.realId]: reducerUtils.success({
-            ...state.node[action.payload.realId].data,
-            name: action.payload.name
-          })
-        }
-      };
+      return getUpdateNodeNameReducer(state, action);
     default:
       return state;
   }

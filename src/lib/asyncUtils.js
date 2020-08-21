@@ -110,6 +110,21 @@ export const handleAsyncActionsById = (type, key, keepData) => {
   };
 };
 
+export const handleUpdateAsyncActionsById = (key, prop) => {
+  return (state, action) => {
+    return {
+      ...state,
+      [key]: {
+        ...state[key],
+        [action.payload.realId]: reducerUtils.success({
+          ...state[key][action.payload.realId].data,
+          [prop]: action.payload[prop]
+        })
+      }
+    };
+  };
+};
+
 export const reducerUtils = {
   initial: (data = null) => ({
     data,
