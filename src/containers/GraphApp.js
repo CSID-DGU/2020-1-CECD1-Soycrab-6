@@ -34,7 +34,7 @@ export const graphConfig = {
   link: {
     color: '#69db7c',
     highlightColor: '#b7dc95',
-    markerWidth: 5,
+    markerWidth: 4,
     strokeWidth: 10,
     markerId: 'marker-large',
     fontSize: 15,

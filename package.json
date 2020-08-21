@@ -9,6 +9,7 @@
     "d3": "^5.5.0",
     "framer-motion": "^2.3.0",
     "node-sass": "^4.14.1",
+    "polished": "^3.6.5",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
     "react-d3-graph": "^2.5.0",

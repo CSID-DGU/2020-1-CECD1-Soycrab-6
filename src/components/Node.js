@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { MdDelete } from 'react-icons/md';
 import NodePopup from './NodePopup';
 import { useHistory } from 'react-router-dom';
+import { darken, lighten } from 'polished';
 
 const sparrowColor = '#73ca25';
 
@@ -19,11 +20,14 @@ const NodeBox = styled.div`
   position: relative;
 
   &:hover {
-    opacity: 1;
+    background: ${lighten(0.1, sparrowColor)};
+  }
+  &:active {
+    background: ${darken(0.1, sparrowColor)};
   }
 
   p {
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 
     &.trace-vars {
       font-size: 12px;
