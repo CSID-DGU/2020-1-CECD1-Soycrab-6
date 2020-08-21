@@ -7,17 +7,16 @@ import { useHistory } from 'react-router-dom';
 const sparrowColor = '#73ca25';
 
 const NodeBox = styled.div`
-  padding: 1.8rem;
+  padding: 0.5rem;
   font-size: 14px;
   font-weight: bold;
   color: black;
   background: ${sparrowColor};
-  width: 300px;
-  height: 150px;
+  width: 250px;
+  height: 100px;
   text-align: center;
   border-radius: 5px;
   position: relative;
-  opacity: 0.7;
 
   &:hover {
     opacity: 1;
@@ -75,7 +74,7 @@ const Remove = styled.div`
 `;
 
 const AliasBox = styled.div`
-  padding: 15px 10px;
+  padding: 5px 0px;
   background: #1c7ed6;
   border-radius: 10px;
   cursor: pointer;
