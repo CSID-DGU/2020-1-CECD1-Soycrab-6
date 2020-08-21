@@ -1,11 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { goToHome } from '../modules/datas';
 
 const alignStyle = {
   marginTop: '20%',
 }
 
 function ErrorPage({ code }) {
+  const dispatch = useDispatch();
   var text = "";
 
   switch (code) {
@@ -23,20 +26,19 @@ function ErrorPage({ code }) {
     <>
       <div style={alignStyle}>
         <div className="text-center">
-          <Link to="/">
-            <img
-              src = { require('../images/sparrow_logo.png') }
-              alt="sparrow logo"
-            />
-          </Link>
+          <img
+            src = { require('../images/sparrow_logo.png') }
+            alt="sparrow logo"
+            onClick={() => dispatch(goToHome())}
+          />
           <h1>{"Error " + code }</h1>
           <h3>{text}</h3>
-          <a
+          <button
             className="btn btn-outline-success text-center"
-            href="/"
+            onClick={() => dispatch(goToHome())}
             >
             홈으로 돌아가기
-          </a>
+          </button>
         </div>
       </div>
     </>

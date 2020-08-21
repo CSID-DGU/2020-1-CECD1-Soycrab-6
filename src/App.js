@@ -22,12 +22,12 @@ function App() {
     <>
       <HeadNavbar />
       <Route path="/" component={GraphPage} exact={true} />
+      <Route path="/filters/:edgeId/:id" component={FilterEditPage} />
       <div className="container" style={containerStyle}>
         <Route path="/nodes/edit/:id" component={NodeEditPage} />
         <Route path="/edges/edit/:fromId/:toId" component={EdgeEditPage} />
         <Route path="/info" component={InfoPage} />
         <Route path="/events/edit/:parType/:parId/:id" component={EventEditPage} />
-        <Route path="/filters/:edgeId/:id" component={FilterEditPage} />
         <Route path="/propagators/edit/:edgeId/:id" component={PropagatorEditPage} />
       </div>
       <Link to="/info">
