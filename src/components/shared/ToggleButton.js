@@ -12,8 +12,8 @@ const ToggleBtn = styled.div`
         width: 5rem;
         height: 2rem;
         border-radius: 25px;
-        border-color: #007bff;
-        background-color: #007bff;
+        border-color: #73ca25;;
+        background-color: #73ca25;;
       }
       &::after {
         transform: translateX(3.7rem);
@@ -21,6 +21,7 @@ const ToggleBtn = styled.div`
         width: calc(2rem - 4px);
         height: calc(2rem - 4px);
         border-radius: 25px;
+        background-color: #fff;
       }
     }
   }

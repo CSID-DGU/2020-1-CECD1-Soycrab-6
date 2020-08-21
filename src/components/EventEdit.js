@@ -28,9 +28,6 @@ function EventEdit({ event }) {
                             Events List
                         </h5>
                       </div>
-                      <ul className="list-group list-group-flush">
-                        
-                      </ul>
                     </div>
                   </div>
                 </div>
@@ -254,7 +251,7 @@ function EventEdit({ event }) {
                       </div>
                     </div>
                   </div>
-                  <div className="row">
+                  <div className="row mt-5">
                     <div className="col">
                       name
                     </div>
@@ -265,7 +262,7 @@ function EventEdit({ event }) {
                       fqn
                     </div>
                   </div>  
-                  <div className="row">
+                  <div className="row mt-3 mb-3">
                     <div className="col">
                       name
                     </div>
