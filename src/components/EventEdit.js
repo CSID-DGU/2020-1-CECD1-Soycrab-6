@@ -108,7 +108,7 @@ function EventEdit({ event }) {
                         <div className="col-12">
                           <h5 className="mb-2">type</h5>
                           <div className="card">
-                              <SelectForm namespace={productPrefix} optionArray={leftTypeOption} />
+                              <SelectForm namespace="LeftType" optionArray={leftTypeOption} />
                           </div>
                         </div>
                         <div className="col-12">
@@ -129,13 +129,13 @@ function EventEdit({ event }) {
                         <div className="col-12">
                           <h5 className="mb-2">type</h5>
                           <div className="card">
-                            <SelectForm namespace={productPrefix} optionArray={rightTypeOption} />
+                            <SelectForm namespace="RightType" optionArray={rightTypeOption} />
                           </div>
                         </div>
                         <div className="col-12">
                           <h5 className="mb-2">kind</h5>
                           <div className="card">
-                            <SelectForm namespace={productPrefix} optionArray={rightKindOption} />
+                            <SelectForm namespace="RightKind" optionArray={rightKindOption} />
                           </div>
                         </div>
                       </div>
@@ -146,13 +146,13 @@ function EventEdit({ event }) {
                         <div className="col-12">
                           <h5 className="mb-2">type</h5>
                           <div className="card">
-                            <SelectForm namespace={productPrefix} optionArray={accessorTypeOption} />
+                            <SelectForm namespace="AccessorType" optionArray={accessorTypeOption} />
                           </div>
                         </div>
                         <div className="col-12">
                           <h5 className="mb-2">kind</h5>
                           <div className="card">
-                            <SelectForm namespace={productPrefix} optionArray={accessorKindOption} />
+                            <SelectForm namespace="AccessorKind" optionArray={accessorKindOption} />
                           </div>
                         </div>
                       </div>
@@ -175,7 +175,7 @@ function EventEdit({ event }) {
                     <div className="col">
                       <h5 className="mb-2">kind</h5>
                       <div className="card">
-                        <SelectForm namespace={productPrefix} optionArray={baseKindOption} />
+                        <SelectForm namespace="BaseKind" optionArray={baseKindOption} />
                       </div>
                     </div>
                   </div>
@@ -191,28 +191,12 @@ function EventEdit({ event }) {
                       </div>
                     </div>
                   </div>
-                  <div className="row mt-5">
-                    <div className="col">
-                      name
-                    </div>
-                    <div className="col">
-                      <ToggleButton switchId={3}/>
-                    </div>
-                    <div className="col">
-                      fqn
-                    </div>
+                  <div className="row">
+                    <ToggleButton leftLabel="Name" rightLabel="Fqn" switchId={1}/>
                   </div>  
                   <div className="row mt-3 mb-3">
-                    <div className="col">
-                      name
-                    </div>
-                    <div className="col">
-                      <ToggleButton switchId={4}/>
-                    </div>
-                    <div className="col">
-                      fqn
-                    </div>
-                  </div>  
+                    <ToggleButton leftLabel="Plain" rightLabel="Regex" switchId={2}/>
+                  </div> 
                 </div>
               </>
             );
