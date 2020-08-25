@@ -18,8 +18,8 @@ function EventEdit({ event }) {
       {realId} 번째 이벤트 수정 페이지
       <h1>parentId: {parentId}</h1>
       <h1>parentType: {parentType}</h1>
-      <div className="row row-cols-2">
-        <div className="col">
+      <div className="row">
+        <div className="col-4">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">
@@ -39,8 +39,8 @@ function EventEdit({ event }) {
           (function() {
             if (productPrefix === "CallEvent") return (
               <>
-                <div className="col border border-dart mb-5">
-                  <h5 className="mt-4 mb-2">type</h5>
+                <div className="col card">
+                  <h5 className="mt-3 mb-2">type</h5>
                   <div className="card">
                     <div className="card-body">
                       <h5 className="card-title">
@@ -92,8 +92,8 @@ function EventEdit({ event }) {
             );
             else if (productPrefix === "assignment") return (
               <>
-                <div className="col border border-dart">
-                  <h5 className="mt-4 mb-2">type</h5>
+                <div className="col card mb-5">
+                  <h5 className="mt-3 mb-2">type</h5>
                   <div className="card">
                     <div className="card-body">
                       <h5 className="card-title">
@@ -179,7 +179,7 @@ function EventEdit({ event }) {
                       </div>
                     </div>
                   </div>
-                  <div className="row mt-3">
+                  <div className="row mt-3 mb-4">
                     <div className="col">
                       <h5 className="mb-2">str</h5>
                       <div className="card">
