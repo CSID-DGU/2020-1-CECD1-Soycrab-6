@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 const ToggleBtn = styled.div`
   .custom-control {
@@ -13,7 +13,7 @@ const ToggleBtn = styled.div`
         height: 2rem;
         border-radius: 25px;
         border-color: #73ca25;;
-        background-color: #73ca25;;
+        background-color: #73ca25;
       }
       &::after {
         transform: translateX(3.7rem);
@@ -27,14 +27,51 @@ const ToggleBtn = styled.div`
   }
 `;
 
-function ToggleButton({switchId}) {
+const LeftLabel = styled.label`
+  color: #000;
+  ToggleBtn:checked{
+    color: #73ca25;
+  }
+  /* ${props => !props.check && css`
+    color: #000;
+  `}
+  ${props => props.check && css`
+    color: #73ca25;
+  `} */
+`;
+
+const RightLabel = styled.label`
+  color: #73ca25;
+  ToggleButton:checked{
+    color: #000;
+  }
+  /* ${props => !props.check && css`
+    color: #73ca25;
+  `}
+  ${props => props.check && css`
+    color: #000;
+  `} */
+`;
+
+
+function ToggleButton({leftLabel, rightLabel, switchId}) {
   return(
-    <ToggleBtn>
-      <div className="custom-control custom-switch">
-        <input type="checkbox" className="custom-control-input" id={switchId} />
-        <label className="custom-control-label" htmlFor={switchId}></label>
+    <>
+      <div className="col">
+        <LeftLabel>{leftLabel}</LeftLabel>
       </div>
-    </ToggleBtn>
+      <div className="col">
+        <ToggleBtn>
+          <div className="custom-control custom-switch">
+            <input type="checkbox" className="custom-control-input" onChange={isCheck(switchId)} id={switchId} />
+            <label className="custom-control-label" htmlFor={switchId} onClick={onClick}></label>
+          </div>
+        </ToggleBtn>
+      </div>
+      <div className="col">
+        <RightLabel>{rightLabel}</RightLabel>
+      </div>
+    </>
   )
 }
 

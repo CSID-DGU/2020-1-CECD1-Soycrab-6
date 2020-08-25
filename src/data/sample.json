@@ -53,8 +53,22 @@
 
                  ]
               },
+              "left":{
+                  "type":"LeftType",
+                  "name":"x"
+              },
+              "right":{
+               "type":"RightType",
+               "kind":"RightKind"
+              },
+              "accessor":{
+               "type":"AccessorType",
+               "kind":"AccessorKind"
+              },
               "base":{
-                 "productPrefix":"DontCare"
+                 "productPrefix":"DontCare",
+                 "kind": "BaseKind",
+                 "str":"django.http.HttpRequest"
               },
               "args":[
                  {

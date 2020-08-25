@@ -82,26 +82,10 @@ function EventEdit({ event }) {
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col">
-                      name
-                    </div>
-                    <div className="col">
-                      <ToggleButton switchId={1}/>
-                    </div>
-                    <div className="col">
-                      fqn
-                    </div>
+                    <ToggleButton leftLabel="Name" rightLabel="Fqn" switchId={1}/>
                   </div>  
                   <div className="row mt-3 mb-3">
-                    <div className="col">
-                      name
-                    </div>
-                    <div className="col">
-                      <ToggleButton switchId={2}/>
-                    </div>
-                    <div className="col">
-                      fqn
-                    </div>
+                    <ToggleButton leftLabel="Plain" rightLabel="Regex" switchId={2}/>
                   </div>  
                 </div>
               </div>
@@ -156,7 +140,7 @@ function EventEdit({ event }) {
                           <div className="card">
                             <div className="card-body">
                               <h5 className="card-title">
-                                  {callTargetRepr.repr.text}
+                                {callTargetRepr.repr.text}
                               </h5>
                             </div>
                           </div>
