@@ -15,30 +15,30 @@ function EventEdit({ event }) {
 
   return (
     <>
-      {
-        (function() {
-          if (productPrefix === "CallEvent") return (
-            <>
-              {realId} 번째 이벤트 수정 페이지
-              <h1>parentId: {parentId}</h1>
-              <h1>parentType: {parentType}</h1>
-              <div className="row row-cols-2">
-                <div className="col">
-                  <div className="card">
-                    <div className="card-body">
-                      <h5 className="card-title">
-                        Event Property
-                      </h5>
-                    </div>
-                    <div className="card ml-3 mr-3 mb-3">
-                      <div className="card-body">
-                        <h5 className="card-title">
-                            Events List
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      {realId} 번째 이벤트 수정 페이지
+      <h1>parentId: {parentId}</h1>
+      <h1>parentType: {parentType}</h1>
+      <div className="row row-cols-2">
+        <div className="col">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">
+                Event Property
+              </h5>
+            </div>
+            <div className="card ml-3 mr-3 mb-3">
+              <div className="card-body">
+                <h5 className="card-title">
+                    Events List
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        {
+          (function() {
+            if (productPrefix === "CallEvent") return (
+              <> 
                 <div className="col border border-dart mb-5">
                   <h5 className="mt-4 mb-2">type</h5>
                   <div className="card">
@@ -88,34 +88,10 @@ function EventEdit({ event }) {
                     <ToggleButton leftLabel="Plain" rightLabel="Regex" switchId={2}/>
                   </div>  
                 </div>
-              </div>
-            </>
-          );
-          else if (productPrefix === "assignment") return (
-            <>
-              {realId} 번째 이벤트 수정 페이지
-              <h1>parentId: {parentId}</h1>
-              <h1>parentType: {parentType}</h1>
-              <div className="row row-cols-2">
-                <div className="col">
-                  <div className="card">
-                    <div className="card-body">
-                      <h5 className="card-title">
-                        Event Property
-                      </h5>
-                    </div>
-                    <div className="card ml-3 mr-3 mb-3">
-                      <div className="card-body">
-                        <h5 className="card-title">
-                            Events List
-                        </h5>
-                      </div>
-                      <ul className="list-group list-group-flush">
-                        
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+              </>
+            );
+            else if (productPrefix === "assignment") return (
+              <>
                 <div className="col border border-dart">
                   <h5 className="mt-4 mb-2">type</h5>
                   <div className="card">
@@ -238,13 +214,11 @@ function EventEdit({ event }) {
                     </div>
                   </div>  
                 </div>
-              </div>
-              
-            </>
-          );
-        })()
-      }
-
+              </>
+            );
+          })()
+        }
+      </div>
     </>
   )
 };
