@@ -63,8 +63,8 @@ function ToggleButton({leftLabel, rightLabel, switchId}) {
       <div className="col">
         <ToggleBtn>
           <div className="custom-control custom-switch">
-            <input type="checkbox" className="custom-control-input" onChange={isCheck(switchId)} id={switchId} />
-            <label className="custom-control-label" htmlFor={switchId} onClick={onClick}></label>
+            <input type="checkbox" className="custom-control-input" id={switchId} />
+            <label className="custom-control-label" htmlFor={switchId}></label>
           </div>
         </ToggleBtn>
       </div>
