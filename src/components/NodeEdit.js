@@ -58,12 +58,10 @@ function NodeEdit({ node }) {
         <div className="col">
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title">
-                  추적변수<MdAddCircle />
-              </h5>
+              <h5 className="card-title">추적변수<MdAddCircle className="float-right" /></h5>
             </div>
             <ul className="list-group list-group-flush">
-              <LinkButton className="list-group-item" onClick={() => console.log('click')}>음...<MdEdit /><MdDelete /></LinkButton>
+              <LinkButton className="list-group-item" onClick={() => console.log('click')}>음...<div className="float-right"><MdEdit /><MdDelete /></div></LinkButton>
             </ul>
           </div>
         </div>
