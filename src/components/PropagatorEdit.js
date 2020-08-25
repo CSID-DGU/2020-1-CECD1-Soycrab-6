@@ -2,6 +2,7 @@ import React from 'react';
 import Event from './Event';
 import Nothing from './shared/Nothing';
 import LinkButton from './shared/LinkButton';
+import ToggleButton from './shared/ToggleButton';
 
 function PropagatorEdit({ propagator }) {
   const { realId, edgeId, alias, args, fromTraceVar, toTraceVar } = propagator;
@@ -10,7 +11,7 @@ function PropagatorEdit({ propagator }) {
     <>
       <h6 className="d-flex">Breadcrumb 들어갈 자리</h6>
       <h2>Edge #{edgeId}의 전파규칙 수정</h2>
-      <div className="row row-cols-w">
+      <div className="row row-cols-2">
         <div className="col">
           <div className="card">
             <div className="card-body">
@@ -32,7 +33,55 @@ function PropagatorEdit({ propagator }) {
             </ul>
           </div>
         </div>
-        <div className="col"></div>
+        <div className="col border border-dart mb-5">
+          <h5 className="mt-4 mb-2">type</h5>
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">
+                type들어갈자리
+              </h5>
+            </div>
+          </div>
+          <div className="row mt-3">
+            <div className="col">
+              <h2 className="mb-4">target</h2>
+              <h5 className="mb-2">str</h5>
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">
+                      django.core.files.base.File
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <ToggleButton leftLabel="Name" rightLabel="Fqn" switchId={1}/>
+          </div>  
+          <div className="row mt-3 mb-3">
+            <ToggleButton leftLabel="Plain" rightLabel="Regex" switchId={2}/>
+          </div>
+          <div className="row mt-3">
+            <div className="col">
+              <h5 className="mb-2">return</h5>
+              <div className="card">
+                to
+              </div>
+            </div>
+          </div>
+          <div className="row mt-3">
+            <div className="col">
+              <h5 className="mb-2">param</h5>
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">
+                      from
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>  
+        </div>
       </div>
     {/* <div>
       {realId}-{edgeId} 전파자 수정 페이지
