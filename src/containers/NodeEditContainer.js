@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import NodeEdit from '../components/NodeEdit';
-import { getNode } from '../modules/nodes';
+import { getNode, updateNodeName } from '../modules/nodes';
 import StateRender from '../components/shared/StateRender';
 import { reducerUtils } from '../lib/asyncUtils';
 
@@ -15,13 +15,17 @@ function NodeEditContainer({ nodeId }) {
     dispatch(getNode(nodeId));
   }, [nodeId, dispatch]);
 
+  const onChangeName = useCallback(name => dispatch(updateNodeName(nodeId, name)), [dispatch, nodeId]);
+
   if (loading || !data || error) {
     return <StateRender 
               loading={loading} 
               data={data} 
               error={error} />
   } else {
-    return <NodeEdit node={data} />;
+    return <NodeEdit 
+              node={data}
+              onChangeName={onChangeName} />;
   };
 };
 

@@ -1,3 +1,5 @@
+import { getAllNodes } from "../api/callDatas";
+
 export const createPromiseThunk = (type, promiseCreator) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
   // Thunk 생성함수
@@ -107,6 +109,50 @@ export const handleAsyncActionsById = (type, key, keepData) => {
       default:
         return state;
     }
+  };
+};
+
+export const handleUpdateAsyncActionsById = (key, prop) => {
+  return (state, action) => {
+    // updateSessionStorageById(key, action.payload.realId, action, prop);
+    return {
+      ...state,
+      [key]: {
+        ...state[key],
+        [action.payload.realId]: reducerUtils.success({
+          ...state[key][action.payload.realId].data,
+          [prop]: action.payload[prop]
+        })
+      }
+    };
+  };
+};
+
+export const updateSessionStorageById = (key, realId, action, prop) => {
+  let storedData = JSON.parse(sessionStorage.data);
+  let newState = storedData;
+
+  switch(key) {
+    case 'node':
+      const allNodes = getAllNodes();
+      const updatedNode = allNodes.find(node => node.realId === realId);
+      if (updatedNode.filterId === null) {
+        const newNodes = storedData.nodes.map(node => 
+          node.realId === realId
+          ? { ...node, [prop]: action.payload[prop] }
+          : node
+        );
+        newState = JSON.stringify({
+          ...storedData,
+          nodes: newNodes
+        });
+      } else {
+        // storedData.links
+      };
+      window.sessionStorage.setItem('data', newState);
+      break;
+    default:
+      throw new Error('Unhandled Redux Reducer Module Name Key');
   };
 };
 
