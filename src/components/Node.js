@@ -98,7 +98,7 @@ const AliasBox = styled.div`
 
 
 function Node({ node }) {
-  const { realId, alias, traceVars, isEnd } = node;
+  const { name, realId, alias, traceVars, isEnd } = node;
   const history = useHistory();
 
   const goToNodeEdit = e => {
@@ -119,7 +119,7 @@ function Node({ node }) {
       <Remove>
         <MdDelete />
       </Remove>
-      <p className="node-name">노드ID: {realId}</p>
+      <p className="node-name">{name}</p>
       <p className="trace-vars">추적 변수: <span>{traceVars.join(', ')}</span></p>
       <AliasBox onClick={goToAliasEdit} className="alias-box">
         {alias.name}

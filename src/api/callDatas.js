@@ -14,12 +14,18 @@ const parseData = () => {
 const parseRawData = () => {
   return JSON.parse(window.sessionStorage.rawData);
 };
+// let loadData = null;
+// setTimeout(() => loadData = parseData(), sleepTime);
+// const data = loadData;
 
-const getAllNodes = () => {
+export const getAllNodes = () => {
   const data = parseData();
   let nodes = [];
   nodes = nodes.concat(data.nodes);
-  data.links.map(edge => nodes = nodes.concat(edge.filter.nodes));
+  data.links.map((edge, index) => nodes = nodes.concat(edge.filter.nodes.map(node => ({
+    ...node,
+    filterId: index
+  }))));
   return nodes;
 };
 
