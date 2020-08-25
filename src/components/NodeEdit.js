@@ -48,7 +48,7 @@ function NodeEdit({ node, onChangeName }) {
           <button onClick={onUpdateName} className="btn btn-outline-secondary" type="button">저장</button>
         </div>
       </div>
-      <button type="button" className="btn btn-success float-right" data-toggle="modal" data-target="#eventModal">이벤트 추가</button>
+      
       {/* Modal */}
       <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -82,7 +82,7 @@ function NodeEdit({ node, onChangeName }) {
               <h5 className="card-title">추적변수<MdAddCircle className="float-right" /></h5>
             </div>
             <ul className="list-group list-group-flush">
-              <LinkButton className="list-group-item" onClick={() => console.log('click')}>음...<div className="float-right"><MdEdit /><MdDelete /></div></LinkButton>
+              <LinkButton className="list-group-item" onClick={() => console.log('click')}>변수이름<div className="float-right"><MdEdit /><MdDelete /></div></LinkButton>
             </ul>
           </div>
         </div>
@@ -96,7 +96,7 @@ function NodeEdit({ node, onChangeName }) {
             <div className="card ml-3 mr-3 mb-3">
               <div className="card-body">
                 <h5 className="card-title">
-                    Events List
+                    Events List<button type="button" className="btn btn-success float-right" data-toggle="modal" data-target="#eventModal">이벤트 추가</button>
                 </h5>
               </div>
               <div className="list-group list-group-flush">

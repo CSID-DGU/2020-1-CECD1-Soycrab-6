@@ -47,6 +47,7 @@ const DarkBackground = styled.div`
   align-items: center;
   justify-content: center;
   background: rgb(0, 0, 0, 0.8);
+  z-index: 2;
 
   animation-duration: 0.25s;
   animation-timing-function: ease-out;
