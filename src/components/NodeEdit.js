@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+import { MdAddCircle, MdEdit, MdDelete } from 'react-icons/md';
 import Event from './Event';
 import Nothing from './shared/Nothing';
 import LinkButton from './shared/LinkButton';
@@ -23,8 +24,49 @@ function NodeEdit({ node }) {
         <li className="breadcrumb-item"><a href="#">Library</a></li>
         <li className="breadcrumb-item active" aria-current="page">Data</li>
       </BreadCrumbItem>
-      <h2>{name + " (노드이름)"}</h2>
+      <div>
+        <h2>{name + " (노드이름)"}</h2>
+        <button type="button" className="btn btn-success float-right" data-toggle="modal" data-target="#eventModal">이벤트 추가</button>
+        {/* Modal */}
+        <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="eventModalLabel">Event 추가</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div className="card">
+                  <ul className="list-group list-group-flush">
+                    {eventArray.map(
+                      (event, index) => <LinkButton className="list-group-item" key={index} onClick={() => console.log('click')}>{event}</LinkButton>
+                    )}
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Modal */}
+      </div>
       <div className="row row-cols-2">
+        <div className="col">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">
+                  추적변수<MdAddCircle />
+              </h5>
+            </div>
+            <ul className="list-group list-group-flush">
+              <LinkButton className="list-group-item" onClick={() => console.log('click')}>음...<MdEdit /><MdDelete /></LinkButton>
+            </ul>
+          </div>
+        </div>
         <div className="col">
           <div className="card">
             <div className="card-body">
@@ -50,20 +92,6 @@ function NodeEdit({ node }) {
                 : <Nothing />}
               </div>
             </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">
-                  Event 추가
-              </h5>
-            </div>
-            <ul className="list-group list-group-flush">
-              {eventArray.map(
-                (event, index) => <LinkButton className="list-group-item" key={index} onClick={() => console.log('click')}>{event}</LinkButton>
-              )}
-            </ul>
           </div>
         </div>
       </div>
