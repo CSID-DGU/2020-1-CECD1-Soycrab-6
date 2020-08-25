@@ -1,5 +1,3 @@
-import { useSelector } from 'react-redux';
-
 const sleep = n => new Promise(resolve => setTimeout(resolve, n));
 const pushInnerFromAlias = (objArr, objName, boxArr) => new Promise(resolve => {
   objArr.map(obj => {
@@ -11,7 +9,7 @@ const pushInnerFromAlias = (objArr, objName, boxArr) => new Promise(resolve => {
 });
 const sleepTime = 250;
 const parseData = () => {
-  return useSelector(state => state.datas.datas);
+  return JSON.parse(window.sessionStorage.data);
 };
 const parseRawData = () => {
   return JSON.parse(window.sessionStorage.rawData);
