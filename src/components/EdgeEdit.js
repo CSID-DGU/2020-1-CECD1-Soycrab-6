@@ -19,7 +19,8 @@ function EdgeEdit({ edge }) {
 
   return (
     <>
-      <h6 className="d-flex" style={marginBottom}>Edge 수정페이지</h6>
+      <h6 className="d-flex" style={marginBottom}>Breadcrumb 들어갈 자리</h6>
+      <h2>{source + " - " + target + " (Edge이름)"}</h2>
       <div className="row row-cols-2">
         <div className="col" style={marginBottom}>
           <div className="card">
