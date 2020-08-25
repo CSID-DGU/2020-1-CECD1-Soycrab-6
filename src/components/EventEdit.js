@@ -30,7 +30,7 @@ function EventEdit({ event }) {
                         Event Property
                       </h5>
                     </div>
-                    <div className="card">
+                    <div className="card ml-3 mr-3 mb-3">
                       <div className="card-body">
                         <h5 className="card-title">
                             Events List
@@ -104,7 +104,7 @@ function EventEdit({ event }) {
                         Event Property
                       </h5>
                     </div>
-                    <div className="card">
+                    <div className="card ml-3 mr-3 mb-3">
                       <div className="card-body">
                         <h5 className="card-title">
                             Events List
