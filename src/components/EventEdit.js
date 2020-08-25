@@ -38,7 +38,7 @@ function EventEdit({ event }) {
         {
           (function() {
             if (productPrefix === "CallEvent") return (
-              <> 
+              <>
                 <div className="col border border-dart mb-5">
                   <h5 className="mt-4 mb-2">type</h5>
                   <div className="card">
