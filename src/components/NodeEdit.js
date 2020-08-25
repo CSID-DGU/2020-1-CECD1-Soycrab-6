@@ -10,6 +10,14 @@ const BreadCrumbItem = styled.div`
   background-color: #f8f9fa;
 `;
 
+const IconButton = styled.span`
+  font-size: 25px;
+  cursor: pointer;
+  &:hover {
+    color: #91A3B5;
+  }
+`;
+
 function NodeEdit({ node, onChangeName }) {
   const eventArray = ['호출식', '접근식', '연산식', '배열 참조', '배열 생성', '개별 이벤트 템플릿'];
   const { realId, name, filterId, isEnd, alias, traceVars } = node;
@@ -79,10 +87,10 @@ function NodeEdit({ node, onChangeName }) {
         <div className="col">
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title">추적변수<MdAddCircle className="float-right" /></h5>
+              <h5 className="card-title">추적변수<IconButton><MdAddCircle className="float-right" /></IconButton></h5>
             </div>
             <ul className="list-group list-group-flush">
-              <LinkButton className="list-group-item" onClick={() => console.log('click')}>변수이름<div className="float-right"><MdEdit /><MdDelete /></div></LinkButton>
+              <LinkButton className="list-group-item" onClick={() => console.log('click')}>변수이름<div className="float-right"><IconButton><MdEdit /></IconButton><IconButton><MdDelete /></ IconButton></div></LinkButton>
             </ul>
           </div>
         </div>
@@ -96,7 +104,7 @@ function NodeEdit({ node, onChangeName }) {
             <div className="card ml-3 mr-3 mb-3">
               <div className="card-body">
                 <h5 className="card-title">
-                    Events List<button type="button" className="btn btn-success float-right" data-toggle="modal" data-target="#eventModal">이벤트 추가</button>
+                    Events List<IconButton><MdAddCircle className="float-right" data-toggle="modal" data-target="#eventModal" /></IconButton>
                 </h5>
               </div>
               <div className="list-group list-group-flush">
