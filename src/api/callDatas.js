@@ -8,15 +8,12 @@ const pushInnerFromAlias = (objArr, objName, boxArr) => new Promise(resolve => {
   return resolve();
 });
 const sleepTime = 250;
-const parseData = () => {
+export const parseData = () => {
   return JSON.parse(window.sessionStorage.data);
 };
 const parseRawData = () => {
   return JSON.parse(window.sessionStorage.rawData);
 };
-// let loadData = null;
-// setTimeout(() => loadData = parseData(), sleepTime);
-// const data = loadData;
 
 export const getAllNodes = () => {
   const data = parseData();

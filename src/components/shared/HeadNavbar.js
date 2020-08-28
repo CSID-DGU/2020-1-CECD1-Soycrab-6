@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { goToHome } from '../../modules/datas';
 import ExportModal from './ExportModal';
+import { exportJson } from '../../export';
 
 const logoStyle = {
   width: 100,
@@ -23,7 +24,7 @@ function HeadNavbar() {
     setDialog(false);
   };
 
-  const exportVal = JSON.stringify(JSON.parse(sessionStorage.rawData), null, "\t");
+  const exportVal = exportJson();
 
   return (
     <>
