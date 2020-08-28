@@ -21,16 +21,27 @@ export class Edge {
 };
 
 export class Event {
-  constructor({ productPrefix, ret, cond, callTargetRepr, left, right, accessor, base, args }) {
-    this.productPrefix = productPrefix;
-    this.ret = ret;
-    this.cond = cond;
-    this.callTargetRepr = callTargetRepr;
-    this.left = left;
-    this.right = right;
-    this.accessor = accessor;
-    this.base = base;
-    this.args = args;
+  constructor({ ...event }) {
+    this.productPrefix = event.productPrefix;
+    console.log(event.productPrefix)
+    switch (event.productPrefix) {
+      case 'CallEvent':
+        this.ret = event.ret;
+        this.callTargetRepr = event.callTargetRepr;
+        this.base = event.base;
+        this.args = event.args;   
+        break;
+      case 'AnyArrayAccessEvent':
+        this.indexVar = event.indexVar;
+        break;
+      case 'ArrayCreateEvent':
+        this.sizeVar = event.sizeVar;
+        break;
+      case 'AssignmentEvent':
+        break;
+      default:
+        throw new Error('Unhandled Event Product Prefix');
+    };
   };
 };
 
