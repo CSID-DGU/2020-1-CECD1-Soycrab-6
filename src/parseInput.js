@@ -1,4 +1,25 @@
 import initialJson from './data/sample.json';
+import { Node, Edge, Event } from './export';
+
+class CustomNode extends Node {
+  constructor({ ...node }) {
+    super(node);
+    this.realId = parseInt(node.id, 10);
+    this.name = `${node.id}번 노드`;
+  };
+};
+
+class CustomEdge extends Edge {
+  constructor({ ...edge }) {
+    super(edge);
+    this.realId = parseInt(edge.id, 10);
+    this.name = `${edge.id}번 노드`;
+  };
+};
+
+class CustomEvent extends Event {
+  
+};
 
 const parseArrByInsertIds = (objArr, parentId = null, parentName = null) => {
   if (parentName && objArr && objArr.length > 0) {

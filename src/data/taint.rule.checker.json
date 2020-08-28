@@ -1,0 +1,381 @@
+{
+  "$id": "http://www.sparrowfasoo.com/sast/engine/jfsem/taint.rule.checker",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$defs": {
+    "node": {
+      "title": "Taint Rule Node",
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "Node" },
+        "id": {
+          "description": "Unique id of node",
+          "type": "number"
+        },
+        "traceVars": {
+          "description": "Set of tracing meta variables",
+          "type": "array",
+          "items": {
+            "description": "Name of meta variable",
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "events": {
+          "description": "List of event",
+          "type": "array",
+          "items": {
+            "description": "Semantic event in this node",
+            "$ref": "#/$defs/event"
+          }
+        },
+        "isEnd": {
+          "description": "Node for accept state which represents defect or filter(default: false)",
+          "type": "boolean"
+        }
+      },
+      "required": [ "productPrefix", "id", "traceVars", "events" ]
+    },
+    "edge": {
+      "title": "Taint Rule Edge",
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "Edge" },
+        "fromId": {
+          "description": "id of from node",
+          "type": "number"
+        },
+        "toId": {
+          "description": "id of to node",
+          "type": "number"
+        },
+        "propagators": {
+          "description": "Propagation rules",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/event"
+          }
+        },
+        "filter": {
+          "description": "Filter rule",
+          "type": "object",
+          "properties": {
+            "productPrefix": { "const": "Filter" },
+            "nodes": {
+              "description": "Set of filter event node",
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/node",
+                "title": "Taint Filter Rule Node"
+              }
+            },
+            "edges": {
+              "description": "Set of filter edge from filter node to filter node",
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/edge",
+                "title": "Taint Filter Rule Edge",
+                "not" : { "required" : [ "filter" ] }
+              }
+            }
+          },
+          "required": [ "productPrefix", "nodes", "edges" ]
+        }
+      },
+      "required": [ "productPrefix", "fromId", "toId", "propagators" ]
+    },
+    "event": {
+      "anyOf": [
+        { "$ref": "#/$defs/callEvent" },
+        { "$ref": "#/$defs/anyArrayAccessEvent" },
+        { "$ref": "#/$defs/arrayCreateEvent" },
+        { "$ref": "#/$defs/assignmentEvent" },
+        { "$ref": "#/$defs/unaryOperationEvent" },
+        { "$ref": "#/$defs/binaryOperationEvent" },
+        { "$ref": "#/$defs/branchConditionEvent" },
+        { "$ref": "#/$defs/predefEventAlias" }
+      ],
+      "required": [ "productPrefix" ]
+    },
+    "callEvent": {
+      "title": "Call event",
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "CallEvent" },
+        "ret": {
+          "$ref": "#/$defs/traceVarHolder"
+        },
+        "callTargetRepr": {
+          "$ref": "#/$defs/methodIndicator"
+        },
+        "base": {
+          "$ref": "#/$defs/traceVarHolder"
+        },
+        "args": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              { "$ref": "#/$defs/indexedArgument" },
+              { "$ref": "#/$defs/namedArgument" },
+              { "$ref": "#/$defs/anyArgument" }
+            ]
+          }
+        }
+      },
+      "required": [ "productPrefix", "callTargetRepr", "args" ]
+    },
+    "anyArrayAccessEvent": {
+      "title": "Array access event with index variable",
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "AnyArrayAccessEvent" },
+        "indexVar": {
+          "type": "string"
+        }
+      },
+      "required": [ "productPrefix", "indexVar" ]
+    },
+    "arrayCreateEvent": {
+      "title": "Array Creation Event",
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "ArrayCreateEvent" },
+        "sizeVar": {
+          "type": "string"
+        }
+      },
+      "required": [ "productPrefix", "sizeVar" ]
+    },
+    "assignmentEvent": {
+      "title": "Assignment Event",
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "AssignmentEvent" },
+        "lhs": {
+          "$ref": "#/$defs/taintExpression"
+        },
+        "rhs": {
+          "$ref": "#/$defs/taintExpression"
+        }
+      },
+      "required": [ "productPrefix", "lhs", "rhs" ]
+    },
+    "unaryOperationEvent": {
+      "title": "Unary Operation Event",
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "UnaryOperationEvent" },
+        "operator": {
+          "$ref": "#/$defs/repr"
+        },
+        "operandVar": {
+          "type": "string"
+        }
+      },
+      "required": [ "productPrefix", "operator", "operandVar" ]
+    },
+    "binaryOperationEvent": {
+      "title": "Binary Operation Event",
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "BinaryOperationEvent" },
+        "operator": {
+          "$ref": "#/$defs/repr"
+        },
+        "lhs": {
+          "$ref": "#/$defs/taintExpression"
+        },
+        "rhs": {
+          "$ref": "#/$defs/taintExpression"
+        }
+      },
+      "required": [ "productPrefix", "lhs", "rhs" ]
+    },
+    "branchConditionEvent": {
+      "title": "Branch Condition Event",
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "BranchConditionEvent" },
+        "cond": {
+          "$ref": "#/$defs/traceVarHolder"
+        }
+      },
+      "required": [ "productPrefix", "cond" ]
+    },
+    "predefEventAlias": {
+      "title": "Predefined Event Alias Reference",
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "PredefinedEventAlias" },
+        "eventName": { "type": "string" },
+        "args": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/traceVarHolder"
+          }
+        }
+      },
+      "required": [ "productPrefix", "eventName", "args" ]
+    },
+    "repr": {
+      "anyOf": [
+        { "$ref": "#/$defs/plainTextRepr" },
+        { "$ref": "#/$defs/regexRepr" }
+      ]
+    },
+    "plainTextRepr": {
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "PlainTextRepr" },
+        "text": { "type": "string" }
+      },
+      "required": [ "productPrefix", "text" ]
+    },
+    "regexRepr": {
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "RegexRepr" },
+        "pattern": { "type": "string" },
+        "prettyName": { "type": "string" }
+      },
+      "required": [ "productPrefix", "pattern", "prettyName" ]
+    },
+    "methodIndicator": {
+      "type": "object",
+      "properties": {
+        "productPrefix": {
+          "anyOf": [
+            { "const": "MethodNameIndicator" },
+            { "const": "MethodFqnIndicator" }
+          ]
+        },
+        "repr": { "$ref": "#/$defs/repr" },
+        "attrs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/repr" }
+        }
+      },
+      "required": [ "productPrefix", "repr", "attrs" ]
+    },
+    "indexedArgument": {
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "IndexedArgument" },
+        "n": { "type": "number" },
+        "arg": { "$ref": "#/$defs/taintExpression" }
+      },
+      "required": [ "productPrefix", "n", "arg" ]
+    },
+    "namedArgument": {
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "NamedArgument" },
+        "name": { "type": "string" },
+        "arg": { "$ref": "#/$defs/taintExpression" }
+      },
+      "required": [ "productPrefix", "n", "arg" ]
+    },
+    "anyArgument": {
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "AnyArgument" },
+        "arg": { "$ref": "#/$defs/taintExpression" }
+      },
+      "required": [ "productPrefix", "arg" ]
+    },
+    "taintExpression": {
+      "anyOf": [
+        { "$ref": "#/$defs/dontCare" },
+        { "$ref": "#/$defs/traceVar" },
+        { "$ref": "#/$defs/variableIndicator" },
+        { "$ref": "#/$defs/valueIndicator" },
+        { "$ref": "#/$defs/typeIndicator" },
+        { "$ref": "#/$defs/dotAccessExpression" },
+        { "$ref": "#/$defs/indexAccessExpression" }
+      ]
+    },
+    "traceVarHolder": {
+      "anyOf": [
+        { "$ref": "#/$defs/dontCare" },
+        { "$ref": "#/$defs/traceVar" }
+      ]
+    },
+    "dontCare": {
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "DontCare" }
+      },
+      "required": [ "productPrefix" ]
+    },
+    "traceVar": {
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "TraceVar" },
+        "name": { "type": "string" }
+      },
+      "required": [ "productPrefix", "name" ]
+    },
+    "variableIndicator": {
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "VariableIndicator" },
+        "repr": { "$ref": "#/$defs/repr" }
+      },
+      "required": [ "productPrefix", "repr" ]
+    },
+    "valueIndicator": {
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "ValueIndicator" },
+        "repr": { "$ref": "#/$defs/repr" }
+      },
+      "required": [ "productPrefix", "repr" ]
+    },
+    "typeIndicator": {
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "TypeIndicator" },
+        "repr": { "$ref": "#/$defs/repr" }
+      },
+      "required": [ "productPrefix", "repr" ]
+    },
+    "dotAccessExpression": {
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "DotAccessExpression" },
+        "base": { "$ref": "#/$defs/taintExpression" },
+        "member": { "$ref": "#/$defs/repr" }
+      },
+      "required": [ "productPrefix", "base", "member" ]
+    },
+    "indexAccessExpression": {
+      "type": "object",
+      "properties": {
+        "productPrefix": { "const": "IndexAccessExpression" },
+        "base": { "$ref": "#/$defs/taintExpression" },
+        "index": { "$ref": "#/$defs/taintExpression" }
+      },
+      "required": [ "productPrefix", "base", "index" ]
+    }
+  },
+
+  "title": "Taint Rule Checker",
+  "type": "object",
+  "properties": {
+    "productPrefix": { "const": "TaintRuleChecker" },
+    "nodes": {
+      "description": "Set of event nodes",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "edges": {
+      "description": "Set of event edges from node to node",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/edge"
+      }
+    }
+  },
+  "required": [ "productPrefix", "nodes", "edges" ]
+}

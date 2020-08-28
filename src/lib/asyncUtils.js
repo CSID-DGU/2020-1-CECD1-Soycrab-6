@@ -1,4 +1,4 @@
-import { getAllNodes } from "../api/callDatas";
+import { getAllNodes, parseData } from "../api/callDatas";
 
 export const createPromiseThunk = (type, promiseCreator) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
@@ -114,7 +114,7 @@ export const handleAsyncActionsById = (type, key, keepData) => {
 
 export const handleUpdateAsyncActionsById = (key, prop) => {
   return (state, action) => {
-    // updateSessionStorageById(key, action.payload.realId, action, prop);
+    updateSessionStorageById(key, action.payload.realId, action, prop);
     return {
       ...state,
       [key]: {
@@ -129,7 +129,7 @@ export const handleUpdateAsyncActionsById = (key, prop) => {
 };
 
 export const updateSessionStorageById = (key, realId, action, prop) => {
-  let storedData = JSON.parse(sessionStorage.data);
+  let storedData = parseData();
   let newState = storedData;
 
   switch(key) {
@@ -144,10 +144,19 @@ export const updateSessionStorageById = (key, realId, action, prop) => {
         );
         newState = JSON.stringify({
           ...storedData,
-          nodes: newNodes
+          links: newNodes
         });
       } else {
-        // storedData.links
+        const newEdges = storedData.links.map(edge => 
+          edge.filter === updatedNode.filterId
+          ? { ...edge ,filter: {...edge.filter, nodes: edge.filter.nodes.map(node => node.realId === realId ? { ...node, [prop]: action.payload[prop]  } : node)} }
+          : edge
+        );
+        console.log(newEdges);
+        newState = JSON.stringify({
+          ...storedData,
+          edges: newEdges
+        });
       };
       window.sessionStorage.setItem('data', newState);
       break;

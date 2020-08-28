@@ -1,6 +1,6 @@
 import { parseData } from "./api/callDatas";
 
-class Node {
+export class Node {
   constructor({ productPrefix, id, traceVars, events, isEnd }) {
     this.productPrefix = productPrefix;
     this.id = id;
@@ -10,7 +10,7 @@ class Node {
   };
 };
 
-class Edge {
+export class Edge {
   constructor({ productPrefix, fromId, toId, propagators, filter }) {
     this.productPrefix = productPrefix;
     this.fromId = fromId;
@@ -20,7 +20,7 @@ class Edge {
   };
 };
 
-class Event {
+export class Event {
   constructor({ productPrefix, ret, cond, callTargetRepr, left, right, accessor, base, args }) {
     this.productPrefix = productPrefix;
     this.ret = ret;
@@ -34,7 +34,7 @@ class Event {
   };
 };
 
-class Filter {
+export class Filter {
   constructor({ productPrefix, nodes, edges }) {
     this.productPrefix = productPrefix;
     this.nodes = nodes.map(node => new Node(nodeConvert(node)));
@@ -42,7 +42,7 @@ class Filter {
   };
 };
 
-class Propagator {
+export class Propagator {
   constructor({ productPrefix, events, fromTraceVar, toTraceVar }) {
     this.productPrefix = productPrefix;
     this.events = events.map(event => new Event(event));
