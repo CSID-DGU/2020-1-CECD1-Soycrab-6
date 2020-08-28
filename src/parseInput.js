@@ -57,6 +57,7 @@ const getEdges = () => {
       events: null
     })),
     filter: {
+      ...edge.filter,
       realId: index,
       edgeId: index,
       nodes: parseNodes(edge.filter.nodes, index),

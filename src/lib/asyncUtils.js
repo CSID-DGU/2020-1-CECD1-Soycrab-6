@@ -19,7 +19,7 @@ export const createPromiseThunk = (type, promiseCreator) => {
         type: ERROR,
         payload: e,
         error: true
-      })
+      });
     };
   };
 };
