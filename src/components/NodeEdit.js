@@ -19,7 +19,7 @@ const IconButton = styled.span`
 `;
 
 function NodeEdit({ node, onChangeName }) {
-  const eventArray = ['호출식', '접근식', '연산식', '배열 참조', '배열 생성', '개별 이벤트 템플릿'];
+  const eventArray = ['callEvent', 'anyArrayAccessEvent', 'arrayCreateEvent', 'assignmentEvent', 'unaryOperationEvent', 'binaryOperationEvent', 'branchConditionEvent', 'predefEventAlias'];
   const { realId, name, filterId, isEnd, alias, traceVars } = node;
 
   const history = useHistory();
