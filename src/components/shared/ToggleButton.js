@@ -29,29 +29,33 @@ const ToggleBtn = styled.div`
 
 const LeftLabel = styled.label`
   color: #000;
-  ToggleBtn:checked{
+  ${ToggleInput}:checked{
     color: #73ca25;
   }
-  /* ${props => !props.check && css`
-    color: #000;
-  `}
-  ${props => props.check && css`
-    color: #73ca25;
-  `} */
 `;
 
 const RightLabel = styled.label`
   color: #73ca25;
-  ToggleButton:checked{
+  ${ToggleButton}:checked{
     color: #000;
   }
-  /* ${props => !props.check && css`
-    color: #73ca25;
-  `}
-  ${props => props.check && css`
-    color: #000;
-  `} */
 `;
+
+
+const ToggleInput = styled.input `
+  &:cheked{
+    ${LeftLabel} {
+      color: #73ca25;
+    }
+    ${RightLabel} {
+      color: #000;
+    }
+  }
+`
+
+const onChange = () => {
+
+}
 
 
 function ToggleButton({leftLabel, rightLabel, switchId}) {
@@ -63,7 +67,7 @@ function ToggleButton({leftLabel, rightLabel, switchId}) {
       <div className="col">
         <ToggleBtn>
           <div className="custom-control custom-switch">
-            <input type="checkbox" className="custom-control-input" id={switchId} />
+            <ToggleInput type="checkbox" className="custom-control-input" onChange={onChange} id={switchId} />
             <label className="custom-control-label" htmlFor={switchId}></label>
           </div>
         </ToggleBtn>

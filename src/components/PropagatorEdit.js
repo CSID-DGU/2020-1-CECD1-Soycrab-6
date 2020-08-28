@@ -33,8 +33,8 @@ function PropagatorEdit({ propagator }) {
             </ul>
           </div>
         </div>
-        <div className="col border border-dart mb-5">
-          <h5 className="mt-4 mb-2">type</h5>
+        <div className="col card">
+          <h5 className="mt-3 mb-2">type</h5>
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">
@@ -65,14 +65,18 @@ function PropagatorEdit({ propagator }) {
             <div className="col">
               <h5 className="mb-2">return</h5>
               <div className="card">
-                to
+                <div className="card-body">
+                  <h5 className="card-title">
+                      to
+                  </h5>
+                </div>
               </div>
             </div>
           </div>
           <div className="row mt-3">
             <div className="col">
-              <h5 className="mb-2">param</h5>
-              <div className="card">
+              <h5 className="mb-2">param0</h5>
+              <div className="card mb-3">
                 <div className="card-body">
                   <h5 className="card-title">
                       from

@@ -5,10 +5,7 @@ function SelectForm({namespace, optionArray}) {
     <>
       <select name="" id="" className="pt-2 pb-2">
         {optionArray.map(
-          (option, index) => 
-          <option value={namespace + index}>{option}</option>
-          // console.log(namespace + index)
-          
+          (option, index) => <option key={namespace + index} value={namespace + index}>{option}</option>
         )}
       </select>
     </>
