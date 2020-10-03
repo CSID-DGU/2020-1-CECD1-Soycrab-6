@@ -13,6 +13,8 @@ import { Link } from "react-router-dom"
 import InfoButton from './components/shared/InfoButton';
 
 function App() {
+  localStorage.setItem('pageHistory', JSON.stringify(['/']));
+  
   const containerStyle = {
     marginTop: '30px',
     textAlign: 'center'

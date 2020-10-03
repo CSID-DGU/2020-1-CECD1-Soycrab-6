@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import ToggleButton from './shared/ToggleButton';
 import SelectForm from './shared/SelectForm';
+import Breadcrumb from './shared/Breadcrumb';
 
 function EventEdit({ event }) {
   const { realId, args, productPrefix, base, callTargetRepr, ret, parentId, parentType } = event;
@@ -15,6 +16,7 @@ function EventEdit({ event }) {
 
   return (
     <>
+      <Breadcrumb />
       {realId} 번째 이벤트 수정 페이지
       <h1>parentId: {parentId}</h1>
       <h1>parentType: {parentType}</h1>

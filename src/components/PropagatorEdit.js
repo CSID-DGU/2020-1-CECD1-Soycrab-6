@@ -3,13 +3,14 @@ import Event from './Event';
 import Nothing from './shared/Nothing';
 import LinkButton from './shared/LinkButton';
 import ToggleButton from './shared/ToggleButton';
+import Breadcrumb from './shared/Breadcrumb';
 
 function PropagatorEdit({ propagator }) {
   const { realId, edgeId, alias, args, fromTraceVar, toTraceVar } = propagator;
 
   return (
     <>
-      <h6 className="d-flex">Breadcrumb 들어갈 자리</h6>
+      <Breadcrumb />
       <h2>Edge #{edgeId}의 전파규칙 수정</h2>
       <div className="row row-cols-2">
         <div className="col">

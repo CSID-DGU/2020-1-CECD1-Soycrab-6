@@ -6,6 +6,11 @@ function PropagatorEditPage({ match }) {
   const realId = parseInt(id, 10);
   const edId = parseInt(edgeId, 10);
 
+  var pageHistory = JSON.parse(localStorage.getItem('pageHistory'));
+  var currentLocation = window.location.href.toString();
+  pageHistory.push(currentLocation);
+  localStorage.setItem('pageHistory', JSON.stringify(pageHistory));
+
   return (
     <PropagatorEditContainer
       realId={realId}
