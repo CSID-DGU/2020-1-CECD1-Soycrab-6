@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getEvent, clearEvent } from '../modules/events';
 import { reducerUtils } from '../lib/asyncUtils';
-import EventEdit from '../components/EventEdit';
+import EventEdit from '../components/Event/EventEdit';
 import StateRender from '../components/shared/StateRender';
 
 function EventEditContainer({ realId, parentType, parentId }) {

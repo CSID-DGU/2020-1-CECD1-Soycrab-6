@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { MdAddCircle, MdEdit, MdDelete } from 'react-icons/md';
-import Event from './Event';
+import Event from './Event/Event';
 import Nothing from './shared/Nothing';
 import LinkButton from './shared/LinkButton';
 

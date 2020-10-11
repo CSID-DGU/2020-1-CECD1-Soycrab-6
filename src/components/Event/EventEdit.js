@@ -1,7 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import ToggleButton from './shared/ToggleButton';
-import SelectForm from './shared/SelectForm';
+import ToggleButton from '../shared/ToggleButton';
+import SelectForm from '../shared/SelectForm';
+
+
 
 function EventEdit({ event }) {
   const { realId, args, productPrefix, base, callTargetRepr, ret, parentId, parentType } = event;

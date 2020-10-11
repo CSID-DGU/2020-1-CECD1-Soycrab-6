@@ -1,5 +1,5 @@
 import React from 'react';
-import Event from './Event';
+import Event from './Event/Event';
 import Nothing from './shared/Nothing';
 import LinkButton from './shared/LinkButton';
 import ToggleButton from './shared/ToggleButton';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import styled, {css} from 'styled-components';
 
 const ToggleBtn = styled.div`
@@ -41,9 +41,8 @@ const RightLabel = styled.label`
   }
 `;
 
-
 const ToggleInput = styled.input `
-  &:cheked{
+  &:checked{
     ${LeftLabel} {
       color: #73ca25;
     }
@@ -51,27 +50,42 @@ const ToggleInput = styled.input `
       color: #000;
     }
   }
-`
-
-const onChange = () => {
-
-}
-
+  &:not(:checked){
+    ${RightLabel} {
+      color: #73ca25;
+    }
+    ${LeftLabel} {
+      color: #000;
+    }
+  }
+`;
 
 function ToggleButton({leftLabel, rightLabel, switchId}) {
+  const checkInput = useRef()
+
+  const onChange = e => {
+    console.log({LeftLabel}.componentStyle)
+    console.log(RightLabel.componentStyle.rules)
+    window.e = e;
+    window.checkInput = checkInput;
+   
+    console.log(checkInput.current)
+  }
+
   return(
     <>
       <div className="col">
-        <LeftLabel>{leftLabel}</LeftLabel>
+        <LeftLabel ref={checkInput}>{leftLabel}</LeftLabel>
       </div>
       <div className="col">
         <ToggleBtn>
           <div className="custom-control custom-switch">
-            <ToggleInput type="checkbox" className="custom-control-input" onChange={onChange} id={switchId} />
+            <ToggleInput type="checkbox" className="custom-control-input" onChange={onChange} id={switchId}/>
             <label className="custom-control-label" htmlFor={switchId}></label>
           </div>
         </ToggleBtn>
       </div>
+      <label htmlFor="checkbox_id"></label>
       <div className="col">
         <RightLabel>{rightLabel}</RightLabel>
       </div>
