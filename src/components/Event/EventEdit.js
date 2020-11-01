@@ -2,13 +2,24 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import ToggleButton from '../shared/ToggleButton';
 import SelectForm from '../shared/SelectForm';
+import Lhs from './Partial/Lhs';
+import Rhs from './Partial/Rhs';
+import Base from './Partial/Base';
+import Target from './Partial/Target';
+import CallEvent from './EventType/CallEvent';
+import AssignmentEvent from './EventType/AssignmentEvent';
+import arrayCreateEvent from './EventType/arrayCreateEvent';
+import anyArrayAccessEvent from './EventType/anyArrayAccessEvent';
+import unaryOperationEvent from './EventType/unaryOperationEvent';
+import binaryOperationEvent from './EventType/binaryOperationEvent';
+import predefEventAlias from './EventType/predefEventAlias';
+
 
 
 
 function EventEdit({ event }) {
   const { realId, args, productPrefix, base, callTargetRepr, ret, parentId, parentType } = event;
 
-  const leftTypeOption = ["a", "b", "c", "d", "e"];
   const rightTypeOption = ["a", "b", "c", "d", "e"];
   const accessorTypeOption = ["a", "b", "c", "d", "e"];
   const rightKindOption = ["a", "b", "c", "d", "e"];
@@ -16,7 +27,8 @@ function EventEdit({ event }) {
   const baseKindOption = ["a", "b", "c", "d", "e"];
 
   return (
-    <>
+    <>      
+
       {realId} 번째 이벤트 수정 페이지
       <h1>parentId: {parentId}</h1>
       <h1>parentType: {parentType}</h1>
@@ -40,168 +52,27 @@ function EventEdit({ event }) {
         {
           (function() {
             if (productPrefix === "CallEvent") return (
-              <>
-                <div className="col card">
-                  <h5 className="mt-3 mb-2">type</h5>
-                  <div className="card">
-                    <div className="card-body">
-                      <h5 className="card-title">
-                        {productPrefix}
-                      </h5>
-                    </div>
-                  </div>
-                  <div className="row mt-3">
-                    <div className="col">
-                      <h2 className="mb-4">target</h2>
-                      <h5 className="mb-2">type</h5>
-                      <div className="card">
-                        <div className="card-body">
-                          <h5 className="card-title">
-                              {base.productPrefix}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row mt-3">
-                    <div className="col">
-                      <h5 className="mb-2">kind</h5>
-                      <div className="card">
-                        <SelectForm namespace={productPrefix} optionArray={baseKindOption} />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row mt-3">
-                    <div className="col">
-                      <h5 className="mb-2">str</h5>
-                      <div className="card">
-                        <div className="card-body">
-                          <h5 className="card-title">
-                              {callTargetRepr.repr.text}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <ToggleButton leftLabel="Name" rightLabel="Fqn" switchId={1}/>
-                  </div>  
-                  <div className="row mt-3 mb-3">
-                    <ToggleButton leftLabel="Plain" rightLabel="Regex" switchId={2}/>
-                  </div>  
-                </div>
-              </>
+              <CallEvent event={event} />
             );
             else if (productPrefix === "assignment") return (
-              <>
-                <div className="col card mb-5">
-                  <h5 className="mt-3 mb-2">type</h5>
-                  <div className="card">
-                    <div className="card-body">
-                      <h5 className="card-title">
-                        {productPrefix}
-                      </h5>
-                    </div>
-                  </div>
-                  <div className="row mt-5">
-                    <div className="col">
-                      <h2 className="mb-4">left</h2>
-                      <div className="row">
-                        <div className="col-12">
-                          <h5 className="mb-2">type</h5>
-                          <div className="card">
-                              <SelectForm namespace="LeftType" optionArray={leftTypeOption} />
-                          </div>
-                        </div>
-                        <div className="col-12">
-                          <h5 className="mb-2">name</h5>
-                          <div className="card">
-                            <div className="card-body">
-                              <h5 className="card-title">
-                                {callTargetRepr.repr.text}
-                              </h5>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col">
-                      <h2 className="mb-4">right</h2>
-                      <div className="row">
-                        <div className="col-12">
-                          <h5 className="mb-2">type</h5>
-                          <div className="card">
-                            <SelectForm namespace="RightType" optionArray={rightTypeOption} />
-                          </div>
-                        </div>
-                        <div className="col-12">
-                          <h5 className="mb-2">kind</h5>
-                          <div className="card">
-                            <SelectForm namespace="RightKind" optionArray={rightKindOption} />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col">
-                      <h2 className="mb-4">accessor</h2>
-                      <div className="row">
-                        <div className="col-12">
-                          <h5 className="mb-2">type</h5>
-                          <div className="card">
-                            <SelectForm namespace="AccessorType" optionArray={accessorTypeOption} />
-                          </div>
-                        </div>
-                        <div className="col-12">
-                          <h5 className="mb-2">kind</h5>
-                          <div className="card">
-                            <SelectForm namespace="AccessorKind" optionArray={accessorKindOption} />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row mt-3">
-                    <div className="col">
-                      <h2 className="mb-4">Base</h2>
-                      <h5 className="mb-2">type</h5>
-                      <div className="card">
-                        <div className="card-body">
-                          <h5 className="card-title">
-                              {base.productPrefix}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row mt-3">
-                    <div className="col">
-                      <h5 className="mb-2">kind</h5>
-                      <div className="card">
-                        <SelectForm namespace="BaseKind" optionArray={baseKindOption} />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row mt-3 mb-4">
-                    <div className="col">
-                      <h5 className="mb-2">str</h5>
-                      <div className="card">
-                        <div className="card-body">
-                          <h5 className="card-title">
-                              Event 추가
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <ToggleButton leftLabel="Name" rightLabel="Fqn" switchId={1}/>
-                  </div>  
-                  <div className="row mt-3 mb-3">
-                    <ToggleButton leftLabel="Plain" rightLabel="Regex" switchId={2}/>
-                  </div> 
-                </div>
-              </>
+              <AssignmentEvent event={event} />
             );
+            else if (productPrefix === "anyArrayAccessEvent") return (
+              <anyArrayAccessEvent event={event} />
+            );
+            else if (productPrefix === "arrayCreateEvent") return (
+              <arrayCreateEvent event={event} />
+            );
+            else if (productPrefix === "unaryOperationEvent") return (
+              <unaryOperationEvent event={event} />
+            );
+            else if (productPrefix === "binaryOperationEvent") return (
+              <binaryOperationEvent event={event} />
+            );
+            else if (productPrefix === "predefEventAlias") return (
+              <predefEventAlias event={event} />
+            );
+
           })()
         }
       </div>
