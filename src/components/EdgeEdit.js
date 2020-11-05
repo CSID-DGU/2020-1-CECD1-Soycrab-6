@@ -4,6 +4,7 @@ import Filter from './Filter';
 import Propagator from '../components/Propagator';
 import Nothing from './shared/Nothing';
 import LinkButton from './shared/LinkButton';
+import Breadcrumb from './shared/Breadcrumb';
 
 function EdgeEdit({ edge }) {
   const { filter, propagators, source, target } = edge;
@@ -19,7 +20,7 @@ function EdgeEdit({ edge }) {
 
   return (
     <>
-      <h6 className="d-flex" style={marginBottom}>Breadcrumb 들어갈 자리</h6>
+      <Breadcrumb />
       <h2>{source + " - " + target + " (Edge이름)"}</h2>
       <div className="row row-cols-2">
         <div className="col" style={marginBottom}>

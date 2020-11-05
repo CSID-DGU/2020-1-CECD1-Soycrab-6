@@ -6,6 +6,11 @@ function EventEditPage({ match }) {
   const eventId = parseInt(id, 10);
   const parentId = parseInt(parId, 10);
 
+  var pageHistory = JSON.parse(localStorage.getItem('pageHistory'));
+  var currentLocation = window.location.href.toString();
+  pageHistory.push(currentLocation);
+  localStorage.setItem('pageHistory', JSON.stringify(pageHistory));
+
   return (
     <EventEditContainer
       realId={eventId}
