@@ -5,10 +5,7 @@ import { MdAddCircle, MdEdit, MdDelete } from 'react-icons/md';
 import Event from './Event';
 import Nothing from './shared/Nothing';
 import LinkButton from './shared/LinkButton';
-
-const BreadCrumbItem = styled.div`
-  background-color: #f8f9fa;
-`;
+import Breadcrumb from './shared/Breadcrumb';
 
 const IconButton = styled.span`
   font-size: 25px;
@@ -42,11 +39,7 @@ function NodeEdit({ node, onChangeName }) {
 
   return (
     <>
-      <BreadCrumbItem className="breadcrumb">
-        <li className="breadcrumb-item"><a href="#">Home</a></li>
-        <li className="breadcrumb-item"><a href="#">Library</a></li>
-        <li className="breadcrumb-item active" aria-current="page">Data</li>
-      </BreadCrumbItem>
+      <Breadcrumb />
       <div className="input-group input-group-lg mb-3" style={marginTop}>
         <div className="input-group-prepend">
           <span className="input-group-text">노드이름</span>
