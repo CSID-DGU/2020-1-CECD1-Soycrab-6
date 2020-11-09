@@ -83,17 +83,19 @@ function NodeEdit({ node, onChangeName }) {
               <h5 className="card-title">추적변수<IconButton><MdAddCircle className="float-right" data-toggle="modal" data-target="#traceVarModal" /></IconButton></h5>
             </div>
             <ul className="list-group list-group-flush">
-              <LinkButton className="list-group-item" onClick={() => console.log('click')}>
-                sampleTraceVar
-                <div className="float-right">
-                  <IconButton>
-                    <MdEdit data-toggle="modal" data-target="#traceVarEditModal" />
-                  </IconButton>
-                  <IconButton>
-                    <MdDelete />
-                  </ IconButton>
-                </div>
-              </LinkButton>
+              {traceVars.map(
+                () => <LinkButton className="list-group-item" onClick={() => console.log('click')}>
+                  {traceVars}
+                  <div className="float-right">
+                    <IconButton>
+                      <MdEdit data-toggle="modal" data-target="#traceVarEditModal" />
+                    </IconButton>
+                    <IconButton>
+                      <MdDelete />
+                    </ IconButton>
+                  </div>
+                </LinkButton>
+              )}
             </ul>
           </div>
         </div>
