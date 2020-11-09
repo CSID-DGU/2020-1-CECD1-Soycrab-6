@@ -5,6 +5,16 @@ import Propagator from '../components/Propagator';
 import Nothing from './shared/Nothing';
 import LinkButton from './shared/LinkButton';
 import Breadcrumb from './shared/Breadcrumb';
+import styled from 'styled-components';
+import { MdAddCircle } from 'react-icons/md';
+
+const IconButton = styled.span`
+  font-size: 25px;
+  cursor: pointer;
+  &:hover {
+    color: #91A3B5;
+  }
+`;
 
 function EdgeEdit({ edge }) {
   const { filter, propagators, source, target } = edge;
@@ -69,6 +79,9 @@ function EdgeEdit({ edge }) {
             <div className="card-body">
               <h5 className="card-title">
                 Filter
+                <IconButton>
+                  <MdAddCircle className="float-right" data-toggle="modal" data-target="#traceVarModal" />
+                </IconButton>
               </h5>
             </div>
             <div className="list-group list-group-flush">
