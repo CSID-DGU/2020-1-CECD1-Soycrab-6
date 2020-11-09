@@ -80,13 +80,85 @@ function NodeEdit({ node, onChangeName }) {
         <div className="col">
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title">추적변수<IconButton><MdAddCircle className="float-right" /></IconButton></h5>
+              <h5 className="card-title">추적변수<IconButton><MdAddCircle className="float-right" data-toggle="modal" data-target="#traceVarModal" /></IconButton></h5>
             </div>
             <ul className="list-group list-group-flush">
-              <LinkButton className="list-group-item" onClick={() => console.log('click')}>변수이름<div className="float-right"><IconButton><MdEdit /></IconButton><IconButton><MdDelete /></ IconButton></div></LinkButton>
+              <LinkButton className="list-group-item" onClick={() => console.log('click')}>
+                sampleTraceVar
+                <div className="float-right">
+                  <IconButton>
+                    <MdEdit data-toggle="modal" data-target="#traceVarEditModal" />
+                  </IconButton>
+                  <IconButton>
+                    <MdDelete />
+                  </ IconButton>
+                </div>
+              </LinkButton>
             </ul>
           </div>
         </div>
+
+        {/* traceVar add Modal */}
+        <div className="modal fade" id="traceVarModal" tabIndex="-1" aria-labelledby="traceVarModalLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <form>
+                <div className="modal-header">
+                  <h5 className="modal-title" id="traceVarModalLabel">추적변수 추가</h5>
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <div className="card">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="추적변수 이름을 입력해주세요..."
+                    />
+                  </div>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" className="btn btn-primary">Save</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        {/* Modal */}
+
+        {/* traceVar edit Modal */}
+        <div className="modal fade" id="traceVarEditModal" tabIndex="-1" aria-labelledby="traceVarEditModalLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <form>
+                <div className="modal-header">
+                  <h5 className="modal-title" id="traceVarEditModalLabel">추적변수 수정</h5>
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <div className="card">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="추적변수 이름을 입력해주세요..."
+                      value="sampleTraceVar"
+                    />
+                  </div>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" className="btn btn-primary">Save</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        {/* Modal */}
+      
         <div className="col">
           <div className="card">
             <div className="card-body">
