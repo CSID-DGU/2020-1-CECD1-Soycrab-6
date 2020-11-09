@@ -17,15 +17,15 @@ class CustomNode extends Node {
 };
 
 class CustomEdge extends Edge {
-  constructor({ ...edge }, filterId, _index=null) {
+  constructor({ ...edge }, filterId, edgeId=null) {
     super(edge);
     this.filterId = filterId;
     this.source = `${edge.fromId}`;
     this.target = `${edge.toId}`;
-    this.realId = parseInt(edge.id, 10);
+    this.realId = edgeId;
     this.name = `${edge.id}번 노드`;
-    this.propagators = edge.propagators ? edge.propagators.map((propagator, index) => new CustomPropagator(propagator, edge.id, index)) : [];
-    this.filter = edge.filter ? new CustomFilter(edge.filter, edge, _index) : {};
+    this.propagators = edge.propagators ? edge.propagators.map((propagator, index) => new CustomPropagator(propagator, edgeId, index)) : [];
+    this.filter = edge.filter ? new CustomFilter(edge.filter, edge, edgeId, edgeId) : {};
   };
 };
 
@@ -39,12 +39,12 @@ class CustomEvent extends Event {
 };
 
 class CustomFilter extends Filter {
-  constructor({ ...filter }, edge, realId) {
+  constructor({ ...filter }, edge, edgeRealId, realId) {
     super(filter);
     this.realId = realId;
-    this.edgeId = edge.realId;
+    this.edgeId = edgeRealId;
     this.nodes = filter.nodes.map(node => new CustomNode(node));
-    this.edges = edge.filter ? edge.filter.edges.map(edge => new CustomEdge(edge, realId)) : {};
+    this.edges = edge.filter ? edge.filter.edges.map((edge, index) => new CustomEdge(edge, realId, index)) : {};
   };
 };
 
