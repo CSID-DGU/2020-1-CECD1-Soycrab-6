@@ -26,7 +26,7 @@ function PropagatorEdit({ propagator }) {
                   event => <LinkButton className="list-group-item" key={event.realId}>
                               <Event
                                 realId={event.realId}
-                                parentType='propagator'
+                                parentType='Propagator'
                                 parentId={realId}
                               />
                             </LinkButton>)

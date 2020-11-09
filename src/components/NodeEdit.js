@@ -106,7 +106,7 @@ function NodeEdit({ node, onChangeName }) {
                     event => <LinkButton className="list-group-item list-group-item-action" key={event.realId}>
                                 <Event 
                                   realId={event.realId}
-                                  parentType='node'
+                                  parentType='Node'
                                   parentId={realId} />
                               </LinkButton>)
                 : <Nothing />}

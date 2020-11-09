@@ -16,7 +16,7 @@ function Breadcrumb() {
         {pageHistory.map(
           (page, index) => {
             var splittedPage = page.split('http://localhost:3000/'); // TODO: url 바꿔야함
-            if (historyLength - 1 != index) return <li className="breadcrumb-item"><a href={page}>{splittedPage}</a></li>
+            if (historyLength - 1 != index) return <li className="breadcrumb-item" key={index}><a href={page}>{splittedPage}</a></li>
           }
         )}
       </BreadCrumbItem>
