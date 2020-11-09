@@ -65,8 +65,8 @@ export class Event {
 export class Filter {
   constructor({ productPrefix, nodes, edges }) {
     this.productPrefix = productPrefix;
-    this.nodes = nodes.map(node => new Node(nodeConvert(node)));
-    this.edges = edges.map(edge => new Edge(edgeConvert(edge)));
+    this.nodes = nodes ? nodes.map(node => new Node(nodeConvert(node))) : [];
+    this.edges = edges ? edges.map(edge => new Edge(edgeConvert(edge))) : [];
   };
 };
 
@@ -82,7 +82,7 @@ export class Propagator {
 const nodeConvert = node => {
   return {
     ...node, 
-    events: node.alias.events
+    events: node.alias ? node.alias.events : []
   };
 };
 
@@ -97,7 +97,7 @@ const edgeConvert = edge => {
 const propagatorConvert = propagator => {
   return {
     ...propagator,
-    events: propagator.alias.events
+    events: propagator.alias ? propagator.alias.events : []
   };
 };
 
