@@ -37,6 +37,19 @@ function NodeEdit({ node, onChangeName }) {
     setNodeName(nodeName);
   };
 
+  const onAddTraceVarSubmit = e => {
+    e.preventDefault();
+    // ...
+  };
+
+  const onEditTraceVarSubmit = e => {
+    e.preventDefault();
+    // setUpdateVarName(e.target.value);
+  };
+
+  const [newVarName, setNewVarName] = useState('');
+  const [updateVarName, setUpdateVarName] = useState(traceVars);
+
   return (
     <>
       <Breadcrumb />
@@ -104,7 +117,7 @@ function NodeEdit({ node, onChangeName }) {
         <div className="modal fade" id="traceVarModal" tabIndex="-1" aria-labelledby="traceVarModalLabel" aria-hidden="true">
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
-              <form>
+              <form onSubmit={onAddTraceVarSubmit}>
                 <div className="modal-header">
                   <h5 className="modal-title" id="traceVarModalLabel">추적변수 추가</h5>
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -117,6 +130,8 @@ function NodeEdit({ node, onChangeName }) {
                       type="text"
                       className="form-control"
                       placeholder="추적변수 이름을 입력해주세요..."
+                      value={newVarName}
+                      onChange={(e) => setNewVarName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -134,7 +149,7 @@ function NodeEdit({ node, onChangeName }) {
         <div className="modal fade" id="traceVarEditModal" tabIndex="-1" aria-labelledby="traceVarEditModalLabel" aria-hidden="true">
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
-              <form>
+              <form onSubmit={onEditTraceVarSubmit}>
                 <div className="modal-header">
                   <h5 className="modal-title" id="traceVarEditModalLabel">추적변수 수정</h5>
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -147,7 +162,8 @@ function NodeEdit({ node, onChangeName }) {
                       type="text"
                       className="form-control"
                       placeholder="추적변수 이름을 입력해주세요..."
-                      value="sampleTraceVar"
+                      value={updateVarName}
+                      onChange={(e) => setUpdateVarName(e.target.value)}
                     />
                   </div>
                 </div>
