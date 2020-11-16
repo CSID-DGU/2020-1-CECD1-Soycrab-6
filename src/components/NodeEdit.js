@@ -97,8 +97,8 @@ function NodeEdit({ node, onChangeName }) {
             </div>
             <ul className="list-group list-group-flush">
               {traceVars.map(
-                () => <LinkButton className="list-group-item" onClick={() => console.log('click')}>
-                  {traceVars}
+                (val) => <LinkButton className="list-group-item" onClick={() => console.log('click')}>
+                  {val}
                   <div className="float-right">
                     <IconButton>
                       <MdEdit data-toggle="modal" data-target="#traceVarEditModal" />
