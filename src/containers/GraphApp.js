@@ -48,6 +48,10 @@ export const graphConfig = {
 };
 
 function GraphApp() {
+  const marginTop = {
+    marginTop: '40px'
+  };
+
   const { data, loading, error } = useSelector(state => state.datas.datas);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -67,12 +71,23 @@ function GraphApp() {
               error={error} />;
   } else {
     return (
-      <Graph
-        id="graph-id"
-        data={data}
-        config={graphConfig}
-        onClickLink={onClickLink}
-      />
+      <>
+        <div className="input-group input-group-lg mb-3 col-6 mx-auto" style={marginTop}>
+          <div className="input-group-prepend">
+            <span className="input-group-text">노드 생성</span>
+          </div>
+          <input type="text" className="form-control" placeholder="노드 이름을 입력하세요..." />
+          <div className="input-group-append">
+            <button className="btn btn-outline-secondary" type="button">생성</button>
+          </div>
+        </div>
+        <Graph
+          id="graph-id"
+          data={data}
+          config={graphConfig}
+          onClickLink={onClickLink}
+        />
+      </>
     )
   };
 };
