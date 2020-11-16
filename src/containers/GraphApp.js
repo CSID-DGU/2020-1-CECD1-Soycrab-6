@@ -49,7 +49,8 @@ export const graphConfig = {
 
 function GraphApp() {
   const marginTop = {
-    marginTop: '40px'
+    marginTop: '40px',
+    zIndex: '0'
   };
 
   const { data, loading, error } = useSelector(state => state.datas.datas);
@@ -72,7 +73,7 @@ function GraphApp() {
   } else {
     return (
       <>
-        <div className="input-group input-group-lg mb-3 col-6 mx-auto" style={marginTop}>
+        <div className="input-group input-group-lg mb-0 col-6 mx-auto" style={marginTop}>
           <div className="input-group-prepend">
             <span className="input-group-text">노드 생성</span>
           </div>
