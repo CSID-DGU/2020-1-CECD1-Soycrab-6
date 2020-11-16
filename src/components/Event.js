@@ -14,7 +14,7 @@ function Event({ realId, parentType, parentId }) {
 
   return (
     <EventBody onClick={() => goToEventEdit(parentType, parentId, realId)}>
-      이벤트 #{realId} (이벤트 이름)
+      이벤트 #{realId}
     </EventBody>
   )
 };
